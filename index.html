@@ -1,0 +1,2112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>VALBEN Project Dashboard V10.1 - Mobile iPad iPhone + Login Logo Fix</title>
+<style>
+:root{--navy:#123e72;--blue:#2f6fa3;--bg:#f4f7fa;--line:#dbe3ea;--text:#1f2933;--muted:#6d7a86;--green:#3b9b63;--red:#c84747;--amber:#d59b2b;--gray:#858d94}
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
+header{min-height:72px;background:#fff;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:10px 22px;position:sticky;top:0;z-index:30;gap:14px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:16px}.brand img{width:170px;height:48px;object-fit:contain}.project{border-left:1px solid var(--line);padding-left:16px}.project b{color:var(--navy);font-size:18px}.project div{font-size:12px;color:var(--muted);margin-top:3px}
+button{border:0;border-radius:7px;padding:9px 13px;font-size:12px;font-weight:700;cursor:pointer}.primary{background:var(--navy);color:#fff}.secondary{background:#e9eef3;color:var(--navy)}.danger{background:#f7e8e8;color:#9f3535}.success{background:#e5f3e9;color:#247247}
+.app{display:grid;grid-template-columns:230px 1fr;min-height:calc(100vh - 72px)}aside{background:#15293d;color:#fff;padding:16px 12px}.section{font-size:10px;letter-spacing:.1em;color:#9fb2c0;margin:18px 10px 7px;text-transform:uppercase}.nav{padding:10px 12px;border-radius:7px;margin:3px 0;color:#e9f0f5;cursor:pointer;font-size:13px}.nav.active,.nav:hover{background:#21415f}
+main{padding:20px;overflow:hidden}.view{display:none}.view.active{display:block}.titlebar{display:flex;justify-content:space-between;align-items:end;margin-bottom:16px;gap:12px;flex-wrap:wrap}.titlebar h1{margin:0;color:var(--navy);font-size:24px}.titlebar p{margin:4px 0 0;font-size:12px;color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(4,minmax(160px,1fr));gap:12px;margin-bottom:16px}.card,.panel{background:#fff;border:1px solid var(--line);border-radius:10px}.card{padding:16px}.card .label{font-size:11px;text-transform:uppercase;color:var(--muted);font-weight:700}.card .value{font-size:30px;color:var(--navy);font-weight:800;margin-top:6px}.card .sub{font-size:11px;color:var(--muted);margin-top:4px}
+.grid2{display:grid;grid-template-columns:1.4fr 1fr;gap:14px}.panel-head{padding:13px 15px;border-bottom:1px solid var(--line);display:flex;justify-content:space-between}.panel-head h3{margin:0;color:var(--navy);font-size:14px}.panel-body{padding:14px}.progress{height:12px;background:#e7edf2;border-radius:8px;overflow:hidden}.progress>div{height:100%;background:var(--blue)}.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:14px}.stat{border:1px solid var(--line);border-radius:8px;padding:12px}.stat strong{display:block;color:var(--navy);font-size:21px}.stat span{font-size:11px;color:var(--muted)}
+.empty-state{padding:30px 18px;text-align:center;color:var(--muted);font-size:13px}.empty-state b{display:block;color:var(--navy);font-size:16px;margin-bottom:6px}
+.schedule{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}.toolbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;padding:10px;border-bottom:1px solid var(--line)}.toolbar input,.toolbar select{padding:8px;border:1px solid var(--line);border-radius:6px;font-size:12px;background:#fff}.schedule-wrap{display:grid;grid-template-columns:1160px minmax(850px,1fr);overflow:auto;max-height:690px}.table-pane{position:sticky;left:0;z-index:12;background:#fff;border-right:2px solid #9eabb5}.gantt-pane{min-width:900px;position:relative}
+table{border-collapse:collapse;width:100%;table-layout:fixed;font-size:12px}th{background:var(--navy);color:#fff;height:44px;border-right:1px solid rgba(255,255,255,.16);position:sticky;top:0;z-index:10}td{height:40px;border-bottom:1px solid var(--line);border-right:1px solid #edf1f4;padding:4px 5px}tr:nth-child(even) td{background:#fbfcfd}td input,td select{width:100%;border:1px solid transparent;background:transparent;padding:5px;font-size:12px;border-radius:4px}td input:focus,td select:focus{border-color:#91afc4;background:#fff;outline:none}
+.c-id{width:38px}.c-task{width:250px}.c-dur{width:60px}.c-date{width:90px}.c-pct{width:72px}.c-status{width:105px}.c-pred{width:160px}.c-link{width:65px}.c-move{width:86px}.c-done{width:70px}.c-delete{width:70px}
+.pred-select,.link-select{font-weight:700;border:1px solid #cbd5dd!important;background:#fff!important}.link-select{color:var(--navy);text-align:center}.dependency-help{font-size:10px;color:#51616e;background:#edf3f7;border:1px solid #d4e0e8;border-radius:12px;padding:5px 8px;white-space:nowrap}.dependency-layer{position:absolute;inset:0;width:100%;height:100%;z-index:7;pointer-events:none;overflow:visible}.dependency-layer path.dep-line{fill:none;stroke:#385c75;stroke-width:1.7;vector-effect:non-scaling-stroke}.dependency-layer circle{fill:#385c75}.dependency-layer .dep-arrow{fill:#385c75}.bar{z-index:4}.look-gantt-body,#ganttBody{position:relative}.action-head{background:#0f355f!important}.action-cell{text-align:center;padding:4px!important}.action-cell+ .action-cell{border-left:2px solid #d0d8df!important}.action-btn{min-width:31px;height:30px;padding:3px 7px;border-radius:6px}.move-btn{background:#edf1f4;color:#435362;margin:0 2px}.move-btn:disabled{opacity:.3;cursor:not-allowed}.done-btn{background:#e3f2e8;color:#246d43}.delete-btn{background:#f7e3e3;color:#9c3131}
+.gantt-header{height:44px;position:sticky;top:0;z-index:8;background:#fff;border-bottom:1px solid var(--line)}.week-row,.day-row{display:flex;height:22px}.week-cell,.day-cell{text-align:center;border-right:1px solid var(--line);color:var(--navy);font-weight:700;font-size:10px;padding-top:5px}.day-cell{font-size:9px;color:var(--muted);font-weight:400}.day-cell small{display:block;font-size:6px;line-height:6px}.gantt-row{height:40px;border-bottom:1px solid var(--line);position:relative}.gantt-row:nth-child(even){background:#fbfcfd}.day-grid{position:absolute;inset:0;display:flex;pointer-events:none}.day-bg{border-right:1px solid #edf1f4;height:100%}.day-bg.no-work{background:#e2e5e8!important;box-shadow:inset 0 0 0 1px #b8bec4}.day-cell.no-work{background:#e1e4e7!important;color:#922f2f!important;font-weight:700!important;text-decoration:line-through}.day-bg.active{background:#e1e5e8}.bar{position:absolute;top:9px;height:22px;border-radius:3px;background:var(--gray);box-shadow:0 1px 2px rgba(0,0,0,.12);color:#fff;font-size:9px;font-weight:700;display:flex;align-items:center;justify-content:center;white-space:nowrap;overflow:hidden}.bar.completed{background:var(--green)}.bar.delayed{background:var(--red)}.bar.blocked{background:var(--amber)}.bar.inprogress{background:#68737c}
+.status-select{font-weight:700;border:1px solid #cbd5dd!important}.status-select.notstarted{color:#53616d}.status-select.inprogress{color:#5d5477}.status-select.completed{color:#247247;background:#eef8f1}.status-select.delayed{color:#a33232;background:#fff0f0}.status-select.blocked{color:#8f681c;background:#fff8e8}
+.nonwork-controls{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding-left:8px;border-left:1px solid var(--line)}.calendar-note{font-size:10px;font-weight:700;color:#8a3a3a;background:#f5eded;border:1px solid #ead3d3;border-radius:12px;padding:4px 8px}.off-chip{padding:5px 8px;border:1px solid #cbd3da;background:#edf0f2;color:#4f5a63;border-radius:12px;font-size:10px}.nonwork-chips{display:flex;gap:5px;flex-wrap:wrap}
+.toast{position:fixed;right:22px;bottom:22px;background:#173a5a;color:#fff;padding:11px 15px;border-radius:8px;box-shadow:0 5px 18px rgba(0,0,0,.22);font-size:12px;font-weight:700;z-index:999;opacity:0;transform:translateY(10px);pointer-events:none;transition:.2s}.toast.show{opacity:1;transform:translateY(0)}
+.badge{display:inline-block;border-radius:12px;padding:3px 7px;font-size:10px;font-weight:700}.badge.notstarted{background:#e7edf2;color:#53616d}.badge.inprogress{background:#ece8f8;color:#674f96}.badge.completed{background:#e4f4ea;color:#2d7c4c}.badge.delayed{background:#fae8e8;color:#a33232}.badge.blocked{background:#f8efd9;color:#9a6d19}
+.lookahead{background:#fff;border:1px solid var(--line);border-radius:10px;padding:18px}.look-head{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:2px solid var(--navy);padding-bottom:12px;margin-bottom:12px}.look-head img{width:210px;max-height:70px;object-fit:contain}.look-title{text-align:right}.look-title h2{margin:0;color:var(--navy)}.look-title b{color:var(--blue)}.contact{margin-top:16px;border-top:1px solid var(--line);padding-top:12px;display:flex;gap:28px;flex-wrap:wrap;font-size:12px}.small{font-size:11px;color:var(--muted)}.logo-upload{display:none}.look-cell-bar{position:absolute;top:4px;height:30px;overflow:visible;z-index:4;display:block}
+
+/* v9: Fixed daily capacity (10 activities = 100%) */
+.calendar-toolbar{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;margin-bottom:12px}
+.calendar-toolbar .month-nav{display:flex;align-items:center;gap:8px}.calendar-toolbar h2{margin:0;color:var(--navy);font-size:20px;min-width:180px;text-align:center}
+.calendar-layout{display:grid;grid-template-columns:minmax(620px,1.5fr) minmax(280px,.7fr);gap:14px;align-items:start}
+.month-calendar{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.cal-weekdays,.cal-grid{display:grid;grid-template-columns:repeat(7,1fr)}
+.cal-weekdays div{padding:9px 4px;text-align:center;background:var(--navy);color:#fff;font-size:11px;font-weight:700;border-right:1px solid rgba(255,255,255,.15)}
+.cal-day{min-height:105px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:7px;position:relative;background:#fff;cursor:pointer;outline:none}
+.cal-day:nth-child(7n){border-right:0}.cal-day.outside{background:#f7f8fa;color:#a7afb6}.cal-day.off{background:#eceff1;color:#8b9298}.cal-day.off::after{content:'OFF';position:absolute;right:6px;top:7px;font-size:9px;font-weight:800;color:#a13c3c}
+.cal-day.selected{box-shadow:inset 0 0 0 3px var(--blue)}.cal-day.busiest{background:#e6f0f7;box-shadow:inset 0 0 0 3px var(--navy)}.cal-day.busiest.selected{box-shadow:inset 0 0 0 4px var(--blue)}
+.cal-num{font-size:12px;font-weight:800}.cal-count{margin-top:8px;display:inline-flex;align-items:center;gap:5px;background:#eef3f6;color:#415261;border-radius:12px;padding:4px 7px;font-size:10px;font-weight:700}.cal-day.busiest .cal-count{background:var(--navy);color:#fff}.cal-day.off .cal-count{display:none}
+.cal-mini{margin-top:5px;font-size:9px;line-height:1.25;color:#62717e;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.cal-day.busiest .cal-mini{color:#30475a}
+.load-wrap{position:absolute;left:7px;right:7px;bottom:7px}
+.load-line{height:7px;border-radius:999px;background:#e7ecef;overflow:hidden;border:1px solid #d8dfe4}
+.load-fill{height:100%;border-radius:999px;min-width:2px;transition:width .2s ease}
+.load-label{display:flex;justify-content:space-between;gap:6px;margin-bottom:3px;font-size:9px;font-weight:800;color:#5d6973}
+.cal-day.off .load-wrap,.cal-day.outside .load-wrap{display:none}
+.load-legend{display:flex;align-items:center;gap:8px;flex-wrap:wrap;font-size:10px;color:var(--muted)}
+.load-gradient{width:145px;height:9px;border-radius:999px;background:linear-gradient(90deg,#39a85a 0%,#e0c235 50%,#d7493f 100%);border:1px solid #cfd6db}
+.day-list{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden;position:sticky;top:90px}.day-list-head{padding:14px;border-bottom:1px solid var(--line)}.day-list-head h3{margin:0;color:var(--navy);font-size:16px}.day-list-head p{margin:4px 0 0;color:var(--muted);font-size:11px}.day-list-body{padding:8px 14px 14px}.day-task{padding:10px 0;border-bottom:1px solid var(--line)}.day-task:last-child{border-bottom:0}.day-task b{display:block;font-size:12px;margin-bottom:4px}.day-task .meta{font-size:10px;color:var(--muted)}
+.busy-summary{background:#eef4f8;border:1px solid #cddce7;border-radius:8px;padding:10px 12px;margin-bottom:12px;font-size:11px;color:#40576a}.busy-summary strong{color:var(--navy)}
+.preview-shell{background:#d9dde1;border:1px solid #c5ccd2;border-radius:10px;padding:22px;overflow:auto}.preview-paper{width:100%;min-width:980px;aspect-ratio:17/11;background:#fff;margin:0 auto;box-shadow:0 4px 18px rgba(0,0,0,.18);padding:18px;overflow:hidden}.preview-paper .lookahead{border:0;padding:0}.preview-note{font-size:11px;color:var(--muted);margin-top:8px;text-align:center}
+.preview-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+@media(max-width:900px){.calendar-layout{grid-template-columns:1fr}.day-list{position:static}.cal-day{min-height:82px}.preview-paper{min-width:900px}}
+@media(max-width:1100px){.app{grid-template-columns:1fr}aside{display:none}.cards{grid-template-columns:repeat(2,1fr)}.grid2{grid-template-columns:1fr}}
+@page{size:17in 11in landscape;margin:.22in}html,body{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+
+
+/* V9.3 Appearance themes */
+:root{
+  --theme-bg:#f4f7fa;--theme-panel:#ffffff;--theme-panel-2:#f7f9fb;
+  --theme-text:#1f2d38;--theme-muted:#667784;--theme-line:#d8e1e7;
+}
+html[data-palette="classic"]{--navy:#123e72;--blue:#2f6fa3}
+html[data-palette="teal"]{--navy:#0d5d66;--blue:#168a95}
+html[data-palette="green"]{--navy:#245b3b;--blue:#3d8a5b}
+html[data-palette="orange"]{--navy:#8a4a14;--blue:#d97706}
+html[data-palette="purple"]{--navy:#5b3c88;--blue:#7c56b2}
+html[data-palette="slate"]{--navy:#334155;--blue:#64748b}
+
+html[data-dark="true"]{--theme-bg:#111820;--theme-panel:#18212b;--theme-panel-2:#202b36;--theme-text:#e8eef3;--theme-muted:#aebbc6;--theme-line:#34414d}
+html[data-dark="true"] body{background:var(--theme-bg)!important;color:var(--theme-text)!important}
+html[data-dark="true"] header,
+html[data-dark="true"] .panel,
+html[data-dark="true"] .card,
+html[data-dark="true"] .schedule-shell,
+html[data-dark="true"] .lookahead,
+html[data-dark="true"] .preview-paper,
+html[data-dark="true"] .guide-card,
+html[data-dark="true"] .calendar-panel,
+html[data-dark="true"] .selected-day-panel{background:var(--theme-panel)!important;color:var(--theme-text)!important;border-color:var(--theme-line)!important}
+html[data-dark="true"] .guide-head,
+html[data-dark="true"] .mobile-task-head,
+html[data-dark="true"] .cal-day,
+html[data-dark="true"] .toolbar{background:var(--theme-panel-2)!important;border-color:var(--theme-line)!important}
+html[data-dark="true"] table td,
+html[data-dark="true"] .guide-table td{background:var(--theme-panel)!important;color:var(--theme-text)!important;border-color:var(--theme-line)!important}
+html[data-dark="true"] table input,
+html[data-dark="true"] table select,
+html[data-dark="true"] .toolbar input,
+html[data-dark="true"] .toolbar select,
+html[data-dark="true"] .nonwork-controls input,
+html[data-dark="true"] .pred-select,
+html[data-dark="true"] .link-select,html[data-dark="true"] .theme-select{background:#111820!important;color:var(--theme-text)!important;border-color:#465360!important}
+html[data-dark="true"] .small,
+html[data-dark="true"] .card .label,
+html[data-dark="true"] .card .sub,
+html[data-dark="true"] .guide-body,
+html[data-dark="true"] .cal-mini,
+html[data-dark="true"] .load-label{color:var(--theme-muted)!important}
+html[data-dark="true"] .empty-state{color:var(--theme-muted)!important}
+html[data-dark="true"] .day-bg{border-color:#2d3944!important}
+html[data-dark="true"] .day-bg.no-work,
+html[data-dark="true"] .cal-day.off{background:#26323d!important}
+html[data-dark="true"] .gantt-row,
+html[data-dark="true"] .task-table td{border-color:#2f3b46!important}
+html[data-dark="true"] .preview-shell{background:#0d1319!important}
+
+.appearance-panel{background:var(--theme-panel,#fff);border:1px solid var(--theme-line,#d8e1e7);border-radius:9px;padding:9px;margin:6px 0 12px}
+.appearance-title{font-size:10px;text-transform:uppercase;letter-spacing:.08em;font-weight:800;color:var(--theme-muted,#667784);margin-bottom:6px}
+.theme-select-row{display:grid;grid-template-columns:minmax(0,1fr) 38px;gap:7px;align-items:center}
+.theme-select{width:100%;min-width:0;height:35px;border:1px solid var(--theme-line,#d8e1e7);border-radius:7px;padding:0 8px;background:var(--theme-panel-2,#f7f9fb);color:var(--theme-text,#1f2d38);font-size:11px;font-weight:700;cursor:pointer}
+.theme-preview{height:35px;border-radius:7px;border:1px solid var(--theme-line,#d8e1e7);display:grid;grid-template-columns:1fr 1fr;overflow:hidden}
+.theme-preview span{display:block}
+.dark-toggle{width:100%;margin-top:7px;display:flex;align-items:center;justify-content:space-between;gap:8px;background:var(--theme-panel-2,#f7f9fb);border:1px solid var(--theme-line,#d8e1e7);color:var(--theme-text,#1f2d38);padding:8px 9px;border-radius:7px;font-size:11px;font-weight:800;cursor:pointer}
+.dark-toggle .toggle-dot{width:32px;height:17px;border-radius:999px;background:#c4ccd3;position:relative;flex:0 0 auto}
+.dark-toggle .toggle-dot:after{content:"";position:absolute;top:2px;left:2px;width:13px;height:13px;border-radius:50%;background:#fff;transition:.18s}
+html[data-dark="true"] .dark-toggle .toggle-dot{background:var(--blue)}
+html[data-dark="true"] .dark-toggle .toggle-dot:after{left:17px}
+.theme-top-btn{display:inline-flex!important;align-items:center;gap:6px}
+@media print{
+  html[data-dark="true"] body,
+  html[data-dark="true"] .lookahead,
+  html[data-dark="true"] .preview-paper,
+  html[data-dark="true"] table td{background:#fff!important;color:#111!important}
+  .appearance-panel,.theme-top-btn{display:none!important}
+}
+
+.guide-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.guide-card{background:#fff;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.guide-card.wide{grid-column:1/-1}
+.guide-head{padding:13px 15px;border-bottom:1px solid var(--line);background:#f7f9fb;display:flex;justify-content:space-between;gap:12px;align-items:center}
+.guide-head h3{margin:0;color:var(--navy);font-size:15px}
+.guide-body{padding:14px 15px;font-size:12px;line-height:1.55;color:#33424e}
+.version-badge{display:inline-flex;align-items:center;gap:6px;background:var(--navy);color:#fff;border-radius:999px;padding:6px 10px;font-size:11px;font-weight:800}
+.guide-table{width:100%;border-collapse:collapse;table-layout:auto;font-size:12px}
+.guide-table th{position:static;background:#edf3f7;color:var(--navy);height:auto;text-align:left;padding:9px;border:1px solid var(--line)}
+.guide-table td{height:auto;padding:9px;border:1px solid var(--line);vertical-align:top;background:#fff!important}
+.guide-code{font-family:Consolas,Menlo,monospace;background:#eef3f6;color:#183c5c;padding:2px 6px;border-radius:5px;font-weight:700;white-space:nowrap}
+.guide-color{display:inline-flex;align-items:center;gap:7px;margin:3px 12px 3px 0}
+.guide-swatch{width:13px;height:13px;border-radius:3px;display:inline-block;border:1px solid rgba(0,0,0,.12)}
+.change-list{margin:0;padding-left:18px}.change-list li{margin:5px 0}
+.guide-note{background:#edf4f8;border-left:4px solid var(--blue);padding:10px 12px;border-radius:4px;margin:10px 0;color:#3e5668}
+.version-timeline{display:grid;gap:10px}
+.version-row{display:grid;grid-template-columns:86px 1fr;gap:12px;padding:10px 0;border-bottom:1px solid var(--line)}
+.version-row:last-child{border-bottom:0}.version-name{font-weight:800;color:var(--navy)}
+@media(max-width:900px){.guide-grid{grid-template-columns:1fr}.guide-card.wide{grid-column:auto}.version-row{grid-template-columns:1fr}}
+
+@media print{*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}html,body{background:#fff!important}header,aside,.no-print,.toolbar,.toast{display:none!important}.app{display:block}.main,main{padding:0!important;overflow:visible!important}.view{display:none!important}#printPreviewView{display:block!important}#printPreviewView .preview-shell{background:#fff!important;border:0!important;padding:0!important;overflow:visible!important}#printPreviewView .preview-paper{box-shadow:none!important;min-width:0!important;width:100%!important;aspect-ratio:auto!important;padding:4px!important}#printPreviewView .lookahead{border:0;border-radius:0;padding:4px!important}.lookahead table{font-size:8px!important}.lookahead td{height:26px!important}th{background:#123e72!important;color:#fff!important}.gantt-row{height:26px!important;background:#fff!important}.day-bg{background:#fff!important;border-right:1px solid #dfe5ea!important}.day-bg.no-work{background:#e2e5e8!important;box-shadow:inset 0 0 0 1px #aaa!important}.day-cell.no-work{background:#e1e4e7!important;color:#922f2f!important}.look-cell-bar{height:22px!important;top:2px!important}.company-logo{display:block!important;visibility:visible!important;opacity:1!important}}
+
+/* V9.5 Minimal Rounded UI */
+:root{
+  --r-xs:10px;
+  --r-sm:14px;
+  --r-md:18px;
+  --r-lg:24px;
+  --r-xl:30px;
+  --soft-shadow:0 8px 24px rgba(15,35,54,.06);
+  --soft-shadow-2:0 14px 36px rgba(15,35,54,.08);
+}
+
+body{
+  background:linear-gradient(180deg,#f6f9fc 0%,#f2f6fa 100%);
+}
+html[data-dark="true"] body{
+  background:linear-gradient(180deg,#0f1821 0%,#111d27 100%)!important;
+}
+
+header{
+  border-bottom:0!important;
+  box-shadow:var(--soft-shadow);
+  border-radius:0 0 var(--r-lg) var(--r-lg);
+  margin:0 0 10px 0;
+}
+.brand img{
+  border-radius:16px;
+}
+.project{
+  border-left:0!important;
+  padding-left:12px!important;
+}
+.project b{
+  letter-spacing:.01em;
+}
+aside{
+  padding-top:12px!important;
+}
+.section{
+  margin-top:16px!important;
+  margin-bottom:8px!important;
+  font-size:10px!important;
+  opacity:.85;
+}
+.nav{
+  border-radius:999px!important;
+  margin:5px 0!important;
+  padding:10px 14px!important;
+  border:1px solid transparent;
+  transition:all .16s ease;
+}
+.nav:hover{
+  transform:translateX(2px);
+}
+.nav.active{
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);
+}
+
+button,.primary,.secondary,.danger,.success{
+  border-radius:999px!important;
+  box-shadow:none!important;
+  min-height:38px;
+  border:1px solid transparent;
+  transition:transform .14s ease, box-shadow .14s ease, opacity .14s ease;
+}
+button:hover,.primary:hover,.secondary:hover,.danger:hover,.success:hover{
+  transform:translateY(-1px);
+  box-shadow:0 6px 16px rgba(0,0,0,.08)!important;
+}
+
+.card,.panel,.schedule-shell,.calendar-panel,.selected-day-panel,.lookahead,.preview-paper,.guide-card,.appearance-panel{
+  border-radius:var(--r-lg)!important;
+  box-shadow:var(--soft-shadow)!important;
+  border:1px solid rgba(17,39,58,.07)!important;
+  overflow:hidden;
+}
+html[data-dark="true"] .card,
+html[data-dark="true"] .panel,
+html[data-dark="true"] .schedule-shell,
+html[data-dark="true"] .calendar-panel,
+html[data-dark="true"] .selected-day-panel,
+html[data-dark="true"] .lookahead,
+html[data-dark="true"] .preview-paper,
+html[data-dark="true"] .guide-card,
+html[data-dark="true"] .appearance-panel{
+  border:1px solid rgba(255,255,255,.08)!important;
+  box-shadow:none!important;
+}
+
+.panel-head,.guide-head{
+  background:rgba(247,249,251,.92)!important;
+  border-bottom:1px solid rgba(17,39,58,.06)!important;
+  padding:15px 16px!important;
+}
+html[data-dark="true"] .panel-head,
+html[data-dark="true"] .guide-head{
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+
+.titlebar{
+  margin-bottom:14px!important;
+}
+.titlebar h1{
+  letter-spacing:-.02em;
+}
+.small{
+  letter-spacing:.01em;
+}
+
+.toolbar{
+  background:transparent!important;
+  border-bottom:1px solid rgba(17,39,58,.06)!important;
+  padding:12px!important;
+  gap:10px!important;
+}
+html[data-dark="true"] .toolbar{
+  border-bottom:1px solid rgba(255,255,255,.08)!important;
+}
+
+.toolbar input,.toolbar select,.nonwork-controls input,table input,table select,.pred-select,.link-select,.theme-select{
+  border-radius:999px!important;
+  padding:9px 12px!important;
+  border:1px solid rgba(17,39,58,.10)!important;
+  background:rgba(255,255,255,.98)!important;
+}
+html[data-dark="true"] .toolbar input,
+html[data-dark="true"] .toolbar select,
+html[data-dark="true"] .nonwork-controls input,
+html[data-dark="true"] table input,
+html[data-dark="true"] table select,
+html[data-dark="true"] .pred-select,
+html[data-dark="true"] .link-select,
+html[data-dark="true"] .theme-select{
+  background:#111820!important;
+  border:1px solid rgba(255,255,255,.12)!important;
+}
+
+.task-table{
+  border-collapse:separate!important;
+  border-spacing:0!important;
+}
+.task-table th{
+  height:48px!important;
+  border-right:0!important;
+}
+.task-table th:first-child{
+  border-top-left-radius:18px;
+}
+.task-table th:last-child{
+  border-top-right-radius:18px;
+}
+.task-table td{
+  border-right:0!important;
+  border-bottom:1px solid rgba(17,39,58,.06)!important;
+  padding:6px 6px!important;
+}
+.task-table tr:nth-child(even) td{
+  background:rgba(251,252,253,.8)!important;
+}
+html[data-dark="true"] .task-table td{
+  border-bottom:1px solid rgba(255,255,255,.06)!important;
+}
+.table-pane{
+  border-right:1px solid rgba(17,39,58,.08)!important;
+}
+html[data-dark="true"] .table-pane{
+  border-right:1px solid rgba(255,255,255,.08)!important;
+}
+
+.gantt-header{
+  background:transparent!important;
+}
+.week-cell{
+  border-right:1px solid rgba(17,39,58,.06)!important;
+  font-size:10px!important;
+}
+.day-cell{
+  border-right:1px solid rgba(17,39,58,.05)!important;
+  font-size:9px!important;
+}
+html[data-dark="true"] .week-cell,
+html[data-dark="true"] .day-cell,
+html[data-dark="true"] .day-bg{
+  border-right-color:rgba(255,255,255,.06)!important;
+}
+
+.gantt-row{
+  height:40px!important;
+  border-bottom:1px solid rgba(17,39,58,.05)!important;
+}
+.day-bg{
+  border-right:1px solid rgba(17,39,58,.05)!important;
+}
+.day-bg.no-work{
+  background:rgba(203,210,217,.28)!important;
+}
+html[data-dark="true"] .day-bg.no-work{
+  background:rgba(255,255,255,.07)!important;
+}
+
+/* Keep same work/status colors, but use softer pill bars */
+.bar,
+.look-cell-bar rect{
+  rx:8!important;
+  ry:8!important;
+}
+.bar{
+  height:18px!important;
+  top:11px!important;
+  border-radius:999px!important;
+  box-shadow:none!important;
+  border:0!important;
+  opacity:.98;
+}
+.bar.scheduled{background:#858d94!important}
+.bar.inprogress{background:#68737c!important}
+.bar.completed{background:#3b9b63!important}
+.bar.delayed{background:#c84747!important}
+.bar.blocked{background:#d59b2b!important}
+
+.progress-wrap{
+  border-radius:999px!important;
+  background:#e8eef3!important;
+  overflow:hidden;
+}
+.progress-bar{
+  border-radius:999px!important;
+}
+
+.cal-day{
+  border-radius:20px!important;
+  border:1px solid rgba(17,39,58,.07)!important;
+  box-shadow:none!important;
+  background:rgba(255,255,255,.9)!important;
+  padding:8px!important;
+}
+.cal-day.selected{
+  box-shadow:0 0 0 2px rgba(18,62,114,.15)!important;
+}
+.cal-count{
+  border-radius:999px!important;
+}
+.load-line{
+  border-radius:999px!important;
+}
+.load-fill{
+  border-radius:999px!important;
+}
+.theme-preview,.guide-code,.version-badge,.status-box,.empty-state{
+  border-radius:18px!important;
+}
+.empty-state{
+  background:rgba(245,248,251,.9)!important;
+  border:1px dashed rgba(17,39,58,.10)!important;
+  padding:18px!important;
+}
+html[data-dark="true"] .empty-state{
+  background:rgba(255,255,255,.04)!important;
+  border-color:rgba(255,255,255,.10)!important;
+}
+.day-task{
+  border-radius:18px!important;
+  border:1px solid rgba(17,39,58,.08)!important;
+  padding:10px 12px!important;
+  margin-bottom:8px!important;
+  background:rgba(255,255,255,.92)!important;
+}
+html[data-dark="true"] .day-task{
+  background:rgba(255,255,255,.03)!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+
+.lookahead{
+  border-radius:28px!important;
+}
+.look-head{
+  padding-bottom:14px!important;
+}
+.lookahead table,
+.preview-paper table,
+.guide-table{
+  border-collapse:separate!important;
+  border-spacing:0!important;
+}
+.lookahead table th,
+.preview-paper table th,
+.guide-table th{
+  border-radius:0!important;
+}
+.lookahead table td,
+.preview-paper table td,
+.guide-table td{
+  border-bottom:1px solid rgba(17,39,58,.06)!important;
+}
+.preview-shell{
+  border-radius:var(--r-lg)!important;
+  padding:18px!important;
+}
+.preview-paper{
+  border-radius:28px!important;
+}
+.preview-head{
+  border-bottom:2px solid rgba(17,39,58,.10)!important;
+}
+.contact{
+  border-top:1px solid rgba(17,39,58,.08)!important;
+}
+
+.guide-table td,.guide-table th{
+  border-radius:0!important;
+}
+.version-row{
+  padding:12px 0!important;
+}
+.version-badge{
+  padding:7px 12px!important;
+}
+.status-box{
+  border:1px solid rgba(17,39,58,.07)!important;
+  background:rgba(250,252,253,.85)!important;
+}
+html[data-dark="true"] .status-box{
+  background:rgba(255,255,255,.03)!important;
+  border-color:rgba(255,255,255,.08)!important;
+}
+
+.appearance-panel{
+  padding:11px!important;
+}
+.theme-select-row{
+  gap:8px!important;
+}
+.theme-preview{
+  overflow:hidden!important;
+  border-radius:14px!important;
+}
+.dark-toggle{
+  border-radius:999px!important;
+}
+
+.dependency-help{
+  border-radius:999px!important;
+  padding:6px 10px!important;
+  border:1px solid rgba(17,39,58,.08)!important;
+}
+.toast{
+  border-radius:999px!important;
+  box-shadow:var(--soft-shadow-2)!important;
+}
+
+@media(max-width:760px){
+  header{
+    border-radius:0 0 22px 22px!important;
+  }
+  .card,.panel,.schedule-shell,.calendar-panel,.selected-day-panel,.lookahead,.preview-paper,.guide-card,.appearance-panel{
+    border-radius:20px!important;
+  }
+  .nav{
+    border-radius:16px!important;
+  }
+  .mobile-nav{
+    border-radius:22px 22px 0 0!important;
+  }
+  .mobile-nav button{
+    border-radius:14px!important;
+  }
+}
+
+
+/* V9.6 Continuous Gantt + Gantt color palette */
+.gantt-color-preview{
+  height:35px;border-radius:14px;border:1px solid var(--theme-line,#d8e1e7);
+  background:linear-gradient(90deg,#858d94 0 20%,#68737c 20% 40%,#3b9b63 40% 60%,#d59b2b 60% 80%,#c84747 80% 100%);
+  overflow:hidden
+}
+.gantt-custom-color{
+  width:100%;height:34px;margin-top:7px;padding:2px 5px!important;border-radius:999px!important;
+  border:1px solid var(--theme-line,#d8e1e7)!important;background:var(--theme-panel-2,#f7f9fb)!important;
+  display:none;cursor:pointer
+}
+.gantt-custom-color.visible{display:block}
+.gantt-segment{
+  position:absolute;height:18px;top:11px;border-radius:999px!important;z-index:4;
+  display:flex;align-items:center;padding-left:7px;color:#fff;font-size:9px;font-weight:800;
+  overflow:hidden;white-space:nowrap;box-shadow:none!important
+}
+.look-segment{
+  position:absolute;top:11px;height:18px;z-index:4;display:block;overflow:visible
+}
+.look-segment rect{rx:9;ry:9}
+
+
+/* V9.7 Cloud Sync */
+.cloud-sync-btn{display:inline-flex!important;align-items:center;gap:7px}
+#cloudDot{font-size:12px;color:#d59b2b;line-height:1}
+.cloud-sync-btn.connected #cloudDot{color:#3b9b63}
+.cloud-sync-btn.syncing #cloudDot{color:#2f6fa3}
+.cloud-sync-btn.error #cloudDot{color:#c84747}
+.sync-modal-backdrop{
+  position:fixed;inset:0;background:rgba(8,19,29,.44);display:none;align-items:center;justify-content:center;
+  z-index:9998;padding:18px;backdrop-filter:blur(4px)
+}
+.sync-modal-backdrop.show{display:flex}
+.sync-modal{
+  width:min(430px,100%);background:var(--theme-panel,#fff);color:var(--theme-text,#1f2d38);
+  border:1px solid var(--theme-line,#d8e1e7);border-radius:26px;padding:22px;box-shadow:0 18px 55px rgba(0,0,0,.20)
+}
+.sync-modal h3{margin:0 0 7px;color:var(--navy);font-size:19px}
+.sync-modal p{margin:0 0 14px;font-size:12px;line-height:1.55;color:var(--theme-muted,#667784)}
+.sync-code-input{
+  width:100%;box-sizing:border-box;height:44px;border-radius:999px;border:1px solid var(--theme-line,#d8e1e7);
+  padding:0 14px;font-size:13px;font-weight:800;letter-spacing:.04em;background:var(--theme-panel-2,#f7f9fb);color:var(--theme-text,#1f2d38)
+}
+.sync-actions{display:flex;gap:8px;justify-content:flex-end;margin-top:14px;flex-wrap:wrap}
+.sync-status-line{margin-top:12px;font-size:11px;color:var(--theme-muted,#667784);min-height:17px}
+html[data-dark="true"] .sync-modal{background:var(--theme-panel)!important;border-color:var(--theme-line)!important}
+html[data-dark="true"] .sync-code-input{background:#111820!important;color:var(--theme-text)!important;border-color:#465360!important}
+@media print{.cloud-sync-btn,.sync-modal-backdrop{display:none!important}}
+
+
+/* V9.9 Login + Multi Project */
+.legacy-cloud-btn{display:none!important}
+.auth-gate,.project-modal-backdrop,.account-modal-backdrop{
+  position:fixed;inset:0;z-index:10050;background:rgba(8,19,29,.58);
+  display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(7px)
+}
+.auth-gate.show,.project-modal-backdrop.show,.account-modal-backdrop.show{display:flex}
+.auth-card,.projects-modal,.account-modal{
+  width:min(520px,100%);max-height:88vh;overflow:auto;background:var(--theme-panel,#fff);
+  color:var(--theme-text,#1f2d38);border:1px solid var(--theme-line,#d8e1e7);
+  border-radius:28px;padding:24px;box-shadow:0 22px 70px rgba(0,0,0,.24)
+}
+.auth-brand{display:flex;align-items:center;gap:14px;margin-bottom:18px}
+.auth-brand img{width:120px;height:44px;object-fit:contain;border-radius:12px}
+.auth-card h2,.projects-modal h2,.account-modal h2{margin:0;color:var(--navy);font-size:22px}
+.auth-card p,.projects-modal p,.account-modal p{font-size:12px;line-height:1.55;color:var(--theme-muted,#667784)}
+.auth-fields{display:grid;gap:9px;margin-top:14px}
+.auth-fields input,.project-form input{
+  width:100%;height:44px;border-radius:999px;border:1px solid var(--theme-line,#d8e1e7);
+  padding:0 14px;background:var(--theme-panel-2,#f7f9fb);color:var(--theme-text,#1f2d38)
+}
+.auth-actions,.project-actions,.account-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:14px}
+.auth-status,.project-status{font-size:11px;color:var(--theme-muted,#667784);margin-top:10px;min-height:17px}
+.project-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.project-form{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:14px 0 10px}
+.project-form .project-name-field{grid-column:1/-1}
+.project-import-row{display:flex;align-items:center;gap:8px;font-size:11px;color:var(--theme-muted,#667784);margin:4px 0 12px}
+.project-import-row input{width:16px;height:16px}
+.project-list{display:grid;gap:9px;margin-top:14px}
+.project-item{
+  border:1px solid var(--theme-line,#d8e1e7);border-radius:20px;padding:13px 14px;
+  background:var(--theme-panel-2,#f7f9fb);display:grid;grid-template-columns:1fr auto;gap:12px;align-items:center
+}
+.project-item.active{box-shadow:0 0 0 2px rgba(47,111,163,.18)}
+.project-item h4{margin:0 0 4px;color:var(--navy);font-size:14px}
+.project-item .meta{font-size:10px;color:var(--theme-muted,#667784)}
+.project-item-actions{display:flex;gap:6px}
+.project-pill{
+  display:inline-flex;align-items:center;gap:6px;border-radius:999px;padding:6px 10px;
+  background:#e8f2f8;color:var(--navy);font-size:10px;font-weight:800
+}
+.account-email{font-weight:800;color:var(--navy);word-break:break-all}
+html[data-dark="true"] .auth-card,
+html[data-dark="true"] .projects-modal,
+html[data-dark="true"] .account-modal{background:var(--theme-panel)!important}
+html[data-dark="true"] .auth-fields input,
+html[data-dark="true"] .project-form input{background:#111820!important;color:var(--theme-text)!important;border-color:#465360!important}
+html[data-dark="true"] .project-item{background:rgba(255,255,255,.04)!important}
+@media(max-width:620px){
+  .project-form{grid-template-columns:1fr}
+  .project-form .project-name-field{grid-column:auto}
+  .project-item{grid-template-columns:1fr}
+  .project-item-actions{justify-content:flex-start}
+}
+@media print{.auth-gate,.project-modal-backdrop,.account-modal-backdrop,#projectsBtn,#accountBtn{display:none!important}}
+
+
+/* V10.0 project identity + password recovery */
+.project-identity{
+  display:grid;grid-template-columns:minmax(240px,1.5fr) minmax(180px,1fr) auto;
+  gap:10px;align-items:end;padding:13px 14px;border-bottom:1px solid var(--theme-line,#d8e1e7);
+  background:var(--theme-panel-2,#f7f9fb)
+}
+.project-identity .field label{display:block;font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--theme-muted,#667784);margin:0 0 5px 5px}
+.project-identity input{
+  width:100%;height:42px;border-radius:999px;border:1px solid var(--theme-line,#d8e1e7);
+  padding:0 14px;background:var(--theme-panel,#fff);color:var(--theme-text,#1f2d38);font-weight:750
+}
+.project-identity .project-save-state{font-size:10px;color:var(--theme-muted,#667784);padding:0 6px 11px;min-width:95px}
+.forgot-link{
+  border:0;background:transparent;color:var(--navy);font-weight:850;font-size:11px;
+  cursor:pointer;padding:2px 5px;text-decoration:underline;text-underline-offset:3px
+}
+.recovery-modal-backdrop{
+  position:fixed;inset:0;z-index:10100;background:rgba(8,19,29,.62);
+  display:none;align-items:center;justify-content:center;padding:18px;backdrop-filter:blur(7px)
+}
+.recovery-modal-backdrop.show{display:flex}
+.recovery-modal{
+  width:min(460px,100%);background:var(--theme-panel,#fff);color:var(--theme-text,#1f2d38);
+  border:1px solid var(--theme-line,#d8e1e7);border-radius:28px;padding:24px;box-shadow:0 22px 70px rgba(0,0,0,.26)
+}
+.recovery-modal h2{margin:0;color:var(--navy);font-size:22px}
+.recovery-modal p{font-size:12px;line-height:1.55;color:var(--theme-muted,#667784)}
+.recovery-modal input{
+  width:100%;height:44px;border-radius:999px;border:1px solid var(--theme-line,#d8e1e7);
+  padding:0 14px;background:var(--theme-panel-2,#f7f9fb);color:var(--theme-text,#1f2d38);margin:5px 0
+}
+.recovery-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.recovery-status{min-height:17px;font-size:11px;color:var(--theme-muted,#667784);margin-top:7px}
+html[data-dark="true"] .project-identity{background:rgba(255,255,255,.025)!important}
+html[data-dark="true"] .project-identity input,
+html[data-dark="true"] .recovery-modal input{background:#111820!important;color:var(--theme-text)!important;border-color:#465360!important}
+html[data-dark="true"] .recovery-modal{background:var(--theme-panel)!important}
+@media(max-width:760px){
+  .project-identity{grid-template-columns:1fr}
+  .project-identity .project-save-state{padding:0 6px 2px}
+}
+@media print{.project-identity,.recovery-modal-backdrop{display:none!important}}
+
+
+/* V10.1 — iPad / iPhone / touch optimization */
+html{
+  -webkit-text-size-adjust:100%;
+  text-size-adjust:100%;
+  overscroll-behavior-y:none;
+}
+body{
+  min-height:100vh;
+  min-height:100dvh;
+  max-width:100%;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+button,[role="button"],input,select{
+  touch-action:manipulation;
+}
+.mobile-nav{display:none}
+
+@media (hover:none){
+  button:hover,.primary:hover,.secondary:hover,.danger:hover,.success:hover,.nav:hover{
+    transform:none!important;
+    box-shadow:none!important;
+  }
+}
+
+@media(max-width:1100px){
+  header{
+    position:sticky!important;
+    top:0;
+    padding:calc(8px + env(safe-area-inset-top)) 10px 8px!important;
+    gap:8px!important;
+    border-radius:0 0 18px 18px!important;
+    z-index:100!important;
+  }
+  header .brand{
+    width:100%;
+    min-width:0;
+    gap:10px!important;
+  }
+  header .brand>img.company-logo{
+    width:118px!important;
+    height:38px!important;
+    flex:0 0 auto;
+    object-fit:contain;
+  }
+  header .project{
+    min-width:0;
+    flex:1 1 auto;
+    padding-left:4px!important;
+  }
+  header .project b{
+    display:block;
+    font-size:15px!important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  header .project div{
+    font-size:10px!important;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+  }
+  header>div:last-child{
+    width:100%;
+    display:flex;
+    flex-wrap:nowrap!important;
+    align-items:center;
+    gap:7px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding:1px 1px 5px;
+  }
+  header>div:last-child::-webkit-scrollbar{display:none}
+  header>div:last-child button{
+    flex:0 0 auto;
+    min-height:36px!important;
+    padding:8px 12px!important;
+    white-space:nowrap;
+  }
+
+  .app{display:block!important;min-height:auto!important}
+  aside{display:none!important}
+  main{
+    width:100%;
+    max-width:100%;
+    padding:12px!important;
+    padding-bottom:calc(88px + env(safe-area-inset-bottom))!important;
+    overflow:visible!important;
+  }
+
+  .mobile-nav{
+    position:fixed;
+    z-index:9990;
+    left:8px;
+    right:8px;
+    bottom:calc(8px + env(safe-area-inset-bottom));
+    display:flex;
+    align-items:center;
+    gap:5px;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding:7px;
+    border-radius:20px;
+    background:rgba(21,41,61,.96);
+    box-shadow:0 12px 34px rgba(0,0,0,.24);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+  }
+  .mobile-nav::-webkit-scrollbar{display:none}
+  .mobile-nav-button{
+    flex:0 0 auto;
+    min-height:42px!important;
+    padding:9px 13px!important;
+    border-radius:999px!important;
+    background:transparent!important;
+    color:#dfe9f1!important;
+    border:1px solid transparent!important;
+    font-size:11px!important;
+    box-shadow:none!important;
+  }
+  .mobile-nav-button.active{
+    background:#fff!important;
+    color:var(--navy)!important;
+    border-color:rgba(255,255,255,.8)!important;
+  }
+
+  .cards{grid-template-columns:repeat(2,minmax(0,1fr))!important}
+  .grid2{grid-template-columns:1fr!important}
+  .titlebar{align-items:flex-start!important}
+  .titlebar h1{font-size:22px!important}
+
+  .project-identity{
+    grid-template-columns:minmax(210px,1.3fr) minmax(190px,1fr)!important;
+  }
+  .project-identity .project-save-state{
+    grid-column:1/-1;
+    padding:0 6px 2px!important;
+  }
+
+  .toolbar{
+    flex-wrap:nowrap!important;
+    overflow-x:auto;
+    overflow-y:hidden;
+    -webkit-overflow-scrolling:touch;
+    scrollbar-width:none;
+    padding:9px!important;
+  }
+  .toolbar::-webkit-scrollbar{display:none}
+  .toolbar>*{flex:0 0 auto}
+  .schedule-wrap{
+    max-height:calc(100dvh - 275px)!important;
+    min-height:430px;
+    overflow:auto!important;
+    -webkit-overflow-scrolling:touch;
+    overscroll-behavior:contain;
+    touch-action:pan-x pan-y;
+  }
+  .table-pane{
+    position:relative!important;
+    left:auto!important;
+    z-index:5!important;
+  }
+
+  .calendar-layout{grid-template-columns:1fr!important}
+  .day-list{position:static!important}
+  .month-calendar{
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+    border-radius:18px;
+  }
+  .lookahead{
+    overflow-x:auto!important;
+    -webkit-overflow-scrolling:touch;
+  }
+  .preview-shell{
+    -webkit-overflow-scrolling:touch;
+  }
+
+  .auth-gate,.project-modal-backdrop,.account-modal-backdrop,.recovery-modal-backdrop{
+    padding:12px!important;
+  }
+  .auth-card,.projects-modal,.account-modal,.recovery-modal{
+    max-height:calc(100dvh - 24px)!important;
+    overscroll-behavior:contain;
+    -webkit-overflow-scrolling:touch;
+  }
+  .auth-brand img{
+    width:145px!important;
+    height:54px!important;
+    object-fit:contain;
+  }
+}
+
+@media(max-width:600px){
+  header{
+    padding-left:8px!important;
+    padding-right:8px!important;
+    margin-bottom:6px!important;
+  }
+  header .brand>img.company-logo{
+    width:94px!important;
+    height:32px!important;
+  }
+  header .project b{font-size:13px!important}
+  header .project div{font-size:9px!important}
+  header>div:last-child button{
+    min-height:34px!important;
+    padding:7px 10px!important;
+    font-size:11px!important;
+  }
+
+  main{
+    padding:8px!important;
+    padding-bottom:calc(88px + env(safe-area-inset-bottom))!important;
+  }
+  .cards{grid-template-columns:1fr!important;gap:8px!important}
+  .card{padding:13px!important}
+  .card .value{font-size:25px!important}
+  .titlebar{margin-bottom:10px!important}
+  .titlebar h1{font-size:20px!important}
+  .titlebar p{font-size:11px!important}
+
+  input,select,textarea,
+  .auth-fields input,.project-form input,.project-identity input,
+  .toolbar input,.toolbar select,td input,td select,.recovery-modal input{
+    font-size:16px!important;
+  }
+
+  .project-identity{
+    grid-template-columns:1fr!important;
+    gap:7px!important;
+    padding:10px!important;
+  }
+  .project-identity input{height:44px!important}
+  .project-identity .project-save-state{grid-column:auto!important}
+
+  .schedule{border-radius:16px!important}
+  .schedule-wrap{
+    max-height:calc(100dvh - 315px)!important;
+    min-height:390px;
+  }
+  .action-btn{min-width:38px!important;height:36px!important}
+
+  .cal-weekdays,.cal-grid{min-width:630px}
+  .cal-day{min-height:88px!important}
+  .calendar-toolbar{
+    gap:7px!important;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+  }
+  .calendar-toolbar h2{
+    font-size:17px!important;
+    min-width:145px!important;
+  }
+
+  .look-head{
+    flex-direction:column!important;
+    align-items:flex-start!important;
+    gap:8px;
+  }
+  .look-head img{
+    width:145px!important;
+    max-height:52px!important;
+  }
+  .look-title{text-align:left!important}
+  .contact{gap:8px 16px!important}
+
+  .auth-gate{
+    align-items:center!important;
+    padding:10px!important;
+  }
+  .auth-card{
+    width:100%!important;
+    border-radius:24px!important;
+    padding:20px 16px!important;
+  }
+  .auth-brand{
+    flex-direction:column!important;
+    text-align:center;
+    gap:8px!important;
+  }
+  .auth-brand img.auth-company-logo{
+    width:190px!important;
+    height:72px!important;
+    object-fit:contain!important;
+    display:block!important;
+  }
+  .auth-card h2{font-size:21px!important}
+  .auth-actions{
+    display:grid!important;
+    grid-template-columns:1fr 1fr;
+  }
+  .auth-actions .forgot-link{
+    grid-column:1/-1;
+    min-height:38px;
+  }
+
+  .project-modal-backdrop,.account-modal-backdrop,.recovery-modal-backdrop{
+    align-items:flex-end!important;
+    padding:0!important;
+  }
+  .projects-modal,.account-modal,.recovery-modal{
+    width:100%!important;
+    max-height:88dvh!important;
+    border-radius:24px 24px 0 0!important;
+    padding:18px 14px calc(18px + env(safe-area-inset-bottom))!important;
+  }
+  .project-form{grid-template-columns:1fr!important}
+  .project-form .project-name-field{grid-column:auto!important}
+  .project-item{grid-template-columns:1fr!important}
+
+  .mobile-nav{
+    left:6px;
+    right:6px;
+    bottom:calc(6px + env(safe-area-inset-bottom));
+    border-radius:18px;
+  }
+  .mobile-nav-button{
+    min-height:40px!important;
+    padding:8px 11px!important;
+    font-size:10px!important;
+  }
+}
+
+@media print{
+  .mobile-nav{display:none!important}
+}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="brand"><img class="company-logo" src="logo.jpg" alt="VALBEN Construction logo"><div class="project"><b id="activeProjectName">SELECT PROJECT</b><div>VALBEN Construction · Project Management Dashboard · V10.1</div></div></div>
+  <div><input id="logoUpload" class="logo-upload" type="file" accept="image/png,image/jpeg,image/webp"><button class="secondary" id="uploadLogoBtn">Upload Logo</button> <button class="secondary" id="saveBtn">Save Changes</button> <button class="secondary cloud-sync-btn legacy-cloud-btn" id="cloudSyncBtn" aria-hidden="true" tabindex="-1"><span id="cloudDot">●</span> <span id="cloudSyncText">Cloud Sync</span></button> <button class="secondary" id="projectsBtn">Projects</button> <button class="secondary" id="accountBtn">Account</button> <button class="secondary" id="pdfBtn">Save PDF</button> <button class="primary" id="openScheduleBtn">Open Schedule</button></div>
+</header>
+<div class="app">
+<aside>
+  <div class="section">Project</div><div class="nav active" data-view="dashboard">Dashboard</div><div class="nav" data-view="schedule">Schedule / Gantt</div><div class="nav" data-view="calendar">Calendar</div><div class="nav" data-view="lookahead">3-Week Lookahead</div>
+  <div class="section">Reports</div><div class="nav" data-view="printPreview">Print Preview</div><div class="nav" id="sidePdf">Save PDF / Print</div>
+
+  <div class="section">Appearance</div>
+  <div class="appearance-panel" id="appearancePanel">
+    <div class="appearance-title">Theme</div>
+    <div class="theme-select-row">
+      <select id="themeSelect" class="theme-select" aria-label="Color theme">
+        <option value="classic">Classic Blue</option>
+        <option value="teal">Teal</option>
+        <option value="green">Green</option>
+        <option value="orange">Orange</option>
+        <option value="purple">Purple</option>
+        <option value="slate">Slate</option>
+      </select>
+      <div class="theme-preview" id="themePreview" title="Selected colors">
+        <span id="previewPrimary"></span><span id="previewSecondary"></span>
+      </div>
+    </div>
+    <div class="appearance-title" style="margin-top:9px">Gantt Bars</div>
+    <div class="theme-select-row">
+      <select id="ganttColorSelect" class="theme-select" aria-label="Gantt bar color">
+        <option value="status">Status Colors</option>
+        <option value="blue">Blue</option>
+        <option value="teal">Teal</option>
+        <option value="green">Green</option>
+        <option value="orange">Orange</option>
+        <option value="purple">Purple</option>
+        <option value="red">Red</option>
+        <option value="slate">Slate</option>
+        <option value="custom">Custom Color</option>
+      </select>
+      <div class="gantt-color-preview" id="ganttColorPreview" title="Gantt bar color"></div>
+    </div>
+    <input id="ganttCustomColor" class="gantt-custom-color" type="color" value="#2f6fa3" title="Choose custom Gantt color">
+    <button type="button" class="dark-toggle" id="darkToggle"><span>Dark Background</span><span class="toggle-dot" aria-hidden="true"></span></button>
+  </div>
+
+  <div class="section">Help</div><div class="nav" data-view="guide">Guide / Version Notes</div>
+</aside>
+<main>
+<section id="dashboardView" class="view active">
+  <div class="titlebar"><div><h1>Project Dashboard</h1><p>Blank schedule — add activities when ready.</p></div><button class="primary" id="dashAdd">+ Add Activity</button></div>
+  <div class="cards"><div class="card"><div class="label">Overall Progress</div><div class="value" id="overall">0%</div><div class="sub">Average completion</div></div><div class="card"><div class="label">Active Tasks</div><div class="value" id="active">0</div><div class="sub">Open activities</div></div><div class="card"><div class="label">Delayed Tasks</div><div class="value" id="late">0</div><div class="sub">Need attention</div></div><div class="card"><div class="label">Concrete Tasks</div><div class="value" id="concrete">0</div><div class="sub">Current schedule</div></div></div>
+  <div class="grid2"><div class="panel"><div class="panel-head"><h3>Project Progress</h3><span class="small" id="progressText">0% complete</span></div><div class="panel-body"><div class="progress"><div id="progressBar" style="width:0%"></div></div><div class="status-grid"><div class="stat"><strong id="ns">0</strong><span>Not Started</span></div><div class="stat"><strong id="ip">0</strong><span>In Progress</span></div><div class="stat"><strong id="cp">0</strong><span>Completed</span></div><div class="stat"><strong id="bd">0</strong><span>Blocked / Delayed</span></div></div></div></div><div class="panel"><div class="panel-head"><h3>Upcoming Activities</h3><span class="small">Next 7 days</span></div><div class="panel-body" id="upcoming"><div class="empty-state"><b>No activities yet</b>Add your first activity from the Schedule.</div></div></div></div>
+</section>
+
+<section id="scheduleView" class="view">
+  <div class="titlebar"><div><h1>Schedule / Gantt</h1><p>Use the arrows to move activities up or down.</p></div><div><button class="danger" id="clearAllBtn">Clear All Activities</button> <button class="primary" id="addBtn">+ Add Activity</button></div></div>
+  <div class="schedule">
+    <div class="project-identity">
+      <div class="field">
+        <label for="scheduleProjectName">Project Name</label>
+        <input id="scheduleProjectName" type="text" maxlength="120" placeholder="Enter project name">
+      </div>
+      <div class="field">
+        <label for="scheduleProjectLocation">Project Location</label>
+        <input id="scheduleProjectLocation" type="text" maxlength="180" placeholder="City / Address (optional)">
+      </div>
+      <div id="projectIdentityState" class="project-save-state">Select a project</div>
+    </div>
+    <div class="toolbar"><input id="search" placeholder="Search activity..."><select id="statusFilter"><option value="">All statuses</option><option>Not Started</option><option>In Progress</option><option>Completed</option><option>Delayed</option><option>Blocked</option></select><select id="categoryFilter"><option value="">All categories</option><option>Concrete</option><option>Rebar</option><option>Formwork</option><option>Earthwork</option><option>Equipment</option><option>General</option></select><span class="small">Lookahead start</span><input type="date" id="rangeStart"><button class="secondary" id="lookBtn">3-Week View</button><div class="nonwork-controls"><span class="small"><b>Calendar:</b></span><input type="date" id="nonWorkDate"><button class="secondary" id="toggleOffBtn">Mark / Unmark No Work</button><div id="nonWorkChips" class="nonwork-chips"></div></div><span class="dependency-help"><b>Links:</b> FS Finish→Start · SS Start→Start · FF Finish→Finish</span><span class="small" id="ganttLegend" style="margin-left:auto"><b style="color:#858d94">■</b> Scheduled &nbsp; <b style="color:#3b9b63">■</b> Completed &nbsp; <b style="color:#c84747">■</b> Delayed</span></div>
+    <div class="schedule-wrap"><div class="table-pane"><table><thead><tr><th class="c-id">ID</th><th class="c-task">Task Name</th><th class="c-dur">Dur.</th><th class="c-date">Start</th><th class="c-date">Finish</th><th class="c-pct">%</th><th class="c-status">Status</th><th class="c-pred">Predecessor</th><th class="c-link">Link</th><th class="c-move action-head">Move</th><th class="c-done action-head">Done</th><th class="c-delete action-head">Delete</th></tr></thead><tbody id="taskRows"></tbody></table></div><div class="gantt-pane"><div class="gantt-header"><div class="week-row" id="weekRow"></div><div class="day-row" id="dayRow"></div></div><div id="ganttBody"></div></div></div>
+  </div>
+</section>
+
+
+<section id="calendarView" class="view">
+  <div class="titlebar"><div><h1>Project Calendar</h1><p>Monthly workload view. Sundays and No Work days do not count.</p></div><div class="preview-actions"><button class="secondary" id="calTodayBtn">Today</button><button class="primary" id="calScheduleBtn">Open Schedule</button></div></div>
+  <div class="calendar-toolbar"><div class="month-nav"><button class="secondary" id="calPrevBtn">← Previous</button><h2 id="calMonthTitle"></h2><button class="secondary" id="calNextBtn">Next →</button></div><div class="load-legend"><span>Daily Capacity: 10 Activities Max</span><div class="load-gradient" aria-hidden="true"></div><span>1–3 Low</span><span>4–7 Medium</span><span>8–10+ High</span></div></div>
+  <div class="busy-summary" id="busySummary">No scheduled activities yet.</div>
+  <div class="calendar-layout">
+    <div class="month-calendar"><div class="cal-weekdays"><div>Sunday</div><div>Monday</div><div>Tuesday</div><div>Wednesday</div><div>Thursday</div><div>Friday</div><div>Saturday</div></div><div class="cal-grid" id="calendarGrid"></div></div>
+    <div class="day-list"><div class="day-list-head"><h3 id="selectedDayTitle">Select a day</h3><p id="selectedDayCount">Activity list</p></div><div class="day-list-body" id="selectedDayTasks"><div class="empty-state"><b>No day selected</b>Click a calendar day to see its activities.</div></div></div>
+  </div>
+</section>
+
+<section id="printPreviewView" class="view">
+  <div class="titlebar no-print"><div><h1>Print Preview</h1><p>Preview exactly what will be sent to the printer/PDF.</p></div><div class="preview-actions"><button class="secondary" id="previewBackBtn">Back to Lookahead</button><button class="primary" id="previewPrintBtn">Print / Save PDF</button></div></div>
+  <div class="preview-shell"><div class="preview-paper" id="previewPaper"></div></div>
+  <div class="preview-note no-print">17 × 11 landscape preview. OFF days remain blank in the schedule.</div>
+</section>
+
+<section id="lookaheadView" class="view">
+  <div class="titlebar no-print"><div><h1>Three-Week Lookahead</h1><p>VALBEN print-ready report</p></div><div><button class="secondary" id="lookUploadLogo">Upload Logo</button> <button class="secondary" id="lookPreviewBtn">Print Preview</button> <button class="primary" id="lookPdf">Save PDF / Print</button></div></div>
+  <div class="lookahead"><div class="look-head"><img class="company-logo" src="logo.jpg" alt="VALBEN Construction logo"><div class="look-title"><h2>THREE-WEEK LOOKAHEAD</h2><b id="lookaheadProjectName">SELECT PROJECT</b><div class="small" id="lookaheadProjectLocation"></div><div class="small" id="period"></div></div></div><div id="lookaheadSchedule"></div><div class="contact"><strong>VALBEN CONSTRUCTION</strong><span>786-479-9323</span><span>ncinco@valbenconstruction.com</span><span>12985 SW 130th Court, Unit 106 · Miami, FL 33186</span></div></div>
+</section>
+
+<section id="guideView" class="view">
+  <div class="titlebar">
+    <div><h1>Guide / Version Notes</h1><p>Current version, feature meanings, color rules, design updates and change history.</p></div>
+    <span class="version-badge">CURRENT VERSION · V10.1</span>
+  </div>
+
+  <div class="guide-grid">
+    <div class="guide-card">
+      <div class="guide-head"><h3>Current Version</h3><span class="small">Updated Sep 1, 2026</span></div>
+      <div class="guide-body">
+        <b>VALBEN Project Dashboard V10.1</b><br>
+        Base: <b>V9</b> + dependencies + themes + continuous Gantt + cloud sync + login/multi-project + V10.0 project identity and password recovery.
+        <div class="guide-note">Use this page as the reference for what each field, link, status and color means. Future changes can be added to the Version History below.</div>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-head"><h3>Gantt Colors</h3></div>
+      <div class="guide-body">
+        <span class="guide-color"><span class="guide-swatch" style="background:#858d94"></span><b>Gray</b> Scheduled / Not Started</span>
+        <span class="guide-color"><span class="guide-swatch" style="background:#68737c"></span><b>Dark Gray</b> In Progress</span>
+        <span class="guide-color"><span class="guide-swatch" style="background:#3b9b63"></span><b>Green</b> Completed</span>
+        <span class="guide-color"><span class="guide-swatch" style="background:#c84747"></span><b>Red</b> Delayed</span>
+        <span class="guide-color"><span class="guide-swatch" style="background:#d59b2b"></span><b>Yellow</b> Blocked</span>
+        <p class="small">Sunday and any custom No Work day are OFF and do not count as working days.</p>
+      </div>
+    </div>
+
+    <div class="guide-card wide">
+      <div class="guide-head"><h3>Dependency Links — Microsoft Project Style</h3><span class="small">Predecessor + Link</span></div>
+      <div class="guide-body">
+        <table class="guide-table">
+          <thead><tr><th style="width:90px">Link</th><th>Meaning</th><th>How it behaves</th><th>Typical construction example</th></tr></thead>
+          <tbody>
+            <tr><td><span class="guide-code">FS</span></td><td><b>Finish-to-Start</b></td><td>The successor cannot start until the predecessor finishes. The app places it on the next available working day.</td><td>Finish footing rebar → start concrete placement.</td></tr>
+            <tr><td><span class="guide-code">SS</span></td><td><b>Start-to-Start</b></td><td>The successor starts when the predecessor starts.</td><td>Start excavation → start dewatering at the same time.</td></tr>
+            <tr><td><span class="guide-code">FF</span></td><td><b>Finish-to-Finish</b></td><td>The successor finish date is aligned to the predecessor finish date.</td><td>Formwork cleanup and stripping activities planned to finish together.</td></tr>
+          </tbody>
+        </table>
+        <div class="guide-note"><b>Predecessor</b> is the ID of the activity that controls another activity. Example: Activity 12 with Predecessor 8 and Link FS means Activity 12 starts after Activity 8 finishes.</div>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-head"><h3>Status Meanings</h3></div>
+      <div class="guide-body">
+        <table class="guide-table"><tbody>
+          <tr><td><b>Not Started</b></td><td>Activity has not begun.</td></tr>
+          <tr><td><b>In Progress</b></td><td>Activity has started but is below 100%.</td></tr>
+          <tr><td><b>Completed</b></td><td>Activity is 100% complete. The ✓ button also sets this status.</td></tr>
+          <tr><td><b>Delayed</b></td><td>Activity is behind the planned schedule / needs attention.</td></tr>
+          <tr><td><b>Blocked</b></td><td>Activity cannot proceed because of an external issue or dependency.</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-head"><h3>Schedule Controls</h3></div>
+      <div class="guide-body">
+        <table class="guide-table"><tbody>
+          <tr><td><span class="guide-code">↑ ↓</span></td><td>Move an activity up or down in the schedule.</td></tr>
+          <tr><td><span class="guide-code">✓</span></td><td>Mark the activity Completed and set it to 100%.</td></tr>
+          <tr><td><span class="guide-code">×</span></td><td>Delete the activity.</td></tr>
+          <tr><td><b>Duration</b></td><td>Number of working days. Sunday / No Work days are excluded.</td></tr>
+          <tr><td><b>Start / Finish</b></td><td>Changing dates updates the Gantt and linked successor activities.</td></tr>
+        </tbody></table>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-head"><h3>Calendar / No Work</h3></div>
+      <div class="guide-body">
+        <ul class="change-list">
+          <li><b>Sunday</b> is always a No Work day.</li>
+          <li><b>Mark / Unmark No Work</b> lets you exclude another date from the working calendar.</li>
+          <li>No Work dates do not count toward activity Duration.</li>
+          <li>Gantt bars do not cover OFF dates.</li>
+          <li>Daily calendar capacity uses <b>10 activities = 100%</b>.</li>
+          <li>1 activity = 10%, 5 = 50%, 10 = 100%; over 10 is marked <b>OVERLOADED</b>.</li>
+          <li>Calendar load changes from green → yellow → red as workload increases.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="guide-card">
+      <div class="guide-head"><h3>Reports / Printing</h3></div>
+      <div class="guide-body">
+        <ul class="change-list">
+          <li><b>3-Week Lookahead</b> shows the upcoming three calendar weeks.</li>
+          <li><b>Print Preview</b> lets you review the report before printing.</li>
+          <li><b>Save PDF / Print</b> opens the browser print window.</li>
+          <li>Dependency predecessor IDs and link types are included in the Lookahead.</li>
+          <li>Dependency connector lines appear on the Lookahead Gantt.</li>
+        </ul>
+      </div>
+    </div>
+
+
+    <div class="guide-card wide">
+      <div class="guide-head"><h3>Appearance / Themes</h3><span class="small">Updated in V9.6</span></div>
+      <div class="guide-body">
+        <p><b>Theme dropdown</b> changes the main application accent without using extra sidebar space. Available themes: Classic Blue, Teal, Green, Orange, Purple and Slate.</p>
+        <p><b>Dark Background</b> changes the working interface to a dark background for low-light use. PDF/print output remains white.</p><p><b>Minimal Rounded UI</b> applies softer spacing and rounded / oval corners across cards, controls, tables, calendar, preview and schedule areas while keeping the same work-line colors.</p><p><b>Gantt Bars</b> lets you choose Status Colors or a fixed Blue, Teal, Green, Orange, Purple, Red, Slate or Custom color. The Status field keeps its own status meaning even when a fixed Gantt color is selected.</p><p><b>Continuous Gantt</b> now draws each task as one continuous bar across consecutive working days. The bar only breaks at Sunday or another No Work / OFF day.</p>
+        <div class="guide-note">Theme and dark-mode selections are saved in the browser and restored the next time the app is opened.</div>
+      </div>
+    </div>
+
+    <div class="guide-card wide">
+      <div class="guide-head"><h3>Accounts / Projects</h3><span class="small">New in V9.9</span></div>
+      <div class="guide-body">
+        <p><b>Account Login</b> uses Supabase Auth. Sign in with the same email and password from any browser to access your projects.</p>
+        <p><b>Projects</b> keeps each job separate. Every project has its own activities, dates, dependencies, No Work dates, logo, Gantt, Calendar and Lookahead.</p>
+        <div class="guide-note">The old shared Sync Code is no longer required for normal V10.0 use. Project data is protected by account-based Row Level Security in Supabase.</div><p><b>V10.0:</b> Change the project name or location directly at the top of Schedule. The change automatically updates the project selector, page header and Three-Week Lookahead.</p><p><b>Forgot Password:</b> use the link on the Sign In screen to receive a reset email and choose a new password.</p><p><b>Mobile V10.1:</b> on iPad and iPhone use the bottom navigation bar. In Schedule, swipe horizontally to move through the activity table and Gantt. On iPhone, the Calendar also supports horizontal swipe so the seven-day layout stays readable.</p>
+      </div>
+    </div>
+
+    <div class="guide-card wide">
+      <div class="guide-head"><h3>Version History</h3><span class="small">Project change log</span></div>
+      <div class="guide-body version-timeline">
+        <div class="version-row"><div class="version-name">V9</div><div><b>Daily workload capacity.</b> Calendar standardized to 10 activities = 100%, with green → yellow → red workload indication and OVERLOADED for more than 10.</div></div>
+        <div class="version-row"><div class="version-name">V9.1</div><div><b>Dependencies added.</b> Predecessor field, FS / SS / FF links, Gantt connector arrows, automatic successor rescheduling, cascading dependency chains and circular-link protection.</div></div>
+        <div class="version-row"><div class="version-name">V9.2</div><div><b>Guide / Version Notes added.</b> New permanent reference tab containing current version, feature definitions, link meanings, color/status guide, calendar rules and version history.</div></div>
+        <div class="version-row"><div class="version-name">V9.3</div><div><b>Appearance controls added.</b> Six color palettes, persistent theme selection and Dark Background mode. Printing remains white for clean PDF output.</div></div>
+        <div class="version-row"><div class="version-name">V9.4</div><div><b>Theme selector compacted.</b> The six visible palette buttons were replaced with one dropdown and a live color preview, reducing sidebar space while keeping all themes.</div></div>
+        <div class="version-row"><div class="version-name">V9.5</div><div><b>Minimal Rounded UI.</b> The interface was visually simplified and all major sections were updated with more rounded / oval corners, softer shadows and cleaner spacing, while keeping the same schedule work colors and status colors.</div></div>
+        <div class="version-row"><div class="version-name">V9.6</div><div><b>Continuous Gantt + bar colors.</b> Task bars are now continuous across consecutive working days and only split at OFF / No Work dates. Added a compact Gantt color palette with Status Colors, preset colors and a custom color picker.</div></div>
+        <div class="version-row"><div class="version-name">V9.7</div><div><b>Supabase Cloud Sync.</b> Added shared cloud storage for schedule activities, dependencies, No Work dates and the project logo. A private Sync Code connects multiple browsers to the same project state.</div></div>
+        <div class="version-row"><div class="version-name">V9.8</div><div><b>Web hosting architecture corrected.</b> The frontend is prepared for a dedicated web host while Supabase remains the cloud-sync backend. The Cloud Sync API now uses a fixed Supabase endpoint so synchronization works from any hosted domain.</div></div>
+        <div class="version-row"><div class="version-name">V9.9</div><div><b>Login + Multi Project.</b> Added Supabase email/password authentication, private account-based projects, a project switcher, project creation/deletion and separate cloud schedules for each job.</div></div>
+        <div class="version-row"><div class="version-name">V10.0</div><div><b>Project Identity + Password Recovery.</b> The Schedule now has editable Project Name and Project Location fields that update the active project everywhere, including the header and Three-Week Lookahead. Added Forgot Password email recovery and secure new-password flow.</div></div>
+        <div class="version-row"><div class="version-name">V10.1</div><div><b>Mobile / iPad / iPhone optimization + login logo fix.</b> The VALBEN logo now loads directly on Sign In. The default logo is no longer embedded multiple times in the HTML, improving mobile load performance. Tablet and phone layouts add a touch-friendly bottom navigation, compact header, smooth Schedule scrolling, Safari anti-zoom inputs, swipeable Calendar, and mobile-friendly dialogs while preserving the Windows desktop layout.</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main></div>
+
+
+<nav id="mobileNav" class="mobile-nav no-print" aria-label="Mobile navigation">
+  <button class="mobile-nav-button active" data-view="dashboard" type="button">Dashboard</button>
+  <button class="mobile-nav-button" data-view="schedule" type="button">Schedule</button>
+  <button class="mobile-nav-button" data-view="calendar" type="button">Calendar</button>
+  <button class="mobile-nav-button" data-view="lookahead" type="button">Lookahead</button>
+  <button class="mobile-nav-button" data-view="printPreview" type="button">Print</button>
+  <button class="mobile-nav-button" data-view="appearance" type="button">Appearance</button>
+  <button class="mobile-nav-button" data-view="guide" type="button">Guide</button>
+</nav>
+
+<div id="syncModalBackdrop" class="sync-modal-backdrop" aria-hidden="true">
+  <div class="sync-modal" role="dialog" aria-modal="true" aria-labelledby="syncModalTitle">
+    <h3 id="syncModalTitle">Cloud Sync</h3>
+    <p>Enter the same VALBEN Sync Code on every browser or device. Your schedule, No Work dates and uploaded logo will then use one shared cloud copy.</p>
+    <input id="syncCodeInput" class="sync-code-input" type="password" autocomplete="off" placeholder="VALBEN-XXXX-XXXX-XXXX">
+    <div id="syncModalStatus" class="sync-status-line"></div>
+    <div class="sync-actions">
+      <button class="secondary" id="syncDisconnectBtn" type="button">Disconnect</button>
+      <button class="secondary" id="syncCancelBtn" type="button">Cancel</button>
+      <button class="primary" id="syncConnectBtn" type="button">Connect</button>
+    </div>
+  </div>
+</div>
+
+
+<div id="authGate" class="auth-gate" aria-hidden="true">
+  <div class="auth-card">
+    <div class="auth-brand">
+      <img class="auth-company-logo" src="logo.jpg" alt="VALBEN Construction logo">
+      <div><h2>VALBEN Dashboard</h2><p style="margin:3px 0 0">Sign in to access your projects from any device.</p></div>
+    </div>
+    <div class="auth-fields">
+      <input id="authEmail" type="email" autocomplete="email" placeholder="Email">
+      <input id="authPassword" type="password" autocomplete="current-password" placeholder="Password (minimum 6 characters)">
+    </div>
+    <div id="authStatus" class="auth-status"></div>
+    <div class="auth-actions">
+      <button class="primary" id="signInBtn" type="button">Sign In</button>
+      <button class="secondary" id="signUpBtn" type="button">Create Account</button>
+      <button class="forgot-link" id="forgotPasswordBtn" type="button">Forgot Password?</button>
+    </div>
+  </div>
+</div>
+
+<div id="projectsBackdrop" class="project-modal-backdrop" aria-hidden="true">
+  <div class="projects-modal">
+    <div class="project-top">
+      <div><h2>Projects</h2><p style="margin:4px 0 0">Each project has its own Schedule, Gantt, Calendar and Lookahead.</p></div>
+      <button class="secondary" id="projectsCloseBtn" type="button">Close</button>
+    </div>
+    <div class="project-form">
+      <input id="newProjectName" class="project-name-field" type="text" placeholder="Project name — e.g. LOFTS ON 6TH">
+      <input id="newProjectLocation" type="text" placeholder="Location (optional)">
+      <button class="primary" id="createProjectBtn" type="button">+ Create Project</button>
+    </div>
+    <label class="project-import-row"><input id="importCurrentSchedule" type="checkbox"> Use the current local schedule as the starting data</label>
+    <div id="projectStatus" class="project-status"></div>
+    <div id="projectList" class="project-list"></div>
+  </div>
+</div>
+
+<div id="accountBackdrop" class="account-modal-backdrop" aria-hidden="true">
+  <div class="account-modal">
+    <h2>Account</h2>
+    <p>Signed in as:</p>
+    <div id="accountEmail" class="account-email">—</div>
+    <div class="account-actions">
+      <button class="secondary" id="accountCloseBtn" type="button">Close</button>
+      <button class="danger" id="signOutBtn" type="button">Sign Out</button>
+    </div>
+  </div>
+</div>
+
+<div id="recoveryBackdrop" class="recovery-modal-backdrop" aria-hidden="true">
+  <div class="recovery-modal">
+    <h2 id="recoveryTitle">Reset Password</h2>
+    <p id="recoveryMessage">Enter your email and we will send you a secure password-reset link.</p>
+    <input id="recoveryEmail" type="email" autocomplete="email" placeholder="Email">
+    <input id="newRecoveryPassword" type="password" autocomplete="new-password" placeholder="New password" style="display:none">
+    <input id="confirmRecoveryPassword" type="password" autocomplete="new-password" placeholder="Confirm new password" style="display:none">
+    <div id="recoveryStatus" class="recovery-status"></div>
+    <div class="recovery-actions">
+      <button class="primary" id="sendRecoveryBtn" type="button">Send Reset Email</button>
+      <button class="primary" id="updateRecoveryPasswordBtn" type="button" style="display:none">Save New Password</button>
+      <button class="secondary" id="recoveryCloseBtn" type="button">Close</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast" class="toast">Saved</div>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script>
+const KEY='valben_dashboard_tasks_v6_blank';
+const LOGO_KEY='valben_dashboard_logo_v1';
+const CAL_KEY='valben_dashboard_no_work_v6';
+const CLOUD_CODE_KEY='valben_dashboard_cloud_code_v97';
+let syncCode='';
+let cloudReady=false;
+let cloudSaving=false;
+let applyingRemote=false;
+let cloudTimer=null;
+
+const SUPABASE_SYNC_API='https://yxqemwdekgovyiskmnyw.supabase.co/functions/v1/valben-dashboard?api=state';
+function cloudApiUrl(){
+  return SUPABASE_SYNC_API;
+}
+function getLocalCloudState(){
+  let logo='';
+  try{logo=localStorage.getItem(LOGO_KEY)||''}catch(e){}
+  return {
+    version:'9.7',
+    tasks,
+    noWork:[...customNoWork].sort(),
+    logo,
+    savedAt:new Date().toISOString()
+  };
+}
+function setCloudButton(state,label){
+  const btn=$('cloudSyncBtn'),txt=$('cloudSyncText');
+  if(!btn||!txt)return;
+  btn.classList.remove('connected','syncing','error');
+  if(state)btn.classList.add(state);
+  txt.textContent=label||'Cloud Sync';
+}
+async function cloudRequest(method,state){
+  const headers={'content-type':'application/json','x-valben-sync-key':syncCode};
+  const res=await fetch(cloudApiUrl(),{
+    method,
+    headers,
+    body:state?JSON.stringify({state}):undefined,
+    cache:'no-store'
+  });
+  let data=null;
+  try{data=await res.json()}catch(e){}
+  return {res,data};
+}
+function applyCloudState(state){
+  if(!state||typeof state!=='object')return;
+  applyingRemote=true;
+  try{
+    if(Array.isArray(state.tasks)){
+      tasks=state.tasks.map(t=>({...t,pred:t.pred??'',linkType:t.linkType||'FS'}));
+    }
+    if(Array.isArray(state.noWork))customNoWork=new Set(state.noWork);
+    if(typeof state.logo==='string'&&state.logo){
+      try{localStorage.setItem(LOGO_KEY,state.logo)}catch(e){}
+      applyLogo(state.logo);
+    }
+    localStorage.setItem(KEY,JSON.stringify(tasks));
+    localStorage.setItem(CAL_KEY,JSON.stringify([...customNoWork].sort()));
+    rescheduleAllDependencies();
+    renderAll();
+  }finally{
+    applyingRemote=false;
+  }
+}
+async function pushCloudState(showToast=false){
+  if(!syncCode||!cloudReady||cloudSaving||applyingRemote)return false;
+  cloudSaving=true;
+  setCloudButton('syncing','Syncing…');
+  try{
+    const {res}=await cloudRequest('PUT',getLocalCloudState());
+    if(!res.ok)throw new Error(`HTTP ${res.status}`);
+    setCloudButton('connected','Cloud Synced');
+    if(showToast)toast('Saved to cloud');
+    return true;
+  }catch(e){
+    setCloudButton('error','Sync Error');
+    if(showToast)toast('Cloud save failed');
+    return false;
+  }finally{
+    cloudSaving=false;
+  }
+}
+function scheduleCloudSave(){
+  if(!syncCode||!cloudReady||applyingRemote)return;
+  clearTimeout(cloudTimer);
+  cloudTimer=setTimeout(()=>pushCloudState(false),650);
+}
+async function connectCloud(code,interactive=true){
+  code=String(code||'').trim();
+  if(!code){
+    if(interactive)$('syncModalStatus').textContent='Enter the Sync Code.';
+    return false;
+  }
+  syncCode=code;
+  setCloudButton('syncing','Connecting…');
+  if(interactive)$('syncModalStatus').textContent='Connecting to Supabase…';
+  try{
+    const {res,data}=await cloudRequest('GET');
+    if(res.status===401){
+      throw new Error('Invalid Sync Code');
+    }
+    if(res.status===404){
+      cloudReady=true;
+      localStorage.setItem(CLOUD_CODE_KEY,syncCode);
+      const ok=await pushCloudState(false);
+      if(!ok)throw new Error('Initial cloud save failed');
+      if(interactive)$('syncModalStatus').textContent='Connected. Local schedule uploaded to cloud.';
+    }else if(res.ok&&data&&data.state){
+      cloudReady=true;
+      localStorage.setItem(CLOUD_CODE_KEY,syncCode);
+      applyCloudState(data.state);
+      setCloudButton('connected','Cloud Synced');
+      if(interactive)$('syncModalStatus').textContent='Connected. Cloud schedule loaded.';
+    }else{
+      throw new Error(`Cloud response ${res.status}`);
+    }
+    setCloudButton('connected','Cloud Synced');
+    if(interactive)setTimeout(closeSyncModal,500);
+    return true;
+  }catch(e){
+    cloudReady=false;
+    setCloudButton('error','Cloud Offline');
+    if(interactive)$('syncModalStatus').textContent=e.message==='Invalid Sync Code'?'Invalid Sync Code. Check it and try again.':'Could not connect to cloud.';
+    return false;
+  }
+}
+function openSyncModal(){
+  const modal=$('syncModalBackdrop');
+  $('syncCodeInput').value=syncCode||'';
+  $('syncModalStatus').textContent=cloudReady?'Connected to Supabase.':'Enter the shared Sync Code.';
+  modal.classList.add('show');modal.setAttribute('aria-hidden','false');
+  setTimeout(()=>$('syncCodeInput').focus(),50);
+}
+function closeSyncModal(){
+  const modal=$('syncModalBackdrop');modal.classList.remove('show');modal.setAttribute('aria-hidden','true');
+}
+function disconnectCloud(){
+  syncCode='';cloudReady=false;
+  try{localStorage.removeItem(CLOUD_CODE_KEY)}catch(e){}
+  setCloudButton('','Cloud Sync');
+  $('syncModalStatus').textContent='Disconnected on this browser. Local data was not deleted.';
+}
+async function initCloudSync(){
+  try{syncCode=localStorage.getItem(CLOUD_CODE_KEY)||''}catch(e){}
+  if(syncCode)await connectCloud(syncCode,false);
+  else{setCloudButton('','Cloud Sync');setTimeout(openSyncModal,450)}
+}
+
+const $=id=>document.getElementById(id);
+const pad=n=>String(n).padStart(2,'0');
+const D=s=>{const [y,m,d]=String(s).split('-').map(Number);return new Date(y,m-1,d,12,0,0,0)};
+const ISO=d=>`${d.getFullYear()}-${pad(d.getMonth()+1)}-${pad(d.getDate())}`;
+const esc=s=>String(s).replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));
+const todayISO=()=>ISO(new Date());
+let tasks=(()=>{try{const x=JSON.parse(localStorage.getItem(KEY));return Array.isArray(x)?x:[]}catch(e){return []}})();
+tasks=tasks.map(t=>({...t,pred:t.pred??'',linkType:t.linkType||'FS'}));
+let customNoWork=(()=>{try{const x=JSON.parse(localStorage.getItem(CAL_KEY));return new Set(Array.isArray(x)?x:[])}catch(e){return new Set()}})();
+$('rangeStart').value=todayISO();$('nonWorkDate').value=todayISO();
+
+const SUPABASE_URL='https://yxqemwdekgovyiskmnyw.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY='sb_publishable_QXGBLZHrWC4yr0248JKbPQ_wrxJmTP0';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_PUBLISHABLE_KEY,{
+  auth:{persistSession:true,autoRefreshToken:true,detectSessionInUrl:true}
+});
+const DEFAULT_LOGO_SRC=document.querySelector('.company-logo')?.src||'';
+let currentUser=null;
+let projectRecords=[];
+let activeProject=null;
+let projectSaveTimer=null;
+let projectSaving=false;
+let applyingProjectState=false;
+
+function projectCacheKey(id){return `valben_project_cache_v99_${id}`}
+function currentProjectState(){
+  let logo='';
+  try{logo=localStorage.getItem(LOGO_KEY)||''}catch(e){}
+  return {
+    version:'10.1',
+    tasks:tasks.map(t=>({...t})),
+    noWork:[...customNoWork].sort(),
+    logo,
+    savedAt:new Date().toISOString()
+  };
+}
+function blankProjectState(){
+  return {version:'10.1',tasks:[],noWork:[],logo:'',savedAt:new Date().toISOString()}
+}
+function cacheProjectState(){
+  if(!activeProject)return;
+  try{localStorage.setItem(projectCacheKey(activeProject.id),JSON.stringify(currentProjectState()))}catch(e){}
+}
+function updateProjectHeader(){
+  const projectName=activeProject?.name||'SELECT PROJECT';
+  const projectLocation=activeProject?.location||'';
+  const name=$('activeProjectName');
+  if(name)name.textContent=projectName;
+  if($('scheduleProjectName'))$('scheduleProjectName').value=activeProject?.name||'';
+  if($('scheduleProjectLocation'))$('scheduleProjectLocation').value=projectLocation;
+  if($('lookaheadProjectName'))$('lookaheadProjectName').textContent=projectName;
+  if($('lookaheadProjectLocation'))$('lookaheadProjectLocation').textContent=projectLocation;
+  if($('projectIdentityState'))$('projectIdentityState').textContent=activeProject?'Cloud project':'Select a project';
+  document.title=`${activeProject?.name||'VALBEN'} · Project Dashboard V10.1`;
+}
+function applyProjectState(state){
+  applyingProjectState=true;
+  try{
+    const s=state&&typeof state==='object'?state:blankProjectState();
+    tasks=Array.isArray(s.tasks)?s.tasks.map(t=>({...t,pred:t.pred??'',linkType:t.linkType||'FS'})):[];
+    customNoWork=new Set(Array.isArray(s.noWork)?s.noWork:[]);
+    try{
+      localStorage.setItem(KEY,JSON.stringify(tasks));
+      localStorage.setItem(CAL_KEY,JSON.stringify([...customNoWork].sort()));
+      if(typeof s.logo==='string'&&s.logo){
+        localStorage.setItem(LOGO_KEY,s.logo);applyLogo(s.logo);
+      }else{
+        localStorage.removeItem(LOGO_KEY);if(DEFAULT_LOGO_SRC)applyLogo(DEFAULT_LOGO_SRC);
+      }
+    }catch(e){}
+    rescheduleAllDependencies();
+    renderAll();
+  }finally{
+    applyingProjectState=false;
+  }
+}
+function setAuthGate(show){
+  const gate=$('authGate');gate.classList.toggle('show',show);gate.setAttribute('aria-hidden',show?'false':'true');
+}
+function openProjectsModal(){
+  renderProjectList();
+  const m=$('projectsBackdrop');m.classList.add('show');m.setAttribute('aria-hidden','false');
+}
+function closeProjectsModal(){
+  if(!activeProject&&projectRecords.length===0)return;
+  const m=$('projectsBackdrop');m.classList.remove('show');m.setAttribute('aria-hidden','true');
+}
+function openAccountModal(){
+  $('accountEmail').textContent=currentUser?.email||'—';
+  const m=$('accountBackdrop');m.classList.add('show');m.setAttribute('aria-hidden','false');
+}
+function closeAccountModal(){
+  const m=$('accountBackdrop');m.classList.remove('show');m.setAttribute('aria-hidden','true');
+}
+async function saveActiveProject(showToast=false){
+  if(!currentUser||!activeProject||applyingProjectState)return false;
+  cacheProjectState();
+  if(projectSaving)return false;
+  projectSaving=true;
+  try{
+    const row={project_id:activeProject.id,owner_id:currentUser.id,state:currentProjectState()};
+    const {error}=await sb.from('valben_project_states').upsert(row,{onConflict:'project_id'});
+    if(error)throw error;
+    await sb.from('valben_projects').update({updated_at:new Date().toISOString()}).eq('id',activeProject.id);
+    if(showToast)toast('Project saved');
+    return true;
+  }catch(err){
+    console.error('Project save error',err);
+    if(showToast)toast('Cloud save failed');
+    return false;
+  }finally{
+    projectSaving=false;
+  }
+}
+function scheduleProjectSave(){
+  if(!currentUser||!activeProject||applyingProjectState)return;
+  cacheProjectState();
+  clearTimeout(projectSaveTimer);
+  projectSaveTimer=setTimeout(()=>saveActiveProject(false),700);
+}
+async function loadProjects(){
+  if(!currentUser)return;
+  const {data,error}=await sb.from('valben_projects').select('id,owner_id,name,location,created_at,updated_at').order('updated_at',{ascending:false});
+  if(error){
+    console.error(error);toast('Could not load projects');return;
+  }
+  projectRecords=Array.isArray(data)?data:[];
+  renderProjectList();
+  if(activeProject){
+    const still=projectRecords.find(p=>p.id===activeProject.id);
+    if(still)activeProject=still;
+  }
+  if(!activeProject&&projectRecords.length){
+    await openProject(projectRecords[0].id,false);
+  }else if(!projectRecords.length){
+    $('newProjectName').value='LOFTS ON 6TH';
+    $('importCurrentSchedule').checked=tasks.length>0;
+    openProjectsModal();
+  }
+}
+function renderProjectList(){
+  const box=$('projectList');if(!box)return;
+  if(!projectRecords.length){
+    box.innerHTML='<div class="empty-state"><b>No projects yet</b>Create your first project above.</div>';return;
+  }
+  box.innerHTML=projectRecords.map(p=>`
+    <div class="project-item ${activeProject?.id===p.id?'active':''}">
+      <div>
+        <h4>${esc(p.name)}</h4>
+        <div class="meta">${p.location?esc(p.location)+' · ':''}${activeProject?.id===p.id?'<span class="project-pill">CURRENT</span>':'Cloud project'}</div>
+      </div>
+      <div class="project-item-actions">
+        <button class="primary" type="button" onclick="openProject('${p.id}',true)">Open</button>
+        <button class="danger" type="button" onclick="deleteProject('${p.id}')">Delete</button>
+      </div>
+    </div>`).join('');
+}
+
+let projectIdentityTimer=null;
+async function updateActiveProjectIdentity(){
+  if(!currentUser||!activeProject)return;
+  const name=$('scheduleProjectName').value.trim();
+  const location=$('scheduleProjectLocation').value.trim();
+  if(!name){
+    $('projectIdentityState').textContent='Project name required';
+    $('scheduleProjectName').value=activeProject.name||'';
+    return;
+  }
+  if(name===activeProject.name&&(location||'')===(activeProject.location||''))return;
+  $('projectIdentityState').textContent='Saving…';
+  const {data,error}=await sb.from('valben_projects')
+    .update({name,location:location||null,updated_at:new Date().toISOString()})
+    .eq('id',activeProject.id)
+    .select('id,owner_id,name,location,created_at,updated_at')
+    .single();
+  if(error){
+    console.error(error);
+    $('projectIdentityState').textContent='Name save failed';
+    return;
+  }
+  activeProject=data;
+  projectRecords=projectRecords.map(p=>p.id===data.id?data:p);
+  updateProjectHeader();
+  renderProjectList();
+  $('projectIdentityState').textContent='Saved';
+  setTimeout(()=>{if($('projectIdentityState'))$('projectIdentityState').textContent='Cloud project'},1200);
+}
+function scheduleProjectIdentitySave(){
+  clearTimeout(projectIdentityTimer);
+  projectIdentityTimer=setTimeout(updateActiveProjectIdentity,500);
+}
+
+async function createProject(){
+  if(!currentUser)return;
+  const name=$('newProjectName').value.trim();
+  const location=$('newProjectLocation').value.trim();
+  if(!name){$('projectStatus').textContent='Enter a project name.';return}
+  $('projectStatus').textContent='Creating project…';
+  const {data,error}=await sb.from('valben_projects').insert({owner_id:currentUser.id,name,location:location||null}).select().single();
+  if(error){console.error(error);$('projectStatus').textContent='Could not create project.';return}
+  const useCurrent=$('importCurrentSchedule').checked;
+  const state=useCurrent?currentProjectState():blankProjectState();
+  const {error:stateError}=await sb.from('valben_project_states').insert({project_id:data.id,owner_id:currentUser.id,state});
+  if(stateError){console.error(stateError);$('projectStatus').textContent='Project created, but initial schedule save failed.'}
+  activeProject=data;
+  projectRecords.unshift(data);
+  applyProjectState(state);
+  updateProjectHeader();
+  $('newProjectName').value='';
+  $('newProjectLocation').value='';
+  $('importCurrentSchedule').checked=false;
+  $('projectStatus').textContent='Project created.';
+  renderProjectList();
+  setTimeout(closeProjectsModal,350);
+}
+async function openProject(id,closeAfter=true){
+  if(!currentUser)return;
+  if(activeProject&&activeProject.id!==id)await saveActiveProject(false);
+  const record=projectRecords.find(p=>p.id===id);
+  if(!record)return;
+  $('projectStatus').textContent='Loading project…';
+  const {data,error}=await sb.from('valben_project_states').select('state').eq('project_id',id).maybeSingle();
+  let state=null;
+  if(!error&&data?.state)state=data.state;
+  if(!state){
+    try{state=JSON.parse(localStorage.getItem(projectCacheKey(id))||'null')}catch(e){}
+  }
+  if(!state)state=blankProjectState();
+  activeProject=record;
+  applyProjectState(state);
+  updateProjectHeader();
+  cacheProjectState();
+  $('projectStatus').textContent='';
+  renderProjectList();
+  if(closeAfter)closeProjectsModal();
+}
+async function deleteProject(id){
+  const p=projectRecords.find(x=>x.id===id);if(!p)return;
+  if(!confirm(`Delete project "${p.name}"? This removes its cloud schedule.`))return;
+  const {error}=await sb.from('valben_projects').delete().eq('id',id);
+  if(error){console.error(error);toast('Could not delete project');return}
+  projectRecords=projectRecords.filter(x=>x.id!==id);
+  try{localStorage.removeItem(projectCacheKey(id))}catch(e){}
+  if(activeProject?.id===id){
+    activeProject=null;tasks=[];customNoWork=new Set();renderAll();updateProjectHeader();
+    if(projectRecords.length)await openProject(projectRecords[0].id,false);
+    else openProjectsModal();
+  }
+  renderProjectList();
+}
+
+let passwordRecoveryMode=false;
+function openRecoveryRequest(){
+  passwordRecoveryMode=false;
+  $('recoveryTitle').textContent='Reset Password';
+  $('recoveryMessage').textContent='Enter your email and we will send you a secure password-reset link.';
+  $('recoveryEmail').style.display='';
+  $('recoveryEmail').value=$('authEmail').value.trim();
+  $('newRecoveryPassword').style.display='none';
+  $('confirmRecoveryPassword').style.display='none';
+  $('sendRecoveryBtn').style.display='';
+  $('updateRecoveryPasswordBtn').style.display='none';
+  $('recoveryStatus').textContent='';
+  $('recoveryBackdrop').classList.add('show');
+  $('recoveryBackdrop').setAttribute('aria-hidden','false');
+}
+function openRecoveryChange(){
+  passwordRecoveryMode=true;
+  setAuthGate(false);
+  $('recoveryTitle').textContent='Choose New Password';
+  $('recoveryMessage').textContent='Enter a new password for this account.';
+  $('recoveryEmail').style.display='none';
+  $('newRecoveryPassword').style.display='';
+  $('confirmRecoveryPassword').style.display='';
+  $('newRecoveryPassword').value='';
+  $('confirmRecoveryPassword').value='';
+  $('sendRecoveryBtn').style.display='none';
+  $('updateRecoveryPasswordBtn').style.display='';
+  $('recoveryStatus').textContent='';
+  $('recoveryBackdrop').classList.add('show');
+  $('recoveryBackdrop').setAttribute('aria-hidden','false');
+}
+function closeRecovery(){
+  if(passwordRecoveryMode)return;
+  $('recoveryBackdrop').classList.remove('show');
+  $('recoveryBackdrop').setAttribute('aria-hidden','true');
+}
+async function sendRecoveryEmail(){
+  const email=$('recoveryEmail').value.trim();
+  if(!email){$('recoveryStatus').textContent='Enter your email.';return}
+  $('recoveryStatus').textContent='Sending reset email…';
+  const {error}=await sb.auth.resetPasswordForEmail(email,{redirectTo:window.location.origin});
+  if(error){$('recoveryStatus').textContent=error.message;return}
+  $('recoveryStatus').textContent='Reset email sent. Open the link in your email, then return here to choose a new password.';
+}
+async function updateRecoveredPassword(){
+  const p1=$('newRecoveryPassword').value;
+  const p2=$('confirmRecoveryPassword').value;
+  if(p1.length<6){$('recoveryStatus').textContent='Password must have at least 6 characters.';return}
+  if(p1!==p2){$('recoveryStatus').textContent='Passwords do not match.';return}
+  $('recoveryStatus').textContent='Saving new password…';
+  const {error}=await sb.auth.updateUser({password:p1});
+  if(error){$('recoveryStatus').textContent=error.message;return}
+  $('recoveryStatus').textContent='Password updated successfully.';
+  passwordRecoveryMode=false;
+  setTimeout(async()=>{
+    $('recoveryBackdrop').classList.remove('show');
+    $('recoveryBackdrop').setAttribute('aria-hidden','true');
+    const {data:{session}}=await sb.auth.getSession();
+    if(session?.user){
+      currentUser=session.user;
+      setAuthGate(false);
+      if(!projectRecords.length)await loadProjects();
+    }else setAuthGate(true);
+  },650);
+}
+
+async function signIn(){
+  const email=$('authEmail').value.trim();
+  const password=$('authPassword').value;
+  $('authStatus').textContent='Signing in…';
+  const {data,error}=await sb.auth.signInWithPassword({email,password});
+  if(error){$('authStatus').textContent=error.message;return}
+  currentUser=data.user;
+  setAuthGate(false);$('authStatus').textContent='';
+  await loadProjects();
+}
+async function signUp(){
+  const email=$('authEmail').value.trim();
+  const password=$('authPassword').value;
+  if(password.length<6){$('authStatus').textContent='Password must have at least 6 characters.';return}
+  $('authStatus').textContent='Creating account…';
+  const {data,error}=await sb.auth.signUp({email,password,options:{emailRedirectTo:window.location.origin}});
+  if(error){$('authStatus').textContent=error.message;return}
+  if(data.session){
+    currentUser=data.user;setAuthGate(false);$('authStatus').textContent='';await loadProjects();
+  }else{
+    $('authStatus').textContent='Account created. Check your email to confirm it, then return here and Sign In.';
+  }
+}
+async function signOut(){
+  if(activeProject)await saveActiveProject(false);
+  await sb.auth.signOut();
+  currentUser=null;activeProject=null;projectRecords=[];
+  closeAccountModal();setAuthGate(true);updateProjectHeader();
+}
+async function initializeUserProjects(){
+  const {data:{session}}=await sb.auth.getSession();
+  if(session?.user){
+    currentUser=session.user;setAuthGate(false);await loadProjects();
+  }else{
+    setAuthGate(true);
+  }
+  sb.auth.onAuthStateChange(async(event,session2)=>{
+    if(event==='PASSWORD_RECOVERY'){
+      currentUser=session2?.user||currentUser;
+      setTimeout(openRecoveryChange,0);
+      return;
+    }
+    if(event==='SIGNED_IN'&&session2?.user&&!currentUser){
+      currentUser=session2.user;setAuthGate(false);await loadProjects();
+    }
+    if(event==='SIGNED_OUT'){currentUser=null;activeProject=null;projectRecords=[];setAuthGate(true);updateProjectHeader()}
+  });
+}
+
+
+function toast(msg){const e=$('toast');e.textContent=msg;e.classList.add('show');clearTimeout(window.__t);window.__t=setTimeout(()=>e.classList.remove('show'),1800)}
+function persist(){localStorage.setItem(KEY,JSON.stringify(tasks));localStorage.setItem(CAL_KEY,JSON.stringify([...customNoWork].sort()));scheduleProjectSave()}
+async function saveData(){persist();renderAll();if(activeProject)await saveActiveProject(true);else toast('Select a project first')}
+function applyLogo(src){document.querySelectorAll('.company-logo').forEach(img=>img.src=src)}
+function loadSavedLogo(){try{const src=localStorage.getItem(LOGO_KEY);if(src)applyLogo(src)}catch(e){}}
+function handleLogoUpload(file){if(!file)return;if(!/^image\/(png|jpeg|webp)$/.test(file.type)){toast('Use PNG, JPG or WEBP');return}const r=new FileReader();r.onload=e=>{const img=new Image();img.onload=()=>{const sc=Math.min(1,1200/img.width,500/img.height),cv=document.createElement('canvas');cv.width=Math.max(1,Math.round(img.width*sc));cv.height=Math.max(1,Math.round(img.height*sc));const cx=cv.getContext('2d');cx.fillStyle='#fff';cx.fillRect(0,0,cv.width,cv.height);cx.drawImage(img,0,0,cv.width,cv.height);const data=cv.toDataURL('image/png');try{localStorage.setItem(LOGO_KEY,data);applyLogo(data);scheduleProjectSave();toast('Logo saved')}catch(err){toast('Logo too large')}};img.src=e.target.result};r.readAsDataURL(file)}
+
+function isSunday(d){return d.getDay()===0}function isCustomNoWork(d){return customNoWork.has(ISO(d))}function isNoWork(d){return isSunday(d)||isCustomNoWork(d)}function isWorkingDay(d){return !isNoWork(d)}
+function nextWorkDate(v){let d=typeof v==='string'?D(v):new Date(v);while(isNoWork(d))d.setDate(d.getDate()+1);return d}
+function workdays(a,b){let d=D(a),e=D(b),n=0;if(d>e)return 0;while(d<=e){if(isWorkingDay(d))n++;d.setDate(d.getDate()+1)}return n}
+function addWork(start,n){n=Math.max(1,parseInt(n)||1);let d=nextWorkDate(start),c=0;while(true){if(isWorkingDay(d))c++;if(c>=n)return ISO(d);d.setDate(d.getDate()+1)}}
+function prevWorkDate(v){let d=typeof v==='string'?D(v):new Date(v);while(isNoWork(d))d.setDate(d.getDate()-1);return d}
+function subWork(finish,n){n=Math.max(1,parseInt(n)||1);let d=prevWorkDate(finish),c=0;while(true){if(isWorkingDay(d))c++;if(c>=n)return ISO(d);d.setDate(d.getDate()-1)}}
+function nextWorkAfter(v){let d=typeof v==='string'?D(v):new Date(v);d.setDate(d.getDate()+1);return nextWorkDate(d)}
+function taskById(id){return tasks.find(t=>String(t.id)===String(id))}
+function createsDependencyCycle(taskId,predId){if(!predId)return false;if(String(taskId)===String(predId))return true;let cur=taskById(predId),seen=new Set();while(cur&&cur.pred){if(String(cur.pred)===String(taskId))return true;if(seen.has(String(cur.id)))break;seen.add(String(cur.id));cur=taskById(cur.pred)}return false}
+function applyDependency(t){if(!t||!t.pred)return false;const p=taskById(t.pred);if(!p)return false;const dur=Math.max(1,workdays(t.start,t.finish)),type=t.linkType||'FS';const oldS=t.start,oldF=t.finish;if(type==='SS'){t.start=ISO(nextWorkDate(p.start));t.finish=addWork(t.start,dur)}else if(type==='FF'){t.finish=ISO(prevWorkDate(p.finish));t.start=subWork(t.finish,dur)}else{t.start=ISO(nextWorkAfter(p.finish));t.finish=addWork(t.start,dur)}return oldS!==t.start||oldF!==t.finish}
+function rescheduleSuccessors(id,seen=new Set()){const key=String(id);if(seen.has(key))return;seen.add(key);tasks.filter(t=>String(t.pred)===key).forEach(t=>{applyDependency(t);rescheduleSuccessors(t.id,seen)})}
+function rescheduleAllDependencies(){for(let pass=0;pass<tasks.length;pass++){let changed=false;tasks.forEach(t=>{if(t.pred&&applyDependency(t))changed=true});if(!changed)break}}
+function setPredecessor(id,value){const t=taskById(id);if(!t)return;const pred=value?String(value):'';if(pred&&(!taskById(pred)||createsDependencyCycle(id,pred))){toast('Invalid dependency or circular link');renderSchedule();return}t.pred=pred;if(!t.linkType)t.linkType='FS';if(t.pred)applyDependency(t);rescheduleSuccessors(t.id);persist();renderAll();toast(t.pred?`Linked to activity ${t.pred}`:'Dependency removed')}
+function setLinkType(id,value){const t=taskById(id);if(!t)return;t.linkType=['FS','SS','FF'].includes(value)?value:'FS';if(t.pred)applyDependency(t);rescheduleSuccessors(t.id);persist();renderAll()}
+function dependencyWorkingIndexes(t,days){return days.map((d,i)=>({d,i})).filter(x=>x.d>=D(t.start)&&x.d<=D(t.finish)&&isWorkingDay(x.d)).map(x=>x.i)}
+function buildDependencySvg(arr,days,rowH=40,prefix='main'){if(!arr.length)return '';const N=days.length,W=1000,H=Math.max(rowH,arr.length*rowH),paths=[];arr.forEach((s,si)=>{if(!s.pred)return;const pi=arr.findIndex(t=>String(t.id)===String(s.pred));if(pi<0)return;const p=arr[pi],pw=dependencyWorkingIndexes(p,days),sw=dependencyWorkingIndexes(s,days);if(!pw.length||!sw.length)return;const type=s.linkType||'FS';let fromIndex,toIndex,fromFrac,toFrac;if(type==='SS'){fromIndex=pw[0];toIndex=sw[0];fromFrac=.12;toFrac=.12}else if(type==='FF'){fromIndex=pw[pw.length-1];toIndex=sw[sw.length-1];fromFrac=.88;toFrac=.88}else{fromIndex=pw[pw.length-1];toIndex=sw[0];fromFrac=.88;toFrac=.12}const x1=(fromIndex+fromFrac)*W/N,x2=(toIndex+toFrac)*W/N,y1=pi*rowH+rowH/2,y2=si*rowH+rowH/2;let xm;if(x2>x1+20)xm=x1+Math.min(32,(x2-x1)/2);else xm=Math.max(x1,x2)+26;const d=`M ${x1.toFixed(1)} ${y1.toFixed(1)} H ${xm.toFixed(1)} V ${y2.toFixed(1)} H ${x2.toFixed(1)}`;paths.push(`<circle cx="${x1.toFixed(1)}" cy="${y1.toFixed(1)}" r="2.3"></circle><path class="dep-line" d="${d}" marker-end="url(#${prefix}Arrow)"></path>`) });if(!paths.length)return '';return `<svg class="dependency-layer" viewBox="0 0 ${W} ${H}" preserveAspectRatio="none" aria-hidden="true"><defs><marker id="${prefix}Arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto" markerUnits="strokeWidth"><path class="dep-arrow" d="M0,0 L8,4 L0,8 z"></path></marker></defs>${paths.join('')}</svg>`}
+
+function calendarDays3(start){let d=D(start),a=[];for(let i=0;i<21;i++){a.push(new Date(d));d.setDate(d.getDate()+1)}return a}
+function fmt(d){return d.toLocaleDateString('en-US',{month:'short',day:'numeric'})}
+function dayLabel(d){return `${d.toLocaleDateString('en-US',{weekday:'short'}).slice(0,2)} ${d.getDate()}${isNoWork(d)?'<small>OFF</small>':''}`}
+function sclass(s){return String(s||'Not Started').toLowerCase().replace(/\s+/g,'')}
+
+
+let calendarMonth=D($('rangeStart').value||todayISO());calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth(),1,12);
+let selectedCalendarDay=null;
+function activityOnDate(t,d){return isWorkingDay(d)&&D(t.start)<=d&&D(t.finish)>=d}
+function activitiesForDate(d){return tasks.filter(t=>activityOnDate(t,d))}
+function calDateKey(d){return ISO(d)}
+function calendarMaxForMonth(y,m){
+  const last=new Date(y,m+1,0,12);let max=0;
+  for(let day=1;day<=last.getDate();day++){
+    const d=new Date(y,m,day,12);
+    if(!isNoWork(d))max=Math.max(max,activitiesForDate(d).length);
+  }
+  return max;
+}
+function loadPercentForDate(d){
+  if(isNoWork(d))return 0;
+  const count=activitiesForDate(d).length;
+  if(!count)return 0;
+  return Math.min(100,count*10);
+}
+function loadColor(pct){
+  if(pct<=0)return '#dfe4e8';
+  const hue=Math.max(0,Math.min(120,120-(pct*1.2)));
+  return `hsl(${hue} 65% 46%)`;
+}
+function renderSelectedDay(d){
+  selectedCalendarDay=new Date(d);
+  $('selectedDayTitle').textContent=d.toLocaleDateString('en-US',{weekday:'long',month:'long',day:'numeric',year:'numeric'});
+  const off=isNoWork(d),arr=off?[]:activitiesForDate(d);
+  if(off){
+    $('selectedDayCount').textContent='No Work day';
+    $('selectedDayTasks').innerHTML='<div class="empty-state"><b>OFF / No Work</b>This day is excluded from the schedule.</div>';
+    return;
+  }
+  const load=loadPercentForDate(d);
+  const capLabel=arr.length>10?' · OVERLOADED (10+)':'';
+  $('selectedDayCount').textContent=`${arr.length} ${arr.length===1?'activity':'activities'} · Load ${load}%${capLabel}`;
+  $('selectedDayTasks').innerHTML=arr.length?arr.map(t=>`<div class="day-task"><b>${esc(t.name||'(Unnamed activity)')}</b><div class="meta">ID ${t.id} · ${effectiveStatus(t)} · ${t.pct}% · ${t.start} → ${t.finish}</div></div>`).join(''):'<div class="empty-state"><b>No activities</b>Nothing is scheduled for this working day.</div>';
+}
+function renderCalendar(){
+  const y=calendarMonth.getFullYear(),m=calendarMonth.getMonth(),first=new Date(y,m,1,12);
+  $('calMonthTitle').textContent=first.toLocaleDateString('en-US',{month:'long',year:'numeric'});
+  const cells=[],start=new Date(first);start.setDate(first.getDate()-first.getDay());
+  for(let i=0;i<42;i++){const d=new Date(start);d.setDate(start.getDate()+i);cells.push(d)}
+  const monthWorking=cells.filter(d=>d.getMonth()===m&&!isNoWork(d));
+  const max=Math.max(0,...monthWorking.map(d=>activitiesForDate(d).length));
+  const busiest=monthWorking.filter(d=>max>0&&activitiesForDate(d).length===max);
+
+  $('busySummary').innerHTML=max>0
+    ? `<strong>Daily capacity:</strong> 10 activities = 100%. ${busiest.map(d=>d.toLocaleDateString('en-US',{weekday:'short',month:'short',day:'numeric'})).join(', ')} ${busiest.length===1?'is':'are'} the busiest ${busiest.length===1?'day':'days'} with <strong>${max}</strong> ${max===1?'activity':'activities'}${max>10?' · OVERLOADED':''}.`
+    : 'No scheduled activities in this month.';
+
+  $('calendarGrid').innerHTML=cells.map(d=>{
+    const outside=d.getMonth()!==m,off=isNoWork(d),arr=off?[]:activitiesForDate(d);
+    const pct=outside||off?0:loadPercentForDate(d);
+    const busy=max>0&&!outside&&!off&&arr.length===max;
+    const sel=selectedCalendarDay&&calDateKey(selectedCalendarDay)===calDateKey(d);
+    const mini=arr.slice(0,2).map(t=>`<div class="cal-mini">${esc(t.name||'(Unnamed activity)')}</div>`).join('');
+    const load=pct>0?`<div class="load-wrap"><div class="load-label"><span>${arr.length>10?'OVERLOADED':'LOAD'}</span><span>${pct}%${arr.length>10?' · 10+':''}</span></div><div class="load-line"><div class="load-fill" style="width:${pct}%;background:${loadColor(pct)}"></div></div></div>`:'';
+    return `<button type="button" class="cal-day ${outside?'outside ':''}${off?'off ':''}${busy?'busiest ':''}${sel?'selected':''}" data-caldate="${calDateKey(d)}"><span class="cal-num">${d.getDate()}</span>${arr.length?`<span class="cal-count">${arr.length} ${arr.length===1?'task':'tasks'}</span>`:''}${mini}${load}</button>`;
+  }).join('');
+
+  document.querySelectorAll('[data-caldate]').forEach(b=>b.addEventListener('click',()=>{
+    renderSelectedDay(D(b.dataset.caldate));renderCalendar()
+  }));
+
+  if(!selectedCalendarDay||selectedCalendarDay.getMonth()!==m){
+    const pick=busiest[0]||monthWorking.find(d=>d.getDate()===1)||monthWorking[0];
+    if(pick){selectedCalendarDay=new Date(pick);renderSelectedDay(pick)}
+  }else renderSelectedDay(selectedCalendarDay);
+}
+function shiftCalendarMonth(delta){calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()+delta,1,12);selectedCalendarDay=null;renderCalendar()}
+function goCalendarToday(){const d=D(todayISO());calendarMonth=new Date(d.getFullYear(),d.getMonth(),1,12);selectedCalendarDay=new Date(d);renderCalendar()}
+function renderPrintPreview(){renderLookahead();const src=document.querySelector('#lookaheadView .lookahead');const paper=$('previewPaper');paper.innerHTML='';if(src){const clone=src.cloneNode(true);clone.querySelectorAll('[id]').forEach(x=>x.removeAttribute('id'));paper.appendChild(clone)}loadSavedLogo()}
+function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));$(v+'View').classList.add('active');document.querySelectorAll('.nav[data-view],.mobile-nav-button[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));if(v==='schedule')renderSchedule();if(v==='calendar')renderCalendar();if(v==='lookahead')renderLookahead();if(v==='printPreview')renderPrintPreview();if(window.innerWidth<=1100)window.scrollTo({top:0,behavior:'smooth'})}
+function addTask(){const id=tasks.length?Math.max(...tasks.map(t=>+t.id||0))+1:1;const start=ISO(nextWorkDate($('rangeStart').value||todayISO()));tasks.push({id,name:'',start,finish:start,pct:0,status:'Not Started',category:'General',pred:'',linkType:'FS'});persist();renderAll();show('schedule');setTimeout(()=>{const el=document.querySelector(`#taskRows tr[data-id="${id}"] input[data-field="name"]`);if(el)el.focus()},30)}
+function clearAll(){if(!tasks.length){toast('Schedule is already blank');return}if(confirm('Delete ALL activities? This cannot be undone.')){tasks=[];persist();renderAll();toast('All activities deleted')}}
+function del(id){if(confirm('Delete this activity?')){tasks=tasks.filter(t=>t.id!=id);tasks.forEach(t=>{if(String(t.pred)===String(id)){t.pred='';t.linkType='FS'}});persist();renderAll()}}
+function moveTask(id,dir){const i=tasks.findIndex(t=>t.id==id);if(i<0)return;const j=i+dir;if(j<0||j>=tasks.length)return;[tasks[i],tasks[j]]=[tasks[j],tasks[i]];persist();renderAll();toast(dir<0?'Activity moved up':'Activity moved down')}
+function completeTask(id){const t=tasks.find(x=>x.id==id);if(!t)return;t.pct=100;t.status='Completed';persist();renderAll();toast('Activity completed')}
+function effectiveStatus(t){if(t.status==='Completed'||(+t.pct||0)>=100)return 'Completed';if(t.status==='Blocked')return 'Blocked';if(t.status==='Delayed')return 'Delayed';const now=new Date();now.setHours(12,0,0,0);if(D(t.finish)<now)return 'Delayed';if(t.status==='In Progress'||(+t.pct||0)>0)return 'In Progress';return 'Not Started'}
+function markClass(t){return sclass(effectiveStatus(t))}
+const GANTT_COLOR_KEY='valben_dashboard_gantt_color_v96';
+const GANTT_CUSTOM_KEY='valben_dashboard_gantt_custom_v96';
+const GANTT_COLORS={blue:'#2f6fa3',teal:'#168a95',green:'#3b9b63',orange:'#d97706',purple:'#7c56b2',red:'#c84747',slate:'#64748b'};
+let ganttColorMode='status',ganttCustomColor='#2f6fa3';
+function statusBarColor(t){const s=effectiveStatus(t);return s==='Completed'?'#3b9b63':s==='Delayed'?'#c84747':s==='Blocked'?'#d59b2b':s==='In Progress'?'#68737c':'#858d94'}
+function barColor(t){return ganttColorMode==='status'?statusBarColor(t):ganttColorMode==='custom'?ganttCustomColor:(GANTT_COLORS[ganttColorMode]||statusBarColor(t))}
+function workingSegments(t,days){
+  const out=[];let start=-1,prev=-2;
+  days.forEach((d,i)=>{
+    const active=d>=D(t.start)&&d<=D(t.finish)&&isWorkingDay(d);
+    if(active){
+      if(start<0||i!==prev+1){if(start>=0)out.push({start,end:prev});start=i}
+      prev=i;
+    }else if(start>=0){out.push({start,end:prev});start=-1;prev=-2}
+  });
+  if(start>=0)out.push({start,end:prev});
+  return out;
+}
+function updateGanttColorUI(){
+  const sel=$('ganttColorSelect'),picker=$('ganttCustomColor'),preview=$('ganttColorPreview'),legend=$('ganttLegend');
+  if(sel)sel.value=ganttColorMode;
+  if(picker){picker.value=ganttCustomColor;picker.classList.toggle('visible',ganttColorMode==='custom')}
+  if(preview){
+    if(ganttColorMode==='status')preview.style.background='linear-gradient(90deg,#858d94 0 20%,#68737c 20% 40%,#3b9b63 40% 60%,#d59b2b 60% 80%,#c84747 80% 100%)';
+    else preview.style.background=barColor({status:'Not Started',pct:0,finish:'2999-01-01'});
+  }
+  if(legend){
+    legend.innerHTML=ganttColorMode==='status'
+      ? '<b style="color:#858d94">■</b> Scheduled &nbsp; <b style="color:#3b9b63">■</b> Completed &nbsp; <b style="color:#c84747">■</b> Delayed'
+      : `<b style="color:${barColor({status:'Not Started',pct:0,finish:'2999-01-01'})}">■</b> Gantt bars use selected color · Status remains in the Status column`;
+  }
+}
+function applyGanttColor(mode){
+  ganttColorMode=(mode==='status'||mode==='custom'||GANTT_COLORS[mode])?mode:'status';
+  try{localStorage.setItem(GANTT_COLOR_KEY,ganttColorMode)}catch(e){}
+  updateGanttColorUI();renderSchedule();renderLookahead();if($('printPreviewView').classList.contains('active'))renderPrintPreview()
+}
+function applyGanttCustomColor(color){
+  if(/^#[0-9a-f]{6}$/i.test(color))ganttCustomColor=color;
+  try{localStorage.setItem(GANTT_CUSTOM_KEY,ganttCustomColor)}catch(e){}
+  if(ganttColorMode==='custom'){updateGanttColorUI();renderSchedule();renderLookahead();if($('printPreviewView').classList.contains('active'))renderPrintPreview()}
+}
+function loadGanttAppearance(){
+  try{
+    ganttColorMode=localStorage.getItem(GANTT_COLOR_KEY)||'status';
+    ganttCustomColor=localStorage.getItem(GANTT_CUSTOM_KEY)||'#2f6fa3';
+  }catch(e){}
+  updateGanttColorUI()
+}
+function upd(id,f,v){const t=tasks.find(x=>x.id==id);if(!t)return;if(f==='start'){const dur=Math.max(1,workdays(t.start,t.finish));const n=ISO(nextWorkDate(v));t.start=n;t.finish=addWork(n,dur);if(t.pred)applyDependency(t);if(n!==v)toast('Start moved to next workday')}else if(f==='finish'){const n=ISO(nextWorkDate(v));t.finish=n;if(D(t.finish)<D(t.start))t.start=t.finish;if(t.pred)applyDependency(t);if(n!==v)toast('Finish moved to next workday')}else if(f==='pct'){t.pct=Math.max(0,Math.min(100,+v||0));if(t.pct>=100)t.status='Completed';else if(t.pct>0&&t.status==='Not Started')t.status='In Progress';else if(t.pct<100&&t.status==='Completed')t.status='In Progress'}else if(f==='status'){t.status=v;if(v==='Completed')t.pct=100;else if(v==='Not Started')t.pct=0;else if(t.pct>=100)t.pct=99}else t[f]=v;rescheduleSuccessors(t.id);persist();renderAll()}
+function updDur(id,v){const t=tasks.find(x=>x.id==id);if(!t)return;t.start=ISO(nextWorkDate(t.start));t.finish=addWork(t.start,Math.max(1,parseInt(v)||1));if(t.pred)applyDependency(t);rescheduleSuccessors(t.id);persist();renderAll()}
+
+function toggleNonWork(){const key=$('nonWorkDate').value;if(!key){toast('Choose a date');return}const d=D(key);if(isSunday(d)){toast('Sunday is always OFF');return}const old=new Map(tasks.map(t=>[t.id,Math.max(1,workdays(t.start,t.finish))]));const affected=tasks.filter(t=>D(t.start)<=d&&D(t.finish)>=d).map(t=>t.id);customNoWork.has(key)?customNoWork.delete(key):customNoWork.add(key);tasks.forEach(t=>{if(affected.includes(t.id)){t.start=ISO(nextWorkDate(t.start));t.finish=addWork(t.start,old.get(t.id)||1)}});rescheduleAllDependencies();persist();renderAll();toast(customNoWork.has(key)?`${key} marked No Work`:`${key} restored as Work Day`)}
+function removeNoWork(key){if(!customNoWork.has(key))return;const old=new Map(tasks.map(t=>[t.id,Math.max(1,workdays(t.start,t.finish))]));const d=D(key),affected=tasks.filter(t=>D(t.start)<=d&&D(t.finish)>=d).map(t=>t.id);customNoWork.delete(key);tasks.forEach(t=>{if(affected.includes(t.id))t.finish=addWork(t.start,old.get(t.id)||1)});rescheduleAllDependencies();persist();renderAll();toast(`${key} restored as Work Day`)}
+function renderNoWork(){const keys=[...customNoWork].sort();$('nonWorkChips').innerHTML=`<span class="calendar-note">Sunday = OFF</span>`+keys.map(k=>`<button type="button" class="off-chip" data-off="${k}">${k} OFF ×</button>`).join('');document.querySelectorAll('[data-off]').forEach(b=>b.addEventListener('click',()=>removeNoWork(b.dataset.off)))}
+function filtered(){const q=($('search').value||'').toLowerCase(),s=$('statusFilter').value,c=$('categoryFilter').value;return tasks.filter(t=>(!q||t.name.toLowerCase().includes(q))&&(!s||t.status===s)&&(!c||t.category===c))}
+
+function renderSchedule(){const arr=filtered(),days=calendarDays3($('rangeStart').value||todayISO()),N=days.length;$('weekRow').innerHTML=[0,1,2].map(w=>`<div class="week-cell" style="width:33.333%">WEEK ${w+1} · ${fmt(days[w*7])}–${fmt(days[w*7+6])}</div>`).join('');$('dayRow').innerHTML=days.map(d=>`<div class="day-cell ${isNoWork(d)?'no-work':''}" style="width:${100/N}%">${dayLabel(d)}</div>`).join('');
+  if(!arr.length){$('taskRows').innerHTML='<tr><td colspan="12"><div class="empty-state"><b>No activities</b>Click “+ Add Activity” to start your schedule.</div></td></tr>';$('ganttBody').innerHTML='<div class="empty-state"><b>Gantt is blank</b>Your bars and dependency lines will appear here after you add activities.</div>';renderNoWork();return}
+  $('taskRows').innerHTML=arr.map(t=>{const selected=t.status||'Not Started',idx=tasks.findIndex(x=>x.id==t.id),predOptions=`<option value="">— None —</option>`+tasks.filter(x=>x.id!=t.id).map(x=>`<option value="${x.id}" ${String(t.pred||'')===String(x.id)?'selected':''}>${x.id} · ${esc(x.name||'Activity')}</option>`).join('');return `<tr data-id="${t.id}"><td style="text-align:center">${t.id}</td><td><input data-field="name" value="${esc(t.name)}" placeholder="Activity name" onchange="upd(${t.id},'name',this.value)"></td><td><input type="number" min="1" value="${Math.max(1,workdays(t.start,t.finish))}" onchange="updDur(${t.id},this.value)"></td><td><input type="date" value="${t.start}" onchange="upd(${t.id},'start',this.value)"></td><td><input type="date" value="${t.finish}" onchange="upd(${t.id},'finish',this.value)"></td><td><input type="number" min="0" max="100" value="${t.pct}" onchange="upd(${t.id},'pct',this.value)"></td><td><select class="status-select ${sclass(selected)}" onchange="upd(${t.id},'status',this.value)">${['Not Started','In Progress','Completed','Delayed','Blocked'].map(s=>`<option ${s===selected?'selected':''}>${s}</option>`).join('')}</select></td><td><select class="pred-select" onchange="setPredecessor(${t.id},this.value)">${predOptions}</select></td><td><select class="link-select" onchange="setLinkType(${t.id},this.value)">${['FS','SS','FF'].map(s=>`<option ${s===(t.linkType||'FS')?'selected':''}>${s}</option>`).join('')}</select></td><td class="action-cell"><button class="action-btn move-btn" title="Move up" ${idx===0?'disabled':''} onclick="moveTask(${t.id},-1)">↑</button><button class="action-btn move-btn" title="Move down" ${idx===tasks.length-1?'disabled':''} onclick="moveTask(${t.id},1)">↓</button></td><td class="action-cell"><button class="action-btn done-btn" title="Mark complete" onclick="completeTask(${t.id})">✓</button></td><td class="action-cell"><button class="action-btn delete-btn" title="Delete activity" onclick="del(${t.id})">×</button></td></tr>`}).join('');
+  const rows=arr.map(t=>{const status=markClass(t),grid=days.map(d=>{const span=d>=D(t.start)&&d<=D(t.finish),off=isNoWork(d);return `<div class="day-bg ${off?'no-work ':''}${span&&!off?'active':''}" style="width:${100/N}%"></div>`}).join('');const segs=workingSegments(t,days);const color=barColor(t);const marks=segs.map((seg,si)=>{const len=seg.end-seg.start+1;return `<div class="gantt-segment ${status}" style="left:calc(${seg.start*100/N}% + 2px);width:calc(${len*100/N}% - 4px);background:${color}!important">${si===0?t.pct+'%':''}</div>`}).join('');return `<div class="gantt-row"><div class="day-grid">${grid}</div>${marks}</div>`}).join('');$('ganttBody').innerHTML=rows+buildDependencySvg(arr,days,40,'mainDep');renderNoWork()}
+
+function renderDashboard(){const total=tasks.length,avg=total?Math.round(tasks.reduce((a,t)=>a+(+t.pct||0),0)/total):0,count=s=>tasks.filter(t=>effectiveStatus(t)===s).length;$('overall').textContent=avg+'%';$('active').textContent=count('Not Started')+count('In Progress');$('late').textContent=count('Delayed')+count('Blocked');$('concrete').textContent=tasks.filter(t=>t.category==='Concrete').length;$('progressBar').style.width=avg+'%';$('progressText').textContent=avg+'% complete';$('ns').textContent=count('Not Started');$('ip').textContent=count('In Progress');$('cp').textContent=count('Completed');$('bd').textContent=count('Delayed')+count('Blocked');if(!tasks.length){$('upcoming').innerHTML='<div class="empty-state"><b>No activities yet</b>Add your first activity from the Schedule.</div>';return}const start=D($('rangeStart').value||todayISO()),end=new Date(start);end.setDate(end.getDate()+7);const a=tasks.filter(t=>D(t.start)>=start&&D(t.start)<=end).slice(0,7);$('upcoming').innerHTML=a.map(t=>`<div style="padding:9px 0;border-bottom:1px solid var(--line)"><b style="font-size:12px">${esc(t.name||'(Unnamed activity)')}</b><div class="small">${t.start} · <span class="badge ${markClass(t)}">${effectiveStatus(t)}</span></div></div>`).join('')||'<span class="small">No upcoming activities.</span>'}
+function renderLookahead(){const start=$('rangeStart').value||todayISO(),days=calendarDays3(start),N=days.length,end=days[N-1],arr=tasks.filter(t=>D(t.finish)>=days[0]&&D(t.start)<=end);$('period').textContent=`${fmt(days[0])} - ${fmt(end)}, ${end.getFullYear()}`;if(!arr.length){$('lookaheadSchedule').innerHTML='<div class="empty-state"><b>No activities in this lookahead</b>Add schedule activities before printing.</div>';return}const header=`<div class="gantt-header"><div class="week-row">${[1,2,3].map(w=>`<div class="week-cell" style="width:33.333%">WEEK ${w}</div>`).join('')}</div><div class="day-row">${days.map(d=>`<div class="day-cell ${isNoWork(d)?'no-work':''}" style="width:${100/N}%">${dayLabel(d)}</div>`).join('')}</div></div>`;const rows=arr.map(t=>{const color=barColor(t),grid=days.map(d=>`<div class="day-bg ${isNoWork(d)?'no-work':''}" style="width:${100/N}%"></div>`).join(''),bars=workingSegments(t,days).map(seg=>{const len=seg.end-seg.start+1;return `<svg class="look-segment" style="left:calc(${seg.start*100/N}% + 2px);width:calc(${len*100/N}% - 4px)" viewBox="0 0 100 20" preserveAspectRatio="none"><rect x="0" y="2" width="100" height="16" rx="9" fill="${color}"></rect></svg>`}).join('');return `<div class="gantt-row"><div class="day-grid">${grid}</div>${bars}</div>`}).join('');const dep=buildDependencySvg(arr,days,40,'lookDep');$('lookaheadSchedule').innerHTML=`<div style="display:grid;grid-template-columns:680px 1fr;border:1px solid var(--line);overflow:hidden"><div><table style="font-size:10px"><thead><tr><th style="width:32px">ID</th><th>Task Name</th><th style="width:52px">Dur.</th><th style="width:74px">Start</th><th style="width:74px">Finish</th><th style="width:45px">%</th><th style="width:45px">Pred.</th><th style="width:38px">Link</th></tr></thead><tbody>${arr.map(t=>`<tr><td style="text-align:center">${t.id}</td><td>${esc(t.name||'(Unnamed activity)')}</td><td style="text-align:center">${Math.max(1,workdays(t.start,t.finish))}d</td><td>${t.start}</td><td>${t.finish}</td><td style="text-align:center">${t.pct}%</td><td style="text-align:center">${t.pred||''}</td><td style="text-align:center">${t.pred?(t.linkType||'FS'):''}</td></tr>`).join('')}</tbody></table></div><div style="min-width:650px">${header}<div class="look-gantt-body">${rows}${dep}</div></div></div>`}
+async function savePDF(){persist();loadSavedLogo();show('printPreview');renderPrintPreview();const imgs=[...document.querySelectorAll('#printPreviewView img.company-logo')];try{await Promise.all(imgs.map(img=>img.decode?img.decode().catch(()=>{}):Promise.resolve()))}catch(e){}setTimeout(()=>window.print(),180)}
+function renderAll(){renderDashboard();renderSchedule();renderLookahead();renderCalendar();if($('printPreviewView').classList.contains('active'))renderPrintPreview();loadSavedLogo()}
+
+
+const THEME_KEY='valben_dashboard_theme_v94';
+const DARK_KEY='valben_dashboard_dark_v94';
+const PALETTES={
+  classic:['#123e72','#2f6fa3'],
+  teal:['#0d5d66','#168a95'],
+  green:['#245b3b','#3d8a5b'],
+  orange:['#8a4a14','#d97706'],
+  purple:['#5b3c88','#7c56b2'],
+  slate:['#334155','#64748b']
+};
+function updateThemePreview(name){
+  const colors=PALETTES[name]||PALETTES.classic;
+  if($('previewPrimary'))$('previewPrimary').style.background=colors[0];
+  if($('previewSecondary'))$('previewSecondary').style.background=colors[1];
+  if($('themeSelect'))$('themeSelect').value=name;
+}
+function applyPalette(name){
+  const pal=PALETTES[name]?name:'classic';
+  document.documentElement.dataset.palette=pal;
+  updateThemePreview(pal);
+  try{localStorage.setItem(THEME_KEY,pal)}catch(e){}
+}
+function applyDark(on){
+  document.documentElement.dataset.dark=on?'true':'false';
+  try{localStorage.setItem(DARK_KEY,on?'1':'0')}catch(e){}
+  const b=$('topDarkBtn');if(b)b.textContent=on?'☀ Light':'◐ Dark';
+}
+function toggleDark(){applyDark(document.documentElement.dataset.dark!=='true')}
+function loadAppearance(){
+  let pal='classic',dark=false;
+  try{
+    pal=localStorage.getItem(THEME_KEY)||localStorage.getItem('valben_dashboard_theme_v93')||'classic';
+    dark=(localStorage.getItem(DARK_KEY)||localStorage.getItem('valben_dashboard_dark_v93'))==='1';
+  }catch(e){}
+  applyPalette(pal);applyDark(dark)
+}
+
+// Event bindings
+$('uploadLogoBtn').addEventListener('click',()=>$('logoUpload').click());$('lookUploadLogo').addEventListener('click',()=>$('logoUpload').click());$('logoUpload').addEventListener('change',e=>{handleLogoUpload(e.target.files&&e.target.files[0]);e.target.value=''});$('saveBtn').addEventListener('click',saveData);$('pdfBtn').addEventListener('click',savePDF);$('sidePdf').addEventListener('click',savePDF);$('lookPdf').addEventListener('click',savePDF);$('openScheduleBtn').addEventListener('click',()=>show('schedule'));$('dashAdd').addEventListener('click',addTask);$('addBtn').addEventListener('click',addTask);$('clearAllBtn').addEventListener('click',clearAll);$('lookBtn').addEventListener('click',()=>show('lookahead'));$('toggleOffBtn').addEventListener('click',toggleNonWork);$('search').addEventListener('input',renderSchedule);$('statusFilter').addEventListener('change',renderSchedule);$('categoryFilter').addEventListener('change',renderSchedule);$('rangeStart').addEventListener('change',renderAll);
+$('themeSelect').addEventListener('change',e=>{applyPalette(e.target.value);toast(`Theme: ${e.target.options[e.target.selectedIndex].text}`)});
+$('ganttColorSelect').addEventListener('change',e=>{applyGanttColor(e.target.value);toast(`Gantt color: ${e.target.options[e.target.selectedIndex].text}`)});
+$('ganttCustomColor').addEventListener('input',e=>applyGanttCustomColor(e.target.value));
+$('darkToggle').addEventListener('click',toggleDark);
+if($('topDarkBtn'))$('topDarkBtn').addEventListener('click',toggleDark);
+
+
+$('projectsBtn').addEventListener('click',openProjectsModal);
+$('projectsCloseBtn').addEventListener('click',closeProjectsModal);
+$('createProjectBtn').addEventListener('click',createProject);
+$('accountBtn').addEventListener('click',openAccountModal);
+$('accountCloseBtn').addEventListener('click',closeAccountModal);
+$('signOutBtn').addEventListener('click',signOut);
+$('signInBtn').addEventListener('click',signIn);
+$('signUpBtn').addEventListener('click',signUp);
+$('forgotPasswordBtn').addEventListener('click',openRecoveryRequest);
+$('sendRecoveryBtn').addEventListener('click',sendRecoveryEmail);
+$('updateRecoveryPasswordBtn').addEventListener('click',updateRecoveredPassword);
+$('recoveryCloseBtn').addEventListener('click',closeRecovery);
+$('recoveryBackdrop').addEventListener('click',e=>{if(e.target===$('recoveryBackdrop'))closeRecovery()});
+$('scheduleProjectName').addEventListener('input',scheduleProjectIdentitySave);
+$('scheduleProjectLocation').addEventListener('input',scheduleProjectIdentitySave);
+$('scheduleProjectName').addEventListener('blur',updateActiveProjectIdentity);
+$('scheduleProjectLocation').addEventListener('blur',updateActiveProjectIdentity);
+$('authPassword').addEventListener('keydown',e=>{if(e.key==='Enter')signIn()});
+$('projectsBackdrop').addEventListener('click',e=>{if(e.target===$('projectsBackdrop'))closeProjectsModal()});
+$('accountBackdrop').addEventListener('click',e=>{if(e.target===$('accountBackdrop'))closeAccountModal()});
+
+$('cloudSyncBtn').addEventListener('click',openSyncModal);
+$('syncCancelBtn').addEventListener('click',closeSyncModal);
+$('syncConnectBtn').addEventListener('click',()=>connectCloud($('syncCodeInput').value,true));
+$('syncDisconnectBtn').addEventListener('click',disconnectCloud);
+$('syncCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')connectCloud(e.target.value,true)});
+$('syncModalBackdrop').addEventListener('click',e=>{if(e.target===$('syncModalBackdrop'))closeSyncModal()});
+
+document.querySelectorAll('.nav[data-view]').forEach(n=>n.addEventListener('click',()=>show(n.dataset.view)));
+document.querySelectorAll('.mobile-nav-button[data-view]').forEach(n=>n.addEventListener('click',()=>show(n.dataset.view)));$('calPrevBtn').addEventListener('click',()=>shiftCalendarMonth(-1));$('calNextBtn').addEventListener('click',()=>shiftCalendarMonth(1));$('calTodayBtn').addEventListener('click',goCalendarToday);$('calScheduleBtn').addEventListener('click',()=>show('schedule'));$('lookPreviewBtn').addEventListener('click',()=>show('printPreview'));$('previewBackBtn').addEventListener('click',()=>show('lookahead'));$('previewPrintBtn').addEventListener('click',savePDF);
+
+document.querySelectorAll('img.auth-company-logo').forEach(img=>{
+  img.addEventListener('error',()=>{
+    if(img.dataset.retry)return;
+    img.dataset.retry='1';
+    img.src='logo.jpg?v=101';
+  });
+});
+
+loadAppearance();loadGanttAppearance();rescheduleAllDependencies();loadSavedLogo();renderAll();initializeUserProjects();
+</script>
+</body>
+</html>
