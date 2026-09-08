@@ -1,0 +1,31 @@
+VALBEN PROJECT DASHBOARD V10.7 — DEBUG REPORT
+Generated: 2026-09-08T02:16:14
+
+STATIC TEST RESULTS
+PASS | JavaScript syntax | node --check completed successfully
+PASS | Duplicate HTML IDs | 0 duplicates
+PASS | Required JS-to-DOM references | No unexpected missing IDs
+PASS | Blocker option count | 8/8
+PASS | Blocker Full Screen layer | Modal z-index raised above Schedule workspace
+PASS | Column resize listener guard | Global pointer listeners are installed only once
+PASS | System Diagnostics | Diagnostic UI and runtime checker included
+
+BUGS ADDRESSED
+1. Blocker Type options not opening/displaying reliably:
+   Native dropdown removed; replaced by eight explicit touch-safe buttons.
+
+2. Blocker modal under Full Screen Schedule:
+   Blocker backdrop/modal moved to z-index 30000/30001.
+
+3. Potential Schedule slowdown / duplicate resize behavior:
+   Global pointer listeners no longer accumulate on each render.
+
+RECOMMENDED QUICK TEST AFTER VERCEL DEPLOY
+1. Open Schedule.
+2. Add or open an activity.
+3. Press Blocker.
+4. Tap RFI, Inspection, Material, Equipment, Weather, GC Decision, Labor and Other.
+5. Save a Blocker and reopen it.
+6. Repeat while Schedule is in Full Screen.
+7. Open Guide → System Diagnostics → Run Diagnostics.
+8. Confirm there are no FAIL items.
