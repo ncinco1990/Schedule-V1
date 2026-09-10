@@ -1,0 +1,13 @@
+VALBEN DASHBOARD V10.9 — STATIC DEBUG REPORT
+Generated: 2026-09-10T01:39:19
+
+PASS | Visible Print Preview UI removed
+PASS | window.print workflow removed
+PASS | Direct jsPDF generator included
+PASS | 17 × 11 data-driven PDF layout included
+PASS | Move arrows removed from Schedule rows
+PASS | Mouse/touch drag handle included
+PASS | Reorder renumbers IDs sequentially
+PASS | Delete removes ID gaps
+PASS | Predecessor IDs remap during renumbering
+PASS | V10.8 Gantt alignment retained
