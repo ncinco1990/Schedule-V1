@@ -1,0 +1,13 @@
+VALBEN DASHBOARD V11.1 — STATIC DEBUG REPORT
+Generated: 2026-09-10T15:04:51
+
+PASS | Top horizontal Schedule navigator added
+PASS | Top and bottom horizontal navigators synchronized
+PASS | Table headers frozen on vertical scroll
+PASS | WEEK / DAY Gantt header frozen on vertical scroll
+PASS | Task Name converted to wrapping textarea
+PASS | Task rows can grow beyond fixed V10.8 height
+PASS | Gantt alignment refreshes after Task Name resize
+PASS | PDF Task Name supports wrapped multi-line text
+PASS | PDF Blocker Reason supports wrapped multi-line text
+PASS | V11.0 watermark / safe margins retained
