@@ -1,0 +1,113 @@
+VALBEN PROJECT DASHBOARD V11.5 — FUNCTIONAL TEST REPORT
+Generated: 2026-09-13T04:36:00
+
+STATUS
+PASS — Core UI and project-control workflows tested successfully.
+
+BUG FIXED — ADD ACTIVITY
+The primary issue was that a new activity could be created but immediately hidden by an active Search / Status / Category filter.
+
+V11.5 now:
+PASS | Clears Search before adding
+PASS | Clears Status filter before adding
+PASS | Clears Category filter before adding
+PASS | Repairs sequential IDs before insertion
+PASS | Creates the next sequential activity ID
+PASS | Opens / keeps Schedule visible
+PASS | Focuses the new Task Name field
+PASS | Scrolls the new row into view
+PASS | Confirms with “Activity # added”
+
+ADDITIONAL IPAD / IPHONE ISSUE FOUND AND FIXED
+During browser testing, the sticky global header could overlap the + Add Activity button after the page automatically scrolled to a new row.
+
+FIX:
+PASS | Global header scrolls normally on iPad/iPhone
+PASS | Schedule action buttons remain clickable
+PASS | Bottom mobile navigation remains available
+
+STATIC CODE TESTS
+PASS | JavaScript syntax — node --check
+PASS | Duplicate literal HTML IDs — none
+PASS | DOM references — no unexpected missing IDs
+PASS | Dashboard + Add Activity event wiring
+PASS | Schedule + Add Activity event wiring
+PASS | Critical Schedule / PDF / Blocker / Calendar / Reorder functions present
+
+REAL BROWSER SMOKE TESTS
+Browser engine: Chromium
+External Supabase/jsPDF calls were replaced with safe test stubs so the local application logic could be exercised without changing live production data.
+
+DESKTOP — 1440 × 1000
+PASS | Add Activity while filters were active
+PASS | 8 consecutive activities created
+PASS | 8 Schedule rows rendered
+PASS | 8 matching Gantt rows rendered
+PASS | Gantt row/bar health check
+PASS | Material Blocker selection
+PASS | Blocker note save
+PASS | Activity status changed to Blocked
+PASS | Rolling Lookahead changed to 6 weeks
+PASS | 6 week headers rendered
+PASS | 6-week horizon stored in project state
+PASS | Calendar rendered 42 cells
+PASS | No activity names inside calendar day cells
+PASS | Calendar day detail interaction
+PASS | Activity reorder / ID renumber dependency mapping
+PASS | PDF options modal
+PASS | Full Screen entry
+PASS | Escape exits Full Screen
+PASS | No page JavaScript errors
+
+IPAD — 1024 × 768
+PASS | Same complete workflow
+PASS | 8 consecutive activities created
+PASS | Add Activity remained clickable after automatic row focus
+PASS | Gantt row/bar health check
+PASS | Blocker workflow
+PASS | Rolling Lookahead 6-week workflow
+PASS | Calendar workflow
+PASS | Reorder dependency mapping
+PASS | PDF options modal
+PASS | Full Screen / Escape
+PASS | No page JavaScript errors
+
+IPHONE — 390 × 844
+PASS | Same complete workflow
+PASS | 8 consecutive activities created
+PASS | Add Activity remained clickable after automatic row focus
+PASS | Gantt row/bar health check
+PASS | Blocker workflow
+PASS | Rolling Lookahead 6-week workflow
+PASS | Calendar workflow
+PASS | Reorder dependency mapping
+PASS | PDF options modal
+PASS | Full Screen / Escape
+PASS | No page JavaScript errors
+
+MINIMAL PROFESSIONAL REDESIGN
+PASS | Lighter application background
+PASS | Cleaner white work panels
+PASS | Reduced shadows
+PASS | Softer borders
+PASS | Consistent professional control sizing
+PASS | Quieter sidebar
+PASS | Cleaner Schedule toolbar
+PASS | Existing VALBEN/navy visual identity retained
+PASS | Dark mode compatibility retained
+
+PRODUCTION DEPENDENCIES
+After deployment, live production still depends on:
+- Supabase service availability and valid project credentials
+- jsDelivr delivery of Supabase JS and jsPDF
+- Correct GitHub / Vercel deployment
+
+RECOMMENDED POST-DEPLOY CHECK
+1. Sign in.
+2. Open an existing project.
+3. Press + Add Activity.
+4. Create 3 activities.
+5. Save a Blocker.
+6. Change Rolling Lookahead to 6 weeks.
+7. Generate a PDF.
+8. Run Guide → System Diagnostics → Launch Preflight.
