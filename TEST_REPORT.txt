@@ -1,0 +1,86 @@
+VALBEN PROJECT DASHBOARD V12.0 - TEST REPORT
+Generated: 2026-09-20T05:18:19
+
+STATUS
+PASS - Core V12 Daily Field Report and existing project-control smoke tests completed.
+
+SOURCE WORKFLOW IMPLEMENTED
+PASS | Project & Shift
+PASS | Average Manpower
+PASS | Weather & Lost Time / Delay Impact
+PASS | Daily Activities
+PASS | Safety, Site Conditions & Pending Information
+PASS | Photo Record
+PASS | Daily Summary enhancement
+
+STATIC CODE TESTS
+PASS | JavaScript syntax validated with node --check
+PASS | No duplicate literal HTML IDs
+PASS | No unexpected missing DOM references
+PASS | Daily Field Report module present in navigation and mobile navigation
+PASS | Daily reports included in active project JSON state
+PASS | Existing Supabase schema unchanged
+
+BROWSER SMOKE TESTS
+Browser: Chromium headless
+External Supabase and jsPDF services were replaced with safe test doubles so application logic could be tested without touching live data.
+
+DESKTOP - 1440 x 1000
+PASS | Existing Schedule created 3 activities
+PASS | 3 matching Gantt rows rendered
+PASS | Rolling Lookahead changed to 6 weeks
+PASS | Blocker workflow retained
+PASS | Daily Field Report opened and auto-created DR-001
+PASS | Active Project name prefilled
+PASS | Manpower total calculated 7 TOTAL
+PASS | Rain / Weather delay fields saved
+PASS | Daily activity row saved with Delayed status
+PASS | Generated Daily Summary
+PASS | Added activity row 10 -> 11 and removed back to 10
+PASS | Weather photo compressed and previewed
+PASS | Daily report persisted in currentProjectState()
+PASS | New report generated DR-002
+PASS | DR-001 reopened with prior data intact
+PASS | Daily PDF code path generated LOFTS_ON_6TH_DR-001_2026-09-20.pdf
+PASS | Calendar still rendered 42 cells with no task names inside day cells
+PASS | 0 page JavaScript errors
+
+IPAD - 1024 x 768
+PASS | Same complete workflow
+PASS | 0 page JavaScript errors
+
+IPHONE - 390 x 844
+PASS | Same complete workflow
+PASS | 0 page JavaScript errors
+
+VISUAL REVIEW
+PASS | Desktop Daily Field Report rendered as a clean responsive VALBEN form
+PASS | Sections are visually separated and numbered
+PASS | Photo evidence areas remain usable without crowding the form
+PASS | Activity table remains horizontally usable on smaller screens
+
+PDF DESIGN CHECK
+PASS | PDF is data-driven, not a screenshot
+PASS | Portrait Letter report structure
+PASS | Page 1: Project / Shift / Manpower / Weather / Delay
+PASS | Page 2: Daily Activities / Safety / Pending Information / Summary
+PASS | Extra activity pages supported for rows 11-20
+PASS | Final page: four site photos + descriptions
+PASS | Optional By Norman Cinco watermark path included
+PASS | Weather evidence photo included
+
+PRODUCTION DEPENDENCIES
+The production app still depends on:
+- Supabase service availability and valid project credentials
+- jsDelivr delivery of Supabase JS and jsPDF
+- Correct GitHub / Vercel deployment
+
+POST-DEPLOY CHECK
+1. Sign in and open a real cloud project.
+2. Open Reports -> Daily Field Report.
+3. Fill manpower and one activity.
+4. Add one weather/site photo.
+5. Press Save Report and refresh/reopen the project.
+6. Confirm the report and photo return.
+7. Generate the Daily Field Report PDF.
+8. Run Guide -> System Diagnostics -> Launch Preflight.
