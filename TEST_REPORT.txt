@@ -1,0 +1,67 @@
+VALBEN PROJECT DASHBOARD V12.1 - TEST REPORT
+Generated: 2026-09-21T17:12:34
+
+SCOPE
+Daily / Delay Field Report optimization, manpower additions, crane operator shift, Next Action removal and PDF visual redesign.
+
+STATIC TESTS
+PASS | JavaScript syntax validated with Node.js
+PASS | No duplicate literal HTML IDs
+PASS | No unexpected missing DOM references
+PASS | Next Action fields removed from current Daily/Delay Report UI
+PASS | Next Action fields removed from Daily Report PDF generator
+PASS | Operator manpower field present
+PASS | Warehouse / Bodega manpower field present
+PASS | Carpenter Helper manpower field present
+PASS | Crane manpower field present
+PASS | Crane Operator Time In / Time Out present
+PASS | Existing project JSON persistence architecture retained
+PASS | No Supabase schema migration required
+
+BROWSER FUNCTIONAL TESTS - CHROMIUM
+External Supabase/jsPDF network libraries were replaced with safe local test stubs so UI and project-state logic could be tested without touching live data.
+
+DESKTOP - 1440 x 1000
+PASS | Daily Field Report opens and renders
+PASS | New manpower fields render
+PASS | Operator=2, Warehouse=1, Carpenter Helper=3, Crane=1 saved correctly
+PASS | Manpower total recalculated to 7
+PASS | Crane Operator Time In 07:00 persisted
+PASS | Crane Operator Time Out 17:30 persisted
+PASS | Crane shift card activates when crane is used
+PASS | Next Action controls absent
+PASS | Delay and safety fields remain functional
+PASS | Project state serializes all new manpower/crane fields
+PASS | Daily Report PDF generation code path completes
+PASS | No browser JavaScript page errors
+
+iPAD - 1024 x 768
+PASS | Same manpower / crane / persistence workflow
+PASS | Responsive manpower grid
+PASS | PDF generation code path
+PASS | No browser JavaScript page errors
+
+iPHONE - 390 x 844
+PASS | Same manpower / crane / persistence workflow
+PASS | Responsive 2-column manpower grid
+PASS | Crane shift fields stack vertically
+PASS | PDF generation code path
+PASS | No browser JavaScript page errors
+
+PDF DESIGN VALIDATION
+PASS | A 3-page V12.1 PDF design preview was generated programmatically
+PASS | PDF preflight: 3 pages, openable, not encrypted, not scanned
+PASS | Page 1 rendered and visually inspected: Project & Shift, Average Manpower and Weather/Delay use the same rounded-card / numbered-section design language as the form
+PASS | Page 2 rendered and visually inspected: Daily Activities and Safety/Pending Information use the same design language
+PASS | New manpower fields and Crane Operator Shift are visible in the PDF design
+PASS | Next Action is absent from the PDF design
+
+COMPATIBILITY
+Existing V12.0 Daily Reports normalize missing new trades to 0 and missing crane times to blank values. Legacy Next Action data can remain in old JSON but is ignored by V12.1 UI/PDF.
+
+FILES
+- index.html
+- logo.jpg
+- README.txt
+- TEST_REPORT.txt
+- PDF_DESIGN_PREVIEW.pdf (design reference for the generated Daily Report PDF)
