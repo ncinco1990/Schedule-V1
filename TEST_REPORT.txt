@@ -1,0 +1,40 @@
+VALBEN DASHBOARD V12.4 — PROFESSIONAL SCHEDULE TEST REPORT
+Generated: 2026-09-26T02:51:31
+
+STATIC TESTS
+PASS | JavaScript syntax | node --check
+PASS | HTML IDs | No duplicate literal IDs
+PASS | DOM references | No unexpected missing IDs
+PASS | Professional Schedule view | Present
+PASS | Professional PDF generator | Present
+PASS | Non-destructive review engine | Present
+PASS | Dynamic optional columns | Present
+PASS | Category color mapping | Present
+PASS | Weekend highlighting | Present
+PASS | Continuation markers | Present
+
+BROWSER SMOKE TEST
+Desktop: PASS | {'rows': 3, 'weekend': 6, 'issues': 4, 'continuation': 2, 'sheetWidth': 1120, 'gridWidth': 1118, 'reviewVisible': True}
+iPad: PASS | {'rows': 3, 'weekend': 6, 'issues': 4, 'continuation': 2, 'sheetWidth': 1120, 'gridWidth': 1118, 'reviewVisible': True}
+iPhone: PASS | {'rows': 3, 'weekend': 6, 'issues': 4, 'continuation': 2, 'sheetWidth': 1120, 'gridWidth': 1118, 'reviewVisible': True}
+
+PRESENTATION RULES
+- Preserves source ID, activity, start, finish and calculated working-day duration
+- Uses restrained category colors
+- Highlights Saturday and Sunday
+- Keeps activity table and timeline in the same row grid
+- Wraps long activity names
+- Hides optional columns when they have no useful data
+- Marks activities continuing before / after the displayed period
+
+NON-DESTRUCTIVE REVIEW
+- Duplicate IDs
+- Blank activity names
+- Invalid / missing dates
+- Finish before Start
+- Start / Finish on No Work
+- Missing / self predecessor
+- FS / SS / FF date inconsistencies
+- Continuation outside the selected period
+
+No review finding changes the project schedule automatically.
