@@ -1,0 +1,102 @@
+VALBEN PROJECT DASHBOARD V13.0 — FIELD COORDINATION CENTER
+AUDIT / TEST REPORT
+Generated: 2026-10-08T15:48:16
+
+BASE REVIEWED
+- Source: VALBEN Project Dashboard V12.5 — 14-Day Field Lookahead
+- Existing architecture: static single-file app, Supabase Auth/Data, jsPDF, localStorage project cache, GitHub -> Vercel publishing
+- Existing project data model preserved
+- Existing Schedule/Gantt, Calendar, Rolling Lookahead, 14-Day Field Lookahead, Daily Field Report and PDF tools retained
+
+DATABASE / MIGRATION
+PASS | Existing project tables were not rewritten
+PASS | Dedicated Field Coordination tables already existed and contained 0 rows before V13 use
+PASS | Owner RLS verified for coordination activities/providers/email log
+PASS | Owner RLS added and verified for coordination shares
+PASS | updated_at triggers added to activities/providers
+PASS | Read-only token RPC created and database smoke-tested
+PASS | Project/project-state RLS performance policies optimized without changing owner-only semantics
+PASS | Coordination test tables remain empty after schema/RPC testing
+
+CORE COORDINATION TESTS
+PASS | Create material-delivery activity
+PASS | Edit activity
+PASS | Complete activity
+PASS | Cancel activity as a distinct state
+PASS | Reschedule activity and preserve the same record
+PASS | Relative reminder automatically moved with rescheduled execution date
+PASS | Concrete quantity/mix/truck-frequency fields
+PASS | Separate Confirm Concrete follow-up
+PASS | Separate Confirm Pump follow-up
+PASS | Separate Confirm Inspection follow-up
+PASS | One confirmation does not auto-confirm the others
+PASS | Provider selection/contact auto-fill display
+PASS | Day calendar render
+PASS | Week calendar render
+PASS | Month calendar render
+PASS | Type filtering
+PASS | America/New_York daylight-saving invalid time rejection
+PASS | Concrete quantity validation
+PASS | Provider email validation rule
+PASS | 35 simultaneous/long-text coordination activities
+PASS | localStorage offline cache restore
+PASS | queued-write path for connection failures
+PASS | Share Week selection isolates only selected activities
+PASS | Weekly PDF generation code path
+PASS | Existing Schedule + Add Activity still works
+
+BROWSER / RESPONSIVE SMOKE TEST
+Engine available in this environment: Chromium.
+Desktop, iPad and iPhone are viewport/layout tests in Chromium; they are not physical-device Safari tests.
+PASS | Desktop | Weekly PDF path=TEST_PROJECT_Weekly_Coordination_2026-10-12.pdf | Save/drag touch targets=[38, 38]
+PASS | iPad | Weekly PDF path=TEST_PROJECT_Weekly_Coordination_2026-10-12.pdf | Save/drag touch targets=[38, 38]
+PASS | iPhone | Weekly PDF path=TEST_PROJECT_Weekly_Coordination_2026-10-12.pdf | Save/drag touch targets=[38, 38]
+
+LAYOUT RETEST AFTER CALENDAR WIDTH ADJUSTMENT
+PASS | Desktop | calendar panel 566.5px | week canvas 700.0px | 14 items rendered | save button 38px
+PASS | iPad | calendar panel 1000.0px | week canvas 998.0px | 14 items rendered | save button 38px
+PASS | iPhone | calendar panel 374.0px | week canvas 700.0px | 14 items rendered | save button 38px
+
+SHARING / EMAIL
+PASS | Weekly full-team summary mode
+PASS | Provider-specific filter mode
+PASS | Saved contacts + manual recipient field
+PASS | Read-only snapshot payload contains only selected activities
+PASS | Read-only share DB RPC returns token-scoped snapshot only
+PASS | Email log schema supports draft_prepared / client_opened / sent / failed
+LIMITATION | V13 does not claim that email is sent. "Prepare Email" opens the local mail client and logs client_opened.
+PENDING CONFIG | True server-side send requires an email-provider secret and authenticated Edge Function. A Resend template is included but not deployed/configured.
+
+REMINDERS / NOTIFICATIONS
+PASS | Multiple reminders per activity
+PASS | Execution date separated from reminder date
+PASS | Relative reminder movement on reschedule
+PASS | In-app due-reminder polling while app is open
+PASS | Browser Notification API permission flow
+LIMITATION | Closed-app push is NOT operational.
+PENDING CONFIG | Closed-app push requires VAPID keys, a service worker, push subscriptions and a scheduled backend sender.
+
+SECURITY AUDIT
+PASS | Coordination private tables are not directly available to anonymous users
+PASS | Share table is owner-managed
+PASS | Public link reads only the saved snapshot through a random high-entropy token
+PASS | No email-provider/VAPID secrets were placed in browser code
+INFO | Supabase security advisor warns because the intentional token-read RPC is SECURITY DEFINER and executable by anon/authenticated. This is required for public read-only links and the function returns only an unrevoked, unexpired token snapshot.
+PENDING ACCOUNT SETTING | Supabase leaked-password protection is currently disabled and should be enabled in Auth settings.
+INFO | Older legacy backend-only tables still show RLS-without-policy informational notices; V13 does not use those tables for Field Coordination.
+
+PERFORMANCE AUDIT
+PASS | Existing project/project-state RLS auth.uid() policies were optimized
+INFO | New coordination indexes are currently reported as unused because the coordination tables are new/empty. Do not remove them before real usage data exists.
+
+COMPATIBILITY LIMITS
+- Chrome/Chromium logic and responsive viewport tests: verified
+- Edge: expected to follow Chromium behavior, but Microsoft Edge executable was not available for an independent run
+- Safari/iOS Safari: not available in this environment; iPad/iPhone viewport layouts were verified in Chromium only
+- Real push delivery with the app closed: not tested because it is not configured
+- Real server email sending: not tested because credentials/provider are not configured
+- Live authenticated user writes from the browser were not performed during automated browser tests to avoid modifying production user data; Supabase schema/RLS/RPC were verified separately
+
+RELEASE RESULT
+V13.0 is prepared for the current GitHub -> Vercel deployment method.
+Core Field Coordination logic passed the available automated browser tests and database schema/security checks.
