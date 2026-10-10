@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>VALBEN Project Dashboard V13.0 - Field Coordination Center</title>
+<title>VALBEN Project Dashboard V14.0 - Deliveries</title>
 <style>
 :root{--navy:#123e72;--blue:#2f6fa3;--bg:#f4f7fa;--line:#dbe3ea;--text:#1f2933;--muted:#6d7a86;--green:#3b9b63;--red:#c84747;--amber:#d59b2b;--gray:#858d94}
 *{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:var(--bg);color:var(--text)}
@@ -3596,16 +3596,35 @@ body.coord-public-mode>header,body.coord-public-mode>.app,body.coord-public-mode
   .coord-calendar-drag-note{display:none}.coord-public-share{padding:0}.coord-public-shell{border-radius:0;min-height:100vh}.coord-public-head{grid-template-columns:110px 1fr;padding:15px}.coord-public-head img{max-width:100px}.coord-public-content{padding:10px;overflow:auto}
 }
 
+
+/* =======================================================
+   V14.0 — Deliveries
+   ======================================================= */
+.delivery-title-actions{display:flex;gap:6px;flex-wrap:wrap}.delivery-toolbar{display:flex;align-items:end;gap:6px;flex-wrap:wrap;padding:9px 10px;margin-bottom:8px;border:1px solid var(--theme-line,var(--line));border-radius:13px;background:var(--theme-panel,#fff)}
+.delivery-toolbar label{display:grid;gap:3px}.delivery-toolbar label>span,.delivery-receipt-entry label>span,.delivery-import-source label>span,.delivery-share-controls label>span,.delivery-share-link>span{font-size:7px;font-weight:900;letter-spacing:.07em;text-transform:uppercase;color:var(--theme-muted,var(--muted))}.delivery-toolbar input,.delivery-toolbar select{height:34px;min-width:105px}.delivery-search{flex:1 1 190px}.delivery-search input{width:100%}.delivery-week-nav{display:flex;align-items:center;gap:4px;margin-right:4px}.delivery-week-nav b{min-width:125px;font-size:9px;color:var(--theme-text,var(--text))}
+.delivery-view-tabs{display:flex;gap:4px;margin-bottom:8px}.delivery-view-tab{min-height:34px;padding:0 12px;border:1px solid var(--theme-line,var(--line));border-radius:999px;background:var(--theme-panel,#fff);color:var(--theme-text,var(--text));font-size:8px;font-weight:900}.delivery-view-tab.active{background:var(--navy)!important;color:#fff!important;border-color:var(--navy)!important}.delivery-view-tab span{margin-left:4px;opacity:.7}
+.delivery-mobile-tabs{display:none;gap:4px;margin-bottom:7px}.delivery-mobile-tabs button{flex:1;min-height:38px;border:1px solid var(--theme-line,var(--line));border-radius:10px;background:var(--theme-panel,#fff);font-weight:900;color:var(--theme-text,var(--text))}.delivery-mobile-tabs button.active{background:var(--navy);color:#fff}
+.delivery-workspace{display:grid;grid-template-columns:minmax(360px,.92fr) minmax(470px,1.08fr);gap:9px;margin-bottom:9px}.delivery-panel{border:1px solid var(--theme-line,var(--line));border-radius:14px;background:var(--theme-panel,#fff);overflow:hidden;min-width:0}.delivery-panel-head{display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:10px 11px;border-bottom:1px solid var(--theme-line,var(--line))}.delivery-panel-head span{display:block;font-size:7px;font-weight:950;letter-spacing:.1em;color:var(--theme-muted,var(--muted))}.delivery-panel-head h2{margin:2px 0 0;font-size:14px;color:var(--theme-text,var(--text))}.delivery-panel-head>b{font-size:10px;color:var(--navy)}.delivery-panel-head small{font-size:7px;color:var(--theme-muted,var(--muted))}
+.delivery-unscheduled{border-bottom:1px solid var(--theme-line,var(--line))}.delivery-unscheduled:empty{display:none}.delivery-unscheduled-head{padding:7px 9px;background:#fff4df;color:#80551b;font-size:7.5px;font-weight:900}.delivery-list{max-height:590px;overflow:auto}.delivery-day-group{border-bottom:1px solid var(--theme-line,var(--line))}.delivery-day-label{position:sticky;top:0;z-index:2;padding:6px 9px;background:var(--theme-panel-2,#f8fafb);font-size:7.5px;font-weight:950;color:var(--theme-muted,var(--muted));border-bottom:1px solid var(--theme-line,var(--line))}.delivery-card{display:grid;grid-template-columns:64px 1fr auto;gap:7px;padding:9px;cursor:pointer;border-bottom:1px solid var(--theme-line,var(--line));background:var(--theme-panel,#fff)}.delivery-card:hover,.delivery-card.selected{background:#eef5fa}.delivery-card.unscheduled{grid-template-columns:74px 1fr auto}.delivery-card-time{text-align:center}.delivery-card-time b{display:block;font-size:9px;color:var(--navy)}.delivery-card-time span{font-size:7px;color:var(--theme-muted,var(--muted))}.delivery-card-main{min-width:0}.delivery-card-title{font-size:9px;font-weight:900;color:var(--theme-text,var(--text));line-height:1.18}.delivery-card-meta{margin-top:3px;font-size:7.2px;color:var(--theme-muted,var(--muted));line-height:1.35}.delivery-code-chips{display:flex;gap:3px;flex-wrap:wrap;margin-top:4px}.delivery-code{padding:2px 5px;border-radius:5px;background:#edf2f6;color:#304c62;font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:6.8px;font-weight:850}.delivery-status-stack{display:flex;gap:3px;flex-wrap:wrap;justify-content:flex-end;max-width:130px}.delivery-badge{padding:4px 6px;border-radius:999px;font-size:6.6px;font-weight:950;white-space:nowrap}.delivery-badge.processed{background:#eaf2f8;color:#315f82}.delivery-badge.shipped{background:#eee9f7;color:#665187}.delivery-badge.unknown{background:#eef1f3;color:#657580}.delivery-badge.to_request,.delivery-badge.requested,.delivery-badge.to_confirm{background:#fff3df;color:#8e5d1e}.delivery-badge.scheduled{background:#e8f1f7;color:#315f82}.delivery-badge.partial{background:#fff1dc;color:#90601f}.delivery-badge.received{background:#e4f2e8;color:#2c7048}.delivery-badge.canceled{background:#eceeef;color:#687680}.delivery-badge.overdue{background:#fdeaea;color:#a33f39}
+.delivery-calendar{display:grid;grid-template-columns:repeat(7,minmax(100px,1fr));min-width:700px;min-height:450px;overflow:auto}.delivery-cal-day{min-height:450px;border-right:1px solid var(--theme-line,var(--line));background:var(--theme-panel,#fff)}.delivery-cal-day:last-child{border-right:0}.delivery-cal-day.today{box-shadow:inset 0 0 0 2px rgba(18,62,114,.28)}.delivery-cal-day.drop-target{background:#eaf3f9}.delivery-cal-head{padding:7px 6px;border-bottom:1px solid var(--theme-line,var(--line));background:var(--theme-panel-2,#f8fafb);text-align:center}.delivery-cal-head b{display:block;font-size:8px}.delivery-cal-head span{font-size:7px;color:var(--theme-muted,var(--muted))}.delivery-cal-body{padding:5px}.delivery-cal-card{position:relative;margin-bottom:5px;padding:6px 5px 6px 20px;border:1px solid var(--theme-line,var(--line));border-left:4px solid #315f82;border-radius:8px;background:var(--theme-panel-2,#fafbfd);cursor:pointer}.delivery-cal-card b{display:block;font-size:7px;line-height:1.16}.delivery-cal-card span{font-size:6.3px;color:var(--theme-muted,var(--muted))}.delivery-cal-drag{position:absolute;left:2px;top:4px;width:16px;height:25px;padding:0!important;background:transparent!important;color:var(--theme-muted,var(--muted))!important;display:flex;align-items:center;justify-content:center;border-radius:5px!important;touch-action:none;cursor:grab}
+.delivery-form-panel{margin-bottom:8px}.delivery-form-panel form{padding:11px}.delivery-form-close{display:none}.delivery-form-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:7px}.delivery-form-grid label{display:grid;gap:4px;min-width:0}.delivery-form-grid label>span{font-size:7px;font-weight:900;letter-spacing:.05em;text-transform:uppercase;color:var(--theme-muted,var(--muted))}.delivery-form-grid input,.delivery-form-grid select,.delivery-form-grid textarea{width:100%;min-width:0}.delivery-span-2{grid-column:span 2}.delivery-details{margin-top:9px;border:1px solid var(--theme-line,var(--line));border-radius:11px;background:var(--theme-panel-2,#fafbfd);overflow:hidden}.delivery-details summary{padding:9px 10px;cursor:pointer;font-size:8px;font-weight:900;color:var(--theme-text,var(--text))}.delivery-details summary span{margin-left:5px;color:var(--theme-muted,var(--muted))}.delivery-receipt-history{display:grid;gap:4px;padding:0 9px 7px}.delivery-receipt-row{display:grid;grid-template-columns:105px 1fr auto;gap:7px;padding:6px 7px;border:1px solid var(--theme-line,var(--line));border-radius:8px;background:var(--theme-panel,#fff)}.delivery-receipt-row b{font-size:7.5px}.delivery-receipt-row span{font-size:7px;color:var(--theme-muted,var(--muted))}.delivery-receipt-entry{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:6px;padding:9px;border-top:1px solid var(--theme-line,var(--line))}.delivery-receipt-entry label{display:grid;gap:3px}.delivery-final-check{display:flex!important;align-items:center;gap:5px!important;font-size:7.5px}.delivery-final-check input{width:16px!important}.delivery-form-actions{display:flex;gap:6px;flex-wrap:wrap;margin-top:10px}.delivery-form-status{min-height:18px;margin-top:6px;font-size:7.5px;color:var(--theme-muted,var(--muted))}
+.delivery-modal-backdrop{position:fixed;inset:0;z-index:35000;display:none;align-items:center;justify-content:center;padding:18px;background:rgba(8,19,29,.64);backdrop-filter:blur(6px)}.delivery-modal-backdrop.show{display:flex}.delivery-modal{width:min(1160px,100%);max-height:92vh;overflow:auto;padding:15px;border:1px solid var(--theme-line,var(--line));border-radius:19px;background:var(--theme-panel,#fff);box-shadow:0 26px 80px rgba(0,0,0,.25)}.delivery-modal-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}.delivery-modal-head>div>span{font-size:7px;font-weight:950;letter-spacing:.12em;color:var(--theme-muted,var(--muted))}.delivery-modal-head h2{margin:2px 0;font-size:18px}.delivery-modal-head p{margin:0;font-size:8px;color:var(--theme-muted,var(--muted))}
+.delivery-import-source{display:flex;align-items:end;gap:7px;flex-wrap:wrap;margin-bottom:8px}.delivery-file-btn{display:inline-flex;align-items:center;min-height:36px;padding:0 11px;border:1px solid var(--theme-line,var(--line));border-radius:10px;background:var(--theme-panel,#fff);font-size:8px;font-weight:850;cursor:pointer}.delivery-file-btn input{display:none}.delivery-import-source label{display:grid;gap:3px}.delivery-import-summary{padding:8px 9px;margin-bottom:7px;border-radius:9px;background:var(--theme-panel-2,#fafbfd);font-size:8px;color:var(--theme-muted,var(--muted))}.delivery-import-table-wrap{overflow:auto;max-height:500px;border:1px solid var(--theme-line,var(--line));border-radius:10px}.delivery-import-table{width:100%;min-width:1000px;border-collapse:collapse;font-size:7px}.delivery-import-table th{position:sticky;top:0;z-index:2;background:#173d63;color:#fff;padding:7px;text-align:left}.delivery-import-table td{padding:6px;border-bottom:1px solid var(--theme-line,var(--line));vertical-align:top}.delivery-import-row.duplicate{opacity:.55}.delivery-import-row.issue{background:#fff8ea}.delivery-import-review{font-size:6.8px;color:#8b5b1e}.delivery-import-actions{display:flex;justify-content:flex-end;gap:6px;margin-top:9px}
+.delivery-share-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.delivery-share-controls{display:grid;grid-template-columns:1fr 1fr;gap:7px}.delivery-share-controls label{display:grid;gap:4px}.delivery-share-controls input,.delivery-share-controls select,.delivery-share-controls textarea{width:100%}.delivery-share-note{padding:8px;border-radius:8px;background:#fff4df;color:#80551b;font-size:7.5px}.delivery-share-list-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:6px}.delivery-share-list{display:grid;gap:4px;max-height:390px;overflow:auto}.delivery-share-row{display:grid;grid-template-columns:auto 1fr;gap:6px;padding:7px;border:1px solid var(--theme-line,var(--line));border-radius:8px}.delivery-share-row b{font-size:7.5px}.delivery-share-row span{font-size:6.8px;color:var(--theme-muted,var(--muted))}.delivery-share-link{display:grid;gap:4px;margin-top:8px}.delivery-share-link input{width:100%}.delivery-share-actions{display:flex;gap:6px;justify-content:flex-end;flex-wrap:wrap;margin-top:10px}
+@media(max-width:1250px){.delivery-workspace{grid-template-columns:1fr}.delivery-list{max-height:430px}.delivery-calendar-panel{overflow:auto}.delivery-form-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:700px){.delivery-title-actions,.delivery-toolbar{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch}.delivery-title-actions>*{flex:0 0 auto}.delivery-toolbar>*{flex:0 0 auto}.delivery-view-tabs{overflow-x:auto}.delivery-mobile-tabs{display:flex}.delivery-workspace{display:block}.delivery-workspace [data-delivery-pane]{display:none}.delivery-workspace [data-delivery-pane].mobile-active{display:block}.delivery-form-panel{position:fixed;left:0;right:0;bottom:0;z-index:32000;max-height:91vh;overflow:auto;border-radius:18px 18px 0 0;box-shadow:0 -18px 50px rgba(0,0,0,.22);transform:translateY(105%);transition:transform .2s ease}.delivery-form-panel.mobile-open{transform:translateY(0)}.delivery-form-close{display:inline-flex}.delivery-form-grid{grid-template-columns:1fr 1fr}.delivery-receipt-entry{grid-template-columns:1fr 1fr}.delivery-modal-backdrop{align-items:flex-end;padding:0}.delivery-modal{max-height:94vh;border-radius:18px 18px 0 0}.delivery-share-grid,.delivery-share-controls{grid-template-columns:1fr}.delivery-share-controls .delivery-span-2{grid-column:auto}}
+@media(max-width:430px){.delivery-form-grid,.delivery-receipt-entry{grid-template-columns:1fr}.delivery-span-2{grid-column:auto}.delivery-card{grid-template-columns:56px 1fr}.delivery-status-stack{grid-column:2;justify-content:flex-start}.delivery-calendar{min-width:700px}}
+
 </style>
 </head>
 <body>
 <header>
-  <div class="brand"><img class="company-logo" src="logo.jpg" alt="VALBEN Construction logo"><div class="project"><b id="activeProjectName">SELECT PROJECT</b><div>VALBEN Construction · Project Management Dashboard · V13.0</div></div></div>
+  <div class="brand"><img class="company-logo" src="logo.jpg" alt="VALBEN Construction logo"><div class="project"><b id="activeProjectName">SELECT PROJECT</b><div>VALBEN Construction · Project Management Dashboard · V14.0</div></div></div>
   <div><input id="logoUpload" class="logo-upload" type="file" accept="image/png,image/jpeg,image/webp"><button class="secondary" id="uploadLogoBtn">Upload Logo</button> <button class="secondary" id="saveBtn">Save Changes</button> <button class="secondary cloud-sync-btn legacy-cloud-btn" id="cloudSyncBtn" aria-hidden="true" tabindex="-1"><span id="cloudDot">●</span> <span id="cloudSyncText">Cloud Sync</span></button> <button class="secondary" id="projectsBtn">Projects</button> <button class="secondary" id="accountBtn">Account</button> <button class="secondary" id="pdfBtn">Generate PDF</button> <button class="primary" id="openScheduleBtn">Open Schedule</button></div>
 </header>
 <div class="app">
 <aside>
-  <div class="section">Project</div><div class="nav active" data-view="dashboard">Dashboard</div><div class="nav" data-view="schedule">Schedule / Gantt</div><div class="nav" data-view="coordination">Field Coordination</div><div class="nav" data-view="professionalSchedule">14-Day Field Lookahead</div><div class="nav" data-view="calendar">Calendar</div><div class="nav" data-view="lookahead">Rolling Lookahead</div>
+  <div class="section">Project</div><div class="nav active" data-view="dashboard">Dashboard</div><div class="nav" data-view="schedule">Schedule / Gantt</div><div class="nav" data-view="deliveries">Deliveries</div><div class="nav" data-view="coordination">Field Coordination</div><div class="nav" data-view="professionalSchedule">14-Day Field Lookahead</div><div class="nav" data-view="calendar">Calendar</div><div class="nav" data-view="lookahead">Rolling Lookahead</div>
   <div class="section">Reports</div><div class="nav" data-view="dailyReport">Daily Field Report</div><div class="nav" id="sidePdf">Rolling Lookahead PDF</div>
 
   <div class="section">Appearance</div>
@@ -3785,6 +3804,107 @@ body.coord-public-mode>header,body.coord-public-mode>.app,body.coord-public-mode
 </section>
 
 
+
+
+<section id="deliveriesView" class="view">
+  <div class="titlebar delivery-titlebar">
+    <div>
+      <h1>Deliveries</h1>
+      <p>Weekly material schedule · supplier status, field receipt, control codes and reminders.</p>
+    </div>
+    <div class="delivery-title-actions">
+      <button class="secondary" id="deliveryImportBtn" type="button">Import Excel</button>
+      <button class="secondary" id="deliveryShareBtn" type="button">Share Week</button>
+      <button class="primary" id="deliveryNewBtn" type="button">+ New Delivery</button>
+    </div>
+  </div>
+
+  <div class="delivery-toolbar">
+    <div class="delivery-week-nav">
+      <button class="secondary" id="deliveryPrevWeek" type="button">←</button>
+      <button class="secondary" id="deliveryThisWeek" type="button">This Week</button>
+      <button class="secondary" id="deliveryNextWeek" type="button">→</button>
+      <b id="deliveryWeekLabel">Week</b>
+    </div>
+    <label><span>Provider</span><select id="deliveryFilterProvider"><option value="">All providers</option></select></label>
+    <label><span>Level</span><input id="deliveryFilterLevel" type="search" placeholder="Level / tramo"></label>
+    <label><span>Pour</span><input id="deliveryFilterPour" type="search" placeholder="P / PR"></label>
+    <label><span>Phase</span><input id="deliveryFilterPhase" type="search" placeholder="PH"></label>
+    <label class="delivery-search"><span>Search</span><input id="deliverySearch" type="search" placeholder="Material or control code"></label>
+  </div>
+
+  <div class="delivery-view-tabs">
+    <button class="delivery-view-tab active" data-delivery-view="pending" type="button">Pending <span id="deliveryPendingCount">0</span></button>
+    <button class="delivery-view-tab" data-delivery-view="all" type="button">All <span id="deliveryAllCount">0</span></button>
+    <button class="delivery-view-tab" data-delivery-view="received" type="button">Received <span id="deliveryReceivedCount">0</span></button>
+  </div>
+
+  <div class="delivery-mobile-tabs">
+    <button class="active" data-delivery-mobile-pane="list" type="button">List</button>
+    <button data-delivery-mobile-pane="calendar" type="button">Calendar</button>
+  </div>
+
+  <div class="delivery-workspace">
+    <section class="delivery-panel delivery-list-panel" data-delivery-pane="list">
+      <div class="delivery-panel-head"><div><span>WEEK SCHEDULE</span><h2 id="deliveryListTitle">Deliveries</h2></div><b id="deliveryVisibleCount">0</b></div>
+      <div id="deliveryUnscheduled" class="delivery-unscheduled"></div>
+      <div id="deliveryList" class="delivery-list"></div>
+    </section>
+
+    <section class="delivery-panel delivery-calendar-panel" data-delivery-pane="calendar">
+      <div class="delivery-panel-head"><div><span>CONNECTED CALENDAR</span><h2 id="deliveryCalendarTitle">Week</h2></div><small>Drag ⋮⋮ to another day</small></div>
+      <div id="deliveryCalendar" class="delivery-calendar"></div>
+    </section>
+  </div>
+
+  <section class="delivery-panel delivery-form-panel" id="deliveryFormPanel">
+    <div class="delivery-panel-head">
+      <div><span>SELECTED DELIVERY</span><h2 id="deliveryFormTitle">New Delivery</h2></div>
+      <button class="secondary delivery-form-close" id="deliveryFormClose" type="button">Close</button>
+    </div>
+    <form id="deliveryForm" autocomplete="off">
+      <input id="deliveryId" type="hidden">
+      <div class="delivery-form-grid">
+        <label class="delivery-span-2"><span>Material / Activity</span><input id="deliveryMaterial" type="text" maxlength="180" required placeholder="Rebar, stud rails, Doka material..."></label>
+        <label><span>Provider</span><select id="deliveryProvider"><option value="">— Provider —</option></select></label>
+        <label><span>Level / Tramo</span><input id="deliveryLevel" type="text" maxlength="80" placeholder="2ND-3RD / Level 3"></label>
+        <label><span>Pour</span><input id="deliveryPour" type="text" maxlength="40" placeholder="P1 / PR2"></label>
+        <label><span>Phase</span><input id="deliveryPhase" type="text" maxlength="40" placeholder="PH1"></label>
+        <label class="delivery-span-2"><span>Control Code(s)</span><input id="deliveryControlCodes" type="text" maxlength="500" placeholder="16BF, 16BJ · preserved as text"></label>
+        <label><span>Planned Date</span><input id="deliveryDate" type="date"></label>
+        <label><span>Planned Time</span><input id="deliveryTime" type="time"></label>
+        <label><span>Supplier Status</span><select id="deliverySupplierStatus"><option value="unknown">Unknown</option><option value="processed">Processed</option><option value="shipped">Shipped</option></select></label>
+        <label><span>Field Status</span><select id="deliveryFieldStatus"><option value="to_request">To Request</option><option value="requested">Requested</option><option value="to_confirm">To Confirm</option><option value="scheduled">Scheduled</option><option value="partial">Partial</option><option value="received">Received</option><option value="canceled">Canceled</option></select></label>
+        <label><span>Reminder</span><select id="deliveryReminderPreset"><option value="">No reminder</option><option value="1440">1 day before</option><option value="120">2 hours before</option><option value="custom">Custom</option></select></label>
+        <label><span>Reminder Date / Time</span><input id="deliveryReminderCustom" type="datetime-local"></label>
+        <div class="delivery-span-2" style="font-size:7px;color:var(--theme-muted,var(--muted));padding:1px 2px">Reminder delivery: in-app while this app is open; browser notification only when permission/session support is available. Closed-app push is not configured.</div>
+        <label class="delivery-span-2"><span>Notes</span><textarea id="deliveryNotes" rows="2" maxlength="1200" placeholder="Dispatch, gate access, partial delivery notes..."></textarea></label>
+      </div>
+
+      <details class="delivery-details" id="deliveryReceiptDetails">
+        <summary>Receipt Details & Partial Deliveries <span id="deliveryReceiptCount">0</span></summary>
+        <div id="deliveryReceiptHistory" class="delivery-receipt-history"></div>
+        <div class="delivery-receipt-entry">
+          <label><span>Received Date</span><input id="deliveryReceiptDate" type="date"></label>
+          <label><span>Received Time</span><input id="deliveryReceiptTime" type="time"></label>
+          <label><span>Ticket / Remission</span><input id="deliveryReceiptTicket" type="text" maxlength="100"></label>
+          <label><span>Received By</span><input id="deliveryReceiptBy" type="text" maxlength="120"></label>
+          <label class="delivery-span-2"><span>Observation / Partial Delivery</span><input id="deliveryReceiptNotes" type="text" maxlength="500" placeholder="Partial load, balance pending, damaged pieces..."></label>
+          <label class="delivery-final-check"><input id="deliveryReceiptFinal" type="checkbox"> Complete receipt</label>
+          <button class="secondary" id="deliveryAddReceiptBtn" type="button">+ Add Receipt</button>
+        </div>
+      </details>
+
+      <div class="delivery-form-actions">
+        <button class="primary" type="submit" id="deliverySaveBtn">Save Delivery</button>
+        <button class="secondary" type="button" id="deliveryMarkPartialBtn">Mark Partial</button>
+        <button class="secondary" type="button" id="deliveryMarkReceivedBtn">Mark Received</button>
+        <button class="danger" type="button" id="deliveryCancelBtn">Cancel Delivery</button>
+      </div>
+      <div class="delivery-form-status" id="deliveryFormStatus"></div>
+    </form>
+  </section>
+</section>
 
 <section id="coordinationView" class="view">
   <div class="titlebar coord-titlebar">
@@ -4071,14 +4191,14 @@ body.coord-public-mode>header,body.coord-public-mode>.app,body.coord-public-mode
 <section id="guideView" class="view">
   <div class="titlebar">
     <div><h1>Guide / Version Notes</h1><p>Current version, feature meanings, color rules, design updates and change history.</p></div>
-    <span class="version-badge">CURRENT VERSION · V13.0</span>
+    <span class="version-badge">CURRENT VERSION · V14.0</span>
   </div>
 
   <div class="guide-grid">
     <div class="guide-card">
       <div class="guide-head"><h3>Current Version</h3><span class="small">Updated Oct 8, 2026</span></div>
       <div class="guide-body">
-        <b>VALBEN Project Dashboard V13.0</b><br>
+        <b>VALBEN Project Dashboard V14.0</b><br>
         Base: <b>V9</b> + dependencies + themes + continuous Gantt + cloud sync + login/multi-project + V10.0 project identity and password recovery.
         <div class="guide-note">Use this page as the reference for what each field, link, status and color means. Future changes can be added to the Version History below.</div>
       </div>
@@ -4194,6 +4314,14 @@ body.coord-public-mode>header,body.coord-public-mode>.app,body.coord-public-mode
     </div>
 
     <div class="guide-card wide">
+      <div class="guide-head"><h3>Deliveries</h3><span class="small">V14.0</span></div>
+      <div class="guide-body">
+        <p><b>Focused field workflow:</b> weekly list on the left, connected week calendar on the right and the selected delivery form below. Phone layout switches between List and Calendar and opens the form as a bottom panel.</p>
+        <p><b>Phase and Pour stay independent.</b> PH is never converted into a Pour and P/PR is never converted into a Phase. Control codes are stored as text arrays so leading zeros are preserved. Supplier Processed/Shipped is separate from field Scheduled/Partial/Received/Canceled.</p>
+        <p><b>Excel import:</b> preview is mandatory before import. Re-import protection uses a stable natural import key (provider + material + level + pour + phase + control codes). Rows with missing material/control code or ambiguous P/PH data are flagged instead of auto-corrected.</p>
+      </div>
+    </div>
+    <div class="guide-card wide">
       <div class="guide-head"><h3>Field Coordination Center</h3><span class="small">V13.0</span></div>
       <div class="guide-body">
         <p><b>One record, connected views:</b> each delivery, concrete program, inspection or follow-up is stored once in Supabase and rendered in the Coordination Schedule and Day/Week/Month Calendar. Rescheduling from the calendar updates the same record; relative reminders move with the new execution date.</p>
@@ -4257,6 +4385,7 @@ body.coord-public-mode>header,body.coord-public-mode>.app,body.coord-public-mode
         <div class="version-row"><div class="version-name">V12.4</div><div><b>Professional Schedule.</b> Added a presentation-ready horizontal schedule view and PDF that preserve source IDs/activities/dates, use category colors, highlight weekends, mark continuation beyond the selected period, simplify unused optional columns, and report potential schedule inconsistencies without changing project data.</div></div>
         <div class="version-row"><div class="version-name">V12.5</div><div><b>14-Day Field Lookahead.</b> Reworked the presentation document around a one-page 17 × 11 superintendent lookahead: 14 daily columns, standardized construction wording, work/calendar duration, Release / Coordination, field/concrete/inspection/delivery/curing colors, weekend shading, continuation markers, column Group A/B footnotes, non-destructive sequence review, and clean PDF output signed Prepared by Norman Cinco | ValBen Construction.</div></div>
         <div class="version-row"><div class="version-name">V13.0</div><div><b>Field Coordination Center.</b> Added one-record coordination activities for material deliveries, concrete, inspections and follow-ups; connected date/time Schedule + Day/Week/Month Calendar; provider directory; multiple reminders; concrete/pump/inspection follow-ups; weekly PDF/email-draft sharing; secure read-only snapshot links; offline cache/queued writes; America/New_York DST validation; and explicit notification/email capability status.</div></div>
+        <div class="version-row"><div class="version-name">V14.0</div><div><b>Deliveries.</b> Added a focused weekly delivery list + connected calendar + compact edit form; independent Phase and Pour fields; multi-control-code text preservation; supplier Processed/Shipped separated from field receipt status; unscheduled items; partial receipt history; Excel preview/import with duplicate protection; reminders; weekly PDF/email-draft/read-only sharing; and project-scoped cloud persistence prepared through dedicated Supabase delivery tables.</div></div>
       </div>
     </div>
   </div>
@@ -4268,6 +4397,7 @@ body.coord-public-mode>header,body.coord-public-mode>.app,body.coord-public-mode
 <nav id="mobileNav" class="mobile-nav no-print" aria-label="Mobile navigation">
   <button class="mobile-nav-button active" data-view="dashboard" type="button">Dashboard</button>
   <button class="mobile-nav-button" data-view="schedule" type="button">Schedule</button>
+  <button class="mobile-nav-button" data-view="deliveries" type="button">Deliveries</button>
   <button class="mobile-nav-button" data-view="coordination" type="button">Coord.</button>
   <button class="mobile-nav-button" data-view="professionalSchedule" type="button">Field View</button>
   <button class="mobile-nav-button" data-view="calendar" type="button">Calendar</button>
@@ -4429,6 +4559,45 @@ body.coord-public-mode>header,body.coord-public-mode>.app,body.coord-public-mode
 </div>
 
 
+
+<div id="deliveryImportBackdrop" class="delivery-modal-backdrop" aria-hidden="true">
+  <div class="delivery-modal delivery-import-modal">
+    <div class="delivery-modal-head"><div><span>IMPORT PREVIEW</span><h2>Import Deliveries from Excel</h2><p>Review before importing. Dates from screenshots are never used.</p></div><button class="secondary" id="deliveryImportClose" type="button">Close</button></div>
+    <div class="delivery-import-source">
+      <button class="secondary" id="deliveryLoadSeedBtn" type="button">Load Attached 14 Processed Items</button>
+      <label class="delivery-file-btn">Choose Excel<input id="deliveryExcelFile" type="file" accept=".xlsx,.xls,.csv"></label>
+      <label><span>Default Provider</span><select id="deliveryImportProvider"><option value="">Use file / none</option></select></label>
+    </div>
+    <div class="delivery-import-summary" id="deliveryImportSummary">No file loaded.</div>
+    <div class="delivery-import-table-wrap"><table class="delivery-import-table"><thead><tr><th>Import</th><th>Material</th><th>Provider</th><th>Level</th><th>Pour</th><th>Phase</th><th>Control Code</th><th>Supplier</th><th>Planned</th><th>Review</th></tr></thead><tbody id="deliveryImportRows"></tbody></table></div>
+    <div class="delivery-import-actions"><button class="secondary" id="deliveryImportSelectNew" type="button">Select New Only</button><button class="primary" id="deliveryImportConfirm" type="button">Import Selected</button></div>
+    <div class="delivery-form-status" id="deliveryImportStatus"></div>
+  </div>
+</div>
+
+<div id="deliveryShareBackdrop" class="delivery-modal-backdrop" aria-hidden="true">
+  <div class="delivery-modal delivery-share-modal">
+    <div class="delivery-modal-head"><div><span>WEEKLY DELIVERY SUMMARY</span><h2>Share Deliveries</h2><p>Review the exact records before PDF, copy or email draft.</p></div><button class="secondary" id="deliveryShareClose" type="button">Close</button></div>
+    <div class="delivery-share-grid">
+      <div class="delivery-share-controls">
+        <label><span>Week of</span><input id="deliveryShareWeek" type="date"></label>
+        <label><span>Provider</span><select id="deliveryShareProvider"><option value="">All providers</option></select></label>
+        <label class="delivery-span-2"><span>Recipients</span><input id="deliveryShareRecipients" type="text" placeholder="email@example.com, second@example.com"></label>
+        <label class="delivery-span-2"><span>Subject</span><input id="deliveryShareSubject" type="text"></label>
+        <label class="delivery-span-2"><span>Message Preview</span><textarea id="deliveryShareMessage" rows="10"></textarea></label>
+        <div class="delivery-share-note delivery-span-2">Prepare Email opens the mail client. It is not recorded as a confirmed send.</div>
+      </div>
+      <div>
+        <div class="delivery-share-list-head"><b>Select deliveries</b><button class="secondary" id="deliveryShareSelectAll" type="button">Select All</button></div>
+        <div id="deliveryShareList" class="delivery-share-list"></div>
+        <label class="delivery-share-link"><span>Read-only link</span><input id="deliveryShareLink" type="text" readonly></label>
+      </div>
+    </div>
+    <div class="delivery-share-actions"><button class="secondary" id="deliverySharePdf" type="button">Generate PDF</button><button class="secondary" id="deliveryShareCopy" type="button">Copy Summary</button><button class="secondary" id="deliveryShareEmail" type="button">Prepare Email</button><button class="primary" id="deliveryShareLinkBtn" type="button">Create Read-only Link</button></div>
+    <div class="delivery-form-status" id="deliveryShareStatus"></div>
+  </div>
+</div>
+
 <div id="coordProvidersBackdrop" class="coord-modal-backdrop" aria-hidden="true">
   <div class="coord-modal coord-provider-modal">
     <div class="coord-modal-head"><div><span class="coord-eyebrow">DIRECTORY</span><h2>Providers & Contacts</h2></div><button class="secondary" id="coordProvidersCloseBtn" type="button">Close</button></div>
@@ -4512,7 +4681,7 @@ function getLocalCloudState(){
   let logo='';
   try{logo=localStorage.getItem(LOGO_KEY)||''}catch(e){}
   return {
-    version:'13.0',
+    version:'14.0',
     tasks,
     noWork:[...customNoWork].sort(),
     horizonWeeks:getHorizonWeeks(),
@@ -4681,7 +4850,7 @@ function currentProjectState(){
   let logo='';
   try{logo=localStorage.getItem(LOGO_KEY)||''}catch(e){}
   return {
-    version:'13.0',
+    version:'14.0',
     tasks:tasks.map(t=>({...t})),
     noWork:[...customNoWork].sort(),
     horizonWeeks:getHorizonWeeks(),
@@ -4692,7 +4861,7 @@ function currentProjectState(){
   };
 }
 function blankProjectState(){
-  return {version:'13.0',tasks:[],noWork:[],horizonWeeks:3,dailyReports:[],activeDailyReportId:'',logo:'',savedAt:new Date().toISOString()}
+  return {version:'14.0',tasks:[],noWork:[],horizonWeeks:3,dailyReports:[],activeDailyReportId:'',logo:'',savedAt:new Date().toISOString()}
 }
 function cacheProjectState(){
   if(!activeProject)return;
@@ -4873,7 +5042,7 @@ async function createProject(){
   $('importCurrentSchedule').checked=false;
   $('projectStatus').textContent='Project created.';
   renderProjectList();
-  await loadCoordinationData();
+  deliveryLoadedProjectId='';deliveryRecords=[];deliveryReceipts=[];await loadCoordinationData();
   setTimeout(closeProjectsModal,350);
 }
 async function openProject(id,closeAfter=true){
@@ -4895,7 +5064,7 @@ async function openProject(id,closeAfter=true){
   cacheProjectState();
   $('projectStatus').textContent='';
   renderProjectList();
-  await loadCoordinationData();
+  deliveryLoadedProjectId='';deliveryRecords=[];deliveryReceipts=[];await loadCoordinationData();
   if(closeAfter)closeProjectsModal();
 }
 async function deleteProject(id){
@@ -5024,7 +5193,7 @@ async function initializeUserProjects(){
     if(event==='SIGNED_IN'&&session2?.user&&!currentUser){
       currentUser=session2.user;setAuthGate(false);await loadProjects();
     }
-    if(event==='SIGNED_OUT'){currentUser=null;activeProject=null;projectRecords=[];coordActivities=[];coordProviders=[];coordEmailLog=[];setAuthGate(true);updateProjectHeader();renderCoordination()}
+    if(event==='SIGNED_OUT'){currentUser=null;activeProject=null;projectRecords=[];coordActivities=[];coordProviders=[];coordEmailLog=[];deliveryRecords=[];deliveryReceipts=[];deliveryLoadedProjectId='';setAuthGate(true);updateProjectHeader();renderCoordination();renderDeliveries()}
   });
 }
 
@@ -5316,7 +5485,7 @@ function renderCalendar(){
 function shiftCalendarMonth(delta){calendarMonth=new Date(calendarMonth.getFullYear(),calendarMonth.getMonth()+delta,1,12);selectedCalendarDay=null;renderCalendar()}
 function goCalendarToday(){const d=D(todayISO());calendarMonth=new Date(d.getFullYear(),d.getMonth(),1,12);selectedCalendarDay=new Date(d);renderCalendar()}
 function renderPrintPreview(){}
-function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));$(v+'View').classList.add('active');document.querySelectorAll('.nav[data-view],.mobile-nav-button[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));if(v==='schedule')renderSchedule();if(v==='calendar')renderCalendar();if(v==='lookahead')renderLookahead();if(v==='professionalSchedule')renderProfessionalSchedule();if(v==='coordination')renderCoordination();if(v==='dailyReport')renderDailyReport();if(window.innerWidth<=1100)window.scrollTo({top:0,behavior:'smooth'})}
+function show(v){document.querySelectorAll('.view').forEach(x=>x.classList.remove('active'));$(v+'View').classList.add('active');document.querySelectorAll('.nav[data-view],.mobile-nav-button[data-view]').forEach(x=>x.classList.toggle('active',x.dataset.view===v));if(v==='schedule')renderSchedule();if(v==='calendar')renderCalendar();if(v==='lookahead')renderLookahead();if(v==='professionalSchedule')renderProfessionalSchedule();if(v==='deliveries'){ensureDeliveriesLoaded().then(renderDeliveries);renderDeliveries()}if(v==='coordination')renderCoordination();if(v==='dailyReport')renderDailyReport();if(window.innerWidth<=1100)window.scrollTo({top:0,behavior:'smooth'})}
 function addTask(){
   /* Always make the newly created activity visible.
      Previously an active Search / Status / Category filter could hide a new blank row
@@ -6561,6 +6730,212 @@ async function generatePDF(useWatermark=false){
 async function savePDF(){openPdfOptions()}
 
 
+
+/* =======================================================
+   V14.0 Deliveries
+   Dedicated delivery records + partial receipts.
+   ======================================================= */
+const DELIVERY_TZ='America/New_York';
+const DELIVERY_FIELD_LABELS={to_request:'To Request',requested:'Requested',to_confirm:'To Confirm',scheduled:'Scheduled',partial:'Partial',received:'Received',canceled:'Canceled'};
+const DELIVERY_SUPPLIER_LABELS={unknown:'Unknown',processed:'Processed',shipped:'Shipped'};
+const DELIVERY_SEED_14=[
+  {level:'2ND-3RD',pour:'',phase:'',material:'Escalera 1',controlCodes:['16BF'],supplierStatus:'processed'},
+  {level:'2ND-3RD',pour:'',phase:'',material:'Escalera 2',controlCodes:['16BJ'],supplierStatus:'processed'},
+  {level:'2ND-3RD',pour:'',phase:'',material:'Escalera 3',controlCodes:['16BK'],supplierStatus:'processed'},
+  {level:'3RD-4TH',pour:'P1',phase:'',material:'Columnas',controlCodes:['153P'],supplierStatus:'processed'},
+  {level:'3RD-4TH',pour:'P3',phase:'',material:'Columnas',controlCodes:['15P5'],supplierStatus:'processed'},
+  {level:'3RD-4TH',pour:'P3',phase:'',material:'Shear wall 2',controlCodes:['15P7'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P1',phase:'',material:'Losa · acero superior',controlCodes:['1LB'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P1',phase:'',material:'Losa · inferior, vigas y muros',controlCodes:['153M'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P1',phase:'',material:'Losa · malla inferior',controlCodes:['153N'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P1',phase:'',material:'PT back-up / support',controlCodes:['153Q'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P3',phase:'',material:'Losa · acero superior',controlCodes:['15P8'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P3',phase:'',material:'Losa · inferior, vigas y muros',controlCodes:['15QA'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P3',phase:'',material:'Losa · malla inferior (BOT NAT)',controlCodes:['15P9'],supplierStatus:'processed'},
+  {level:'Level 3',pour:'P3',phase:'',material:'PT back-up / support',controlCodes:['15P6'],supplierStatus:'processed'}
+];
+let deliveryRecords=[];
+let deliveryReceipts=[];
+let deliveryLoadedProjectId='';
+let deliveryDbReady=true;
+let deliveryWeekAnchor='';
+let deliveryCurrentView='pending';
+let deliverySelectedId='';
+let deliveryMobilePane='list';
+let deliveryImportPreview=[];
+let deliveryImportFileName='';
+let deliveryDragState=null;
+let deliveryReminderTimer=null;
+
+function deliveryUuid(){return (crypto?.randomUUID?crypto.randomUUID():coordUuid())}
+function deliveryCacheKey(){return `valben_deliveries_v14_${activeProject?.id||'none'}`}
+function deliveryReceiptCacheKey(){return `valben_delivery_receipts_v14_${activeProject?.id||'none'}`}
+function deliveryStartOfWeek(key){const d=D(key||todayISO()),n=(d.getDay()+6)%7;d.setDate(d.getDate()-n);return ISO(d)}
+function deliveryAddDays(key,n){const d=D(key);d.setDate(d.getDate()+n);return ISO(d)}
+function deliveryEndOfWeek(key){return deliveryAddDays(deliveryStartOfWeek(key),6)}
+function deliveryNormalizeText(v){return String(v??'').trim()}
+function deliveryNormalizeCodes(v){
+  const arr=Array.isArray(v)?v:String(v??'').split(/[,;\n]+/);
+  return [...new Set(arr.map(x=>String(x).trim()).filter(Boolean))];
+}
+function deliveryCodeText(v){return deliveryNormalizeCodes(v).join(', ')}
+function deliveryFingerprintPart(v){return String(v??'').trim().toLowerCase().replace(/\s+/g,' ')}
+function deliveryImportKey(row){
+  return ['v14',deliveryFingerprintPart(row.providerName),deliveryFingerprintPart(row.material),deliveryFingerprintPart(row.level),deliveryFingerprintPart(row.pour),deliveryFingerprintPart(row.phase),deliveryNormalizeCodes(row.controlCodes).map(deliveryFingerprintPart).sort().join('|')].join('::');
+}
+function deliveryNormalizeRecord(r){
+  return {...r,id:String(r?.id||deliveryUuid()),material:deliveryNormalizeText(r?.material),provider_id:r?.provider_id||null,level:deliveryNormalizeText(r?.level),pour:deliveryNormalizeText(r?.pour),phase:deliveryNormalizeText(r?.phase),control_codes:deliveryNormalizeCodes(r?.control_codes),scheduled_at:r?.scheduled_at||null,timezone:r?.timezone||DELIVERY_TZ,supplier_status:['processed','shipped','unknown'].includes(r?.supplier_status)?r.supplier_status:'unknown',field_status:Object.keys(DELIVERY_FIELD_LABELS).includes(r?.field_status)?r.field_status:'to_confirm',reminders:Array.isArray(r?.reminders)?r.reminders.map(x=>({...x,id:String(x.id||deliveryUuid()),relativeMinutes:Number.isFinite(+x.relativeMinutes)?+x.relativeMinutes:null,firedAt:x.firedAt||null})):[],notes:deliveryNormalizeText(r?.notes),source_file:r?.source_file||null,source_row:r?.source_row??null,import_key:r?.import_key||null,source_status_text:r?.source_status_text||null,source_meta:r?.source_meta&&typeof r.source_meta==='object'?r.source_meta:{},created_at:r?.created_at||new Date().toISOString(),updated_at:r?.updated_at||new Date().toISOString()};
+}
+function deliveryNormalizeReceipt(r){return {...r,id:String(r?.id||deliveryUuid()),delivery_id:String(r?.delivery_id||''),received_at:r?.received_at||new Date().toISOString(),ticket:deliveryNormalizeText(r?.ticket),received_by:deliveryNormalizeText(r?.received_by),notes:deliveryNormalizeText(r?.notes),is_final:!!r?.is_final,created_at:r?.created_at||new Date().toISOString()}}
+function deliveryProvider(id){return (coordProviders||[]).find(p=>String(p.id)===String(id))||null}
+function deliveryProviderName(id){return deliveryProvider(id)?.company||''}
+function deliveryById(id){return deliveryRecords.find(x=>String(x.id)===String(id))||null}
+function deliveryReceiptsFor(id){return deliveryReceipts.filter(r=>String(r.delivery_id)===String(id)).sort((a,b)=>new Date(b.received_at)-new Date(a.received_at))}
+function deliveryIsClosed(d){return ['received','canceled'].includes(d?.field_status)}
+function deliveryIsOverdue(d){return !!d?.scheduled_at&&!deliveryIsClosed(d)&&new Date(d.scheduled_at).getTime()<Date.now()}
+function deliveryDateParts(iso){return iso?coordPartsInZone(iso,DELIVERY_TZ):null}
+function deliveryDisplayDate(iso){if(!iso)return 'Unscheduled';try{return new Intl.DateTimeFormat('en-US',{timeZone:DELIVERY_TZ,weekday:'short',month:'short',day:'numeric'}).format(new Date(iso))}catch(e){return iso}}
+function deliveryDisplayTime(iso){if(!iso)return '—';try{return new Intl.DateTimeFormat('en-US',{timeZone:DELIVERY_TZ,hour:'numeric',minute:'2-digit'}).format(new Date(iso))}catch(e){return iso}}
+function deliveryFieldLabel(d){return DELIVERY_FIELD_LABELS[d?.field_status]||d?.field_status||'To Confirm'}
+function deliverySupplierLabel(d){return DELIVERY_SUPPLIER_LABELS[d?.supplier_status]||d?.supplier_status||'Unknown'}
+function deliverySaveCache(){try{localStorage.setItem(deliveryCacheKey(),JSON.stringify(deliveryRecords));localStorage.setItem(deliveryReceiptCacheKey(),JSON.stringify(deliveryReceipts))}catch(e){}}
+function deliveryLoadCache(){try{deliveryRecords=(JSON.parse(localStorage.getItem(deliveryCacheKey())||'[]')||[]).map(deliveryNormalizeRecord);deliveryReceipts=(JSON.parse(localStorage.getItem(deliveryReceiptCacheKey())||'[]')||[]).map(deliveryNormalizeReceipt)}catch(e){deliveryRecords=[];deliveryReceipts=[]}}
+async function ensureDeliveriesLoaded(force=false){
+  if(!activeProject||!currentUser){deliveryRecords=[];deliveryReceipts=[];deliveryLoadedProjectId='';renderDeliveries();return}
+  if(!force&&deliveryLoadedProjectId===activeProject.id)return;
+  deliveryLoadedProjectId=activeProject.id;deliveryDbReady=true;
+  try{
+    const [dRes,pRes]=await Promise.all([
+      sb.from('valben_deliveries').select('*').eq('project_id',activeProject.id).order('scheduled_at',{ascending:true,nullsFirst:false}),
+      (coordProviders&&coordProviders.length)?Promise.resolve({data:coordProviders,error:null}):sb.from('valben_coordination_providers').select('*').order('company',{ascending:true})
+    ]);
+    if(dRes.error)throw dRes.error;if(pRes.error)throw pRes.error;
+    deliveryRecords=(dRes.data||[]).map(deliveryNormalizeRecord);if(!coordProviders.length)coordProviders=(pRes.data||[]).map(coordNormalizeProvider);
+    const ids=deliveryRecords.map(x=>x.id);
+    if(ids.length){const rRes=await sb.from('valben_delivery_receipts').select('*').in('delivery_id',ids).order('received_at',{ascending:false});if(rRes.error)throw rRes.error;deliveryReceipts=(rRes.data||[]).map(deliveryNormalizeReceipt)}else deliveryReceipts=[];
+    deliverySaveCache();
+  }catch(err){
+    console.error('Deliveries load',err);deliveryDbReady=false;deliveryLoadCache();
+  }
+  renderDeliveries();
+}
+async function deliveryPersist(table,row){
+  try{const {error}=await sb.from(table).upsert(row,{onConflict:'id'});if(error)throw error;return true}catch(err){console.error('Delivery persist',err);deliverySaveCache();if(typeof coordQueueOp==='function')coordQueueOp({table,action:'upsert',row});return false}
+}
+async function deliveryDeleteRow(table,id){try{const {error}=await sb.from(table).delete().eq('id',id);if(error)throw error;return true}catch(err){if(typeof coordQueueOp==='function')coordQueueOp({table,action:'delete',id});return false}}
+function deliveryProviderOptions(includeAll=false){const first=includeAll?'<option value="">All providers</option>':'<option value="">— Provider —</option>';return first+(coordProviders||[]).map(p=>`<option value="${p.id}">${esc(p.company)}</option>`).join('')}
+function deliveryPopulateProviders(){
+  ['deliveryProvider'].forEach(id=>{if($(id)){const v=$(id).value;$(id).innerHTML=deliveryProviderOptions(false);$(id).value=v}});
+  ['deliveryFilterProvider','deliveryShareProvider'].forEach(id=>{if($(id)){const v=$(id).value;$(id).innerHTML=deliveryProviderOptions(true);$(id).value=v}});
+  if($('deliveryImportProvider')){const v=$('deliveryImportProvider').value;$('deliveryImportProvider').innerHTML='<option value="">Use file / none</option>'+(coordProviders||[]).map(p=>`<option value="${p.id}">${esc(p.company)}</option>`).join('');$('deliveryImportProvider').value=v}
+}
+function deliveryWeekKeys(){const start=deliveryStartOfWeek(deliveryWeekAnchor||todayISO());return Array.from({length:7},(_,i)=>deliveryAddDays(start,i))}
+function deliveryWeekLabel(){const k=deliveryWeekKeys(),fmt=new Intl.DateTimeFormat('en-US',{month:'short',day:'numeric'});return `${fmt.format(D(k[0]))} – ${fmt.format(D(k[6]))}`}
+function deliveryViewMatch(d){if(deliveryCurrentView==='received')return d.field_status==='received';if(deliveryCurrentView==='pending')return !['received','canceled'].includes(d.field_status);return true}
+function deliveryFilterMatch(d,ignoreWeek=false){
+  if(!deliveryViewMatch(d))return false;
+  const provider=$('deliveryFilterProvider')?.value||'',level=($('deliveryFilterLevel')?.value||'').trim().toLowerCase(),pour=($('deliveryFilterPour')?.value||'').trim().toLowerCase(),phase=($('deliveryFilterPhase')?.value||'').trim().toLowerCase(),q=($('deliverySearch')?.value||'').trim().toLowerCase();
+  if(provider&&String(d.provider_id)!==provider)return false;if(level&&!d.level.toLowerCase().includes(level))return false;if(pour&&!d.pour.toLowerCase().includes(pour))return false;if(phase&&!d.phase.toLowerCase().includes(phase))return false;
+  if(q&&!`${d.material} ${deliveryCodeText(d.control_codes)}`.toLowerCase().includes(q))return false;
+  if(!ignoreWeek&&d.scheduled_at){const date=deliveryDateParts(d.scheduled_at)?.date,start=deliveryStartOfWeek(deliveryWeekAnchor),end=deliveryEndOfWeek(deliveryWeekAnchor);if(!date||date<start||date>end)return false}
+  return true;
+}
+function deliveryVisibleScheduled(){return deliveryRecords.filter(d=>d.scheduled_at&&deliveryFilterMatch(d,false)).sort((a,b)=>new Date(a.scheduled_at)-new Date(b.scheduled_at))}
+function deliveryVisibleUnscheduled(){return deliveryRecords.filter(d=>!d.scheduled_at&&deliveryFilterMatch(d,true)).sort((a,b)=>a.material.localeCompare(b.material))}
+function deliveryCounts(){return {all:deliveryRecords.length,pending:deliveryRecords.filter(d=>!['received','canceled'].includes(d.field_status)).length,received:deliveryRecords.filter(d=>d.field_status==='received').length}}
+function deliveryBadges(d){const over=deliveryIsOverdue(d);return `<span class="delivery-badge ${d.supplier_status}">${esc(deliverySupplierLabel(d))}</span><span class="delivery-badge ${d.field_status}">${esc(deliveryFieldLabel(d))}</span>${over?'<span class="delivery-badge overdue">Overdue</span>':''}`}
+function deliveryCodeChips(d){return deliveryNormalizeCodes(d.control_codes).map(c=>`<span class="delivery-code">${esc(c)}</span>`).join('')}
+function deliveryLocationText(d){return [d.level,d.pour?`Pour ${d.pour}`:'',d.phase?`Phase ${d.phase}`:''].filter(Boolean).join(' · ')}
+function deliveryCard(d,unscheduled=false){return `<div class="delivery-card ${unscheduled?'unscheduled':''} ${d.id===deliverySelectedId?'selected':''}" data-delivery-edit="${d.id}"><div class="delivery-card-time"><b>${unscheduled?'NO DATE':esc(deliveryDisplayTime(d.scheduled_at))}</b><span>${unscheduled?'Pending schedule':esc(deliveryDisplayDate(d.scheduled_at))}</span></div><div class="delivery-card-main"><div class="delivery-card-title">${esc(d.material||'(Unnamed delivery)')}</div><div class="delivery-card-meta">${esc([deliveryProviderName(d.provider_id),deliveryLocationText(d)].filter(Boolean).join(' · '))}</div><div class="delivery-code-chips">${deliveryCodeChips(d)}</div></div><div class="delivery-status-stack">${deliveryBadges(d)}</div></div>`}
+function deliveryRenderList(){
+  if(!$('deliveryList'))return;const arr=deliveryVisibleScheduled(),uns=deliveryVisibleUnscheduled();$('deliveryVisibleCount').textContent=String(arr.length+uns.length);$('deliveryListTitle').textContent=`${deliveryWeekLabel()} · ${deliveryCurrentView==='all'?'All':deliveryCurrentView==='received'?'Received':'Pending'}`;
+  $('deliveryUnscheduled').innerHTML=uns.length?`<div class="delivery-unscheduled-head">UNSCHEDULED · ${uns.length}</div>${uns.map(d=>deliveryCard(d,true)).join('')}`:'';
+  if(!arr.length){$('deliveryList').innerHTML='<div class="empty-state"><b>No dated deliveries this week</b>Unscheduled items remain visible above.</div>';return}
+  const groups={};arr.forEach(d=>{const k=deliveryDateParts(d.scheduled_at)?.date||'unknown';(groups[k]??=[]).push(d)});
+  $('deliveryList').innerHTML=Object.entries(groups).map(([key,rows])=>`<div class="delivery-day-group"><div class="delivery-day-label">${esc(new Intl.DateTimeFormat('en-US',{weekday:'long',month:'short',day:'numeric'}).format(D(key)))}</div>${rows.map(d=>deliveryCard(d,false)).join('')}</div>`).join('');
+}
+function deliveryCalendarCard(d){return `<div class="delivery-cal-card" data-delivery-edit="${d.id}"><button class="delivery-cal-drag" type="button" data-delivery-drag="${d.id}" title="Drag to reschedule">⋮⋮</button><b>${esc(deliveryDisplayTime(d.scheduled_at))} · ${esc(d.material)}</b><span>${esc([deliveryProviderName(d.provider_id),d.level,d.pour,d.phase].filter(Boolean).join(' · '))}</span><div class="delivery-code-chips">${deliveryCodeChips(d)}</div></div>`}
+function deliveryRenderCalendar(){
+  if(!$('deliveryCalendar'))return;const keys=deliveryWeekKeys(),today=coordPartsInZone(new Date().toISOString(),DELIVERY_TZ)?.date;$('deliveryCalendarTitle').textContent=deliveryWeekLabel();
+  $('deliveryCalendar').innerHTML=keys.map(k=>{const rows=deliveryVisibleScheduled().filter(d=>deliveryDateParts(d.scheduled_at)?.date===k);return `<div class="delivery-cal-day ${k===today?'today':''}" data-delivery-drop-date="${k}"><div class="delivery-cal-head"><b>${new Intl.DateTimeFormat('en-US',{weekday:'short'}).format(D(k))}</b><span>${new Intl.DateTimeFormat('en-US',{month:'numeric',day:'numeric'}).format(D(k))}</span></div><div class="delivery-cal-body">${rows.map(deliveryCalendarCard).join('')}</div></div>`}).join('');
+}
+function renderDeliveries(){
+  if(!$('deliveriesView'))return;if(!deliveryWeekAnchor)deliveryWeekAnchor=deliveryStartOfWeek(todayISO());deliveryPopulateProviders();$('deliveryWeekLabel').textContent=deliveryWeekLabel();
+  const c=deliveryCounts();$('deliveryPendingCount').textContent=c.pending;$('deliveryAllCount').textContent=c.all;$('deliveryReceivedCount').textContent=c.received;document.querySelectorAll('[data-delivery-view]').forEach(b=>b.classList.toggle('active',b.dataset.deliveryView===deliveryCurrentView));
+  deliveryRenderList();deliveryRenderCalendar();deliveryRenderReceiptHistory();deliverySetMobilePane(deliveryMobilePane,false);
+  if(!$('deliveryForm').dataset.deliveryReady){$('deliveryForm').dataset.deliveryReady='1';deliveryNew(false)}
+}
+function deliverySetMobilePane(pane,render=true){deliveryMobilePane=pane;document.querySelectorAll('[data-delivery-mobile-pane]').forEach(b=>b.classList.toggle('active',b.dataset.deliveryMobilePane===pane));document.querySelectorAll('[data-delivery-pane]').forEach(x=>x.classList.toggle('mobile-active',x.dataset.deliveryPane===pane));if(render)renderDeliveries()}
+function deliveryOpenForm(){if(window.innerWidth<=700)$('deliveryFormPanel').classList.add('mobile-open')}
+function deliveryCloseForm(){$('deliveryFormPanel').classList.remove('mobile-open')}
+function deliveryNew(open=true){
+  deliverySelectedId='';$('deliveryId').value='';$('deliveryFormTitle').textContent='New Delivery';$('deliveryMaterial').value='';$('deliveryProvider').value='';$('deliveryLevel').value='';$('deliveryPour').value='';$('deliveryPhase').value='';$('deliveryControlCodes').value='';$('deliveryDate').value='';$('deliveryTime').value='';$('deliverySupplierStatus').value='unknown';$('deliveryFieldStatus').value='to_confirm';$('deliveryReminderPreset').value='';$('deliveryReminderCustom').value='';$('deliveryNotes').value='';$('deliveryFormStatus').textContent='';deliveryClearReceiptEntry();deliveryRenderReceiptHistory();if(open)deliveryOpenForm();deliveryRenderList();
+}
+function deliveryEdit(id){const d=deliveryById(id);if(!d)return;deliverySelectedId=d.id;$('deliveryId').value=d.id;$('deliveryFormTitle').textContent=d.material||'Delivery';$('deliveryMaterial').value=d.material;$('deliveryProvider').value=d.provider_id||'';$('deliveryLevel').value=d.level;$('deliveryPour').value=d.pour;$('deliveryPhase').value=d.phase;$('deliveryControlCodes').value=deliveryCodeText(d.control_codes);const parts=deliveryDateParts(d.scheduled_at);$('deliveryDate').value=parts?.date||'';$('deliveryTime').value=parts?.time||'';$('deliverySupplierStatus').value=d.supplier_status;$('deliveryFieldStatus').value=d.field_status;$('deliveryNotes').value=d.notes;const rem=(d.reminders||[])[0];if(rem){$('deliveryReminderPreset').value=rem.relativeMinutes===1440?'1440':rem.relativeMinutes===120?'120':'custom';$('deliveryReminderCustom').value=coordDateTimeLocalValue(rem.at)}else{$('deliveryReminderPreset').value='';$('deliveryReminderCustom').value=''}deliveryRenderReceiptHistory();deliveryOpenForm();deliveryRenderList();deliveryRenderCalendar()}
+function deliveryValidateForm(){if(!activeProject)return 'Select a project first.';if(!$('deliveryMaterial').value.trim())return 'Material / activity is required.';const date=$('deliveryDate').value,time=$('deliveryTime').value;if((date&&!time)||(!date&&time))return 'Planned date and time must be entered together, or both left blank.';if(date&&time&&!coordZonedLocalToUtc(date,time,DELIVERY_TZ))return 'Planned date/time is invalid in America/New_York.';if($('deliveryReminderPreset').value&&$('deliveryReminderPreset').value!=='custom'&&!date)return 'A relative reminder requires a planned date/time.';if($('deliveryReminderPreset').value==='custom'&&!$('deliveryReminderCustom').value)return 'Choose the custom reminder date/time.';const existing=deliveryById($('deliveryId').value),nextStatus=$('deliveryFieldStatus').value,receipts=existing?deliveryReceiptsFor(existing.id):[];if(nextStatus==='partial'&&existing?.field_status!=='partial'&&!receipts.length)return 'Add a receipt entry before setting Partial.';if(nextStatus==='received'&&existing?.field_status!=='received'&&!receipts.some(r=>r.is_final))return 'Add a final receipt entry before setting Received.';return ''}
+function deliveryBuildReminder(scheduledAt){const preset=$('deliveryReminderPreset').value;if(!preset)return [];let at=null,relativeMinutes=null;if(preset==='custom'){const [d,t]=($('deliveryReminderCustom').value||'').split('T');at=coordZonedLocalToUtc(d,t,DELIVERY_TZ)}else{relativeMinutes=+preset;at=new Date(new Date(scheduledAt).getTime()-relativeMinutes*60000).toISOString()}return at?[{id:deliveryUuid(),label:'Delivery follow-up',at,relativeMinutes,firedAt:null}]:[]}
+function deliveryBuildRecord(){const existing=deliveryById($('deliveryId').value),date=$('deliveryDate').value,time=$('deliveryTime').value,scheduledAt=date&&time?coordZonedLocalToUtc(date,time,DELIVERY_TZ):null;return deliveryNormalizeRecord({...existing,id:existing?.id||deliveryUuid(),owner_id:currentUser.id,project_id:activeProject.id,material:$('deliveryMaterial').value.trim(),provider_id:$('deliveryProvider').value||null,level:$('deliveryLevel').value.trim(),pour:$('deliveryPour').value.trim(),phase:$('deliveryPhase').value.trim(),control_codes:deliveryNormalizeCodes($('deliveryControlCodes').value),scheduled_at:scheduledAt,timezone:DELIVERY_TZ,supplier_status:$('deliverySupplierStatus').value,field_status:$('deliveryFieldStatus').value,reminders:deliveryBuildReminder(scheduledAt),notes:$('deliveryNotes').value.trim(),updated_at:new Date().toISOString()})}
+async function deliverySave(e){if(e)e.preventDefault();const err=deliveryValidateForm();if(err){$('deliveryFormStatus').textContent=err;return}const row=deliveryBuildRecord(),i=deliveryRecords.findIndex(x=>x.id===row.id);if(i>=0)deliveryRecords[i]=row;else deliveryRecords.push(row);deliverySelectedId=row.id;if(row.scheduled_at){const p=deliveryDateParts(row.scheduled_at);if(p?.date)deliveryWeekAnchor=deliveryStartOfWeek(p.date)}deliverySaveCache();renderDeliveries();$('deliveryFormStatus').textContent='Saving…';const ok=await deliveryPersist('valben_deliveries',row);$('deliveryFormStatus').textContent=ok?'Saved to cloud.':'Saved locally · database migration/sync pending.';deliveryRenderList();deliveryRenderCalendar()}
+async function deliverySetStatus(status){const d=deliveryById($('deliveryId').value);if(!d){toast('Select a delivery first');return}if(status==='partial'&&!deliveryReceiptsFor(d.id).length){$('deliveryReceiptDetails').open=true;$('deliveryFormStatus').textContent='Add a receipt entry before marking Partial.';return}if(status==='received'&&!deliveryReceiptsFor(d.id).some(r=>r.is_final)){$('deliveryReceiptDetails').open=true;$('deliveryFormStatus').textContent='Add a final receipt entry before marking Received.';return}d.field_status=status;d.updated_at=new Date().toISOString();$('deliveryFieldStatus').value=status;deliverySaveCache();renderDeliveries();await deliveryPersist('valben_deliveries',d)}
+function deliveryClearReceiptEntry(){['deliveryReceiptDate','deliveryReceiptTime','deliveryReceiptTicket','deliveryReceiptBy','deliveryReceiptNotes'].forEach(id=>{if($(id))$(id).value=''});if($('deliveryReceiptFinal'))$('deliveryReceiptFinal').checked=false}
+function deliveryRenderReceiptHistory(){if(!$('deliveryReceiptHistory'))return;const id=$('deliveryId')?.value||deliverySelectedId,arr=id?deliveryReceiptsFor(id):[];$('deliveryReceiptCount').textContent=String(arr.length);$('deliveryReceiptHistory').innerHTML=arr.length?arr.map(r=>`<div class="delivery-receipt-row"><div><b>${esc(deliveryDisplayDate(r.received_at))}</b><span>${esc(deliveryDisplayTime(r.received_at))}</span></div><div><b>${esc([r.ticket,r.received_by].filter(Boolean).join(' · ')||'Receipt')}</b><span>${esc(r.notes||'')}</span></div><span class="delivery-badge ${r.is_final?'received':'partial'}">${r.is_final?'Complete':'Partial'}</span></div>`).join(''):'<div style="font-size:7px;color:var(--theme-muted,var(--muted));padding:2px">No receipt records yet.</div>'}
+async function deliveryAddReceipt(){const d=deliveryById($('deliveryId').value);if(!d){$('deliveryFormStatus').textContent='Save the delivery before adding receipt details.';return}const date=$('deliveryReceiptDate').value,time=$('deliveryReceiptTime').value;if(!date||!time){$('deliveryFormStatus').textContent='Received date and time are required.';return}const at=coordZonedLocalToUtc(date,time,DELIVERY_TZ);if(!at){$('deliveryFormStatus').textContent='Received date/time is invalid.';return}const row=deliveryNormalizeReceipt({id:deliveryUuid(),owner_id:currentUser.id,delivery_id:d.id,received_at:at,ticket:$('deliveryReceiptTicket').value.trim(),received_by:$('deliveryReceiptBy').value.trim(),notes:$('deliveryReceiptNotes').value.trim(),is_final:$('deliveryReceiptFinal').checked});deliveryReceipts.push(row);d.field_status=row.is_final?'received':'partial';d.updated_at=new Date().toISOString();deliverySaveCache();deliveryClearReceiptEntry();renderDeliveries();await Promise.all([deliveryPersist('valben_delivery_receipts',row),deliveryPersist('valben_deliveries',d)]);$('deliveryFormStatus').textContent=row.is_final?'Complete receipt saved.':'Partial receipt saved.'}
+function deliveryShiftWeek(n){const d=D(deliveryWeekAnchor||todayISO());d.setDate(d.getDate()+7*n);deliveryWeekAnchor=deliveryStartOfWeek(ISO(d));renderDeliveries()}
+function deliveryRescheduleReminder(reminders,newScheduledAt){return (reminders||[]).map(r=>({...r,at:r.relativeMinutes!==null?new Date(new Date(newScheduledAt).getTime()-r.relativeMinutes*60000).toISOString():r.at,firedAt:null}))}
+async function deliveryReschedule(id,newDate){const d=deliveryById(id);if(!d||!d.scheduled_at)return;const parts=deliveryDateParts(d.scheduled_at),iso=coordZonedLocalToUtc(newDate,parts?.time||'',DELIVERY_TZ);if(!iso){toast('Invalid local time on that date.');return}d.scheduled_at=iso;d.reminders=deliveryRescheduleReminder(d.reminders,iso);d.updated_at=new Date().toISOString();deliverySaveCache();renderDeliveries();await deliveryPersist('valben_deliveries',d);toast(`Delivery moved to ${newDate}`)}
+function deliveryDragStart(e){const h=e.target.closest('[data-delivery-drag]');if(!h)return;e.preventDefault();deliveryDragState={id:h.dataset.deliveryDrag,pointerId:e.pointerId,startX:e.clientX,startY:e.clientY,active:false,target:null};try{h.setPointerCapture?.(e.pointerId)}catch(err){}}
+function deliveryDragMove(e){if(!deliveryDragState)return;const dist=Math.hypot(e.clientX-deliveryDragState.startX,e.clientY-deliveryDragState.startY);if(!deliveryDragState.active&&dist<6)return;deliveryDragState.active=true;document.querySelectorAll('[data-delivery-drop-date]').forEach(x=>x.classList.remove('drop-target'));const day=document.elementFromPoint(e.clientX,e.clientY)?.closest?.('[data-delivery-drop-date]');if(day){day.classList.add('drop-target');deliveryDragState.target=day.dataset.deliveryDropDate}}
+async function deliveryDragEnd(){if(!deliveryDragState)return;const s=deliveryDragState;deliveryDragState=null;document.querySelectorAll('[data-delivery-drop-date]').forEach(x=>x.classList.remove('drop-target'));if(s.active&&s.target)await deliveryReschedule(s.id,s.target)}
+function deliveryReminderDue(){const now=Date.now();return deliveryRecords.flatMap(d=>(d.reminders||[]).filter(r=>!r.firedAt&&new Date(r.at).getTime()<=now&&!deliveryIsClosed(d)).map(r=>({d,r})))}
+async function deliveryCheckReminders(){const due=deliveryReminderDue();for(const {d,r} of due){r.firedAt=new Date().toISOString();toast(`Delivery reminder: ${d.material}`);if('Notification' in window&&Notification.permission==='granted'){try{new Notification('VALBEN · Delivery Reminder',{body:`${d.material} · ${deliveryProviderName(d.provider_id)}`,tag:`delivery-${r.id}`})}catch(e){}}await deliveryPersist('valben_deliveries',d)}if(due.length){deliverySaveCache();renderDeliveries()}}
+function deliveryStartReminderLoop(){clearInterval(deliveryReminderTimer);deliveryReminderTimer=setInterval(deliveryCheckReminders,30000)}
+
+/* ---------- Excel import ---------- */
+function deliveryNormalizeHeader(v){return String(v??'').normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z0-9#]+/g,' ').trim()}
+function deliveryFindHeaderIndex(headers,aliases){const normalized=aliases.map(deliveryNormalizeHeader);for(let i=0;i<headers.length;i++){const h=deliveryNormalizeHeader(headers[i]);if(normalized.some(a=>h===a))return i}for(let i=0;i<headers.length;i++){const h=deliveryNormalizeHeader(headers[i]);if(normalized.some(a=>a.length>2&&h.includes(a)))return i}return -1}
+function deliveryParseDateText(v){const s=String(v??'').trim();if(!s)return '';let m=s.match(/^(\d{4})-(\d{1,2})-(\d{1,2})/);if(m)return `${m[1]}-${String(m[2]).padStart(2,'0')}-${String(m[3]).padStart(2,'0')}`;m=s.match(/^(\d{1,2})\/(\d{1,2})\/(\d{2,4})/);if(m){const y=m[3].length===2?`20${m[3]}`:m[3];return `${y}-${String(m[1]).padStart(2,'0')}-${String(m[2]).padStart(2,'0')}`}return ''}
+function deliveryMapSourceStatus(status,receivedDate,hasSchedule){const s=String(status||'').trim().toLowerCase();if(receivedDate)return {supplierStatus:s==='shipped'?'shipped':s==='processed'?'processed':'unknown',fieldStatus:'received'};if(/cancel/.test(s))return {supplierStatus:'unknown',fieldStatus:'canceled'};if(/shipped|ship|despach/.test(s))return {supplierStatus:'shipped',fieldStatus:hasSchedule?'scheduled':'to_confirm'};if(/processed|process/.test(s))return {supplierStatus:'processed',fieldStatus:hasSchedule?'scheduled':'to_confirm'};if(/received|recib/.test(s))return {supplierStatus:'unknown',fieldStatus:'received'};return {supplierStatus:'unknown',fieldStatus:hasSchedule?'scheduled':'to_confirm'}}
+function deliveryImportClassification(row){const issues=[];if(!row.material)issues.push('Missing material/activity');if(!row.controlCodes.length)issues.push('Missing control code');if(row.pour&&/^ph/i.test(row.pour))issues.push('Pour looks like a Phase — not changed');if(row.phase&&/^(p|pr)\d/i.test(row.phase))issues.push('Phase looks like a Pour — not changed');if(row.sourceStatus&&!/processed|shipped|cancel|received|recib/i.test(row.sourceStatus))issues.push(`Unknown source status: ${row.sourceStatus}`);if(row.sourceDate&&!row.sourceTime)issues.push('Date present but time missing — kept unscheduled');const key=deliveryImportKey(row),dup=deliveryRecords.some(d=>d.import_key===key);return {key,duplicate:dup,incomplete:!row.material||!row.controlCodes.length,issues}}
+function deliveryPrepareImport(rows,fileName,defaultProviderName=''){
+  deliveryImportFileName=fileName||'Import';deliveryImportPreview=rows.map((r,i)=>{const row={sourceRow:r.sourceRow??i+1,providerName:r.providerName||defaultProviderName||'',material:deliveryNormalizeText(r.material),level:deliveryNormalizeText(r.level),pour:deliveryNormalizeText(r.pour),phase:deliveryNormalizeText(r.phase),controlCodes:deliveryNormalizeCodes(r.controlCodes),sourceStatus:deliveryNormalizeText(r.sourceStatus),sourceDate:deliveryNormalizeText(r.sourceDate),sourceTime:deliveryNormalizeText(r.sourceTime),receivedDate:deliveryNormalizeText(r.receivedDate),notes:deliveryNormalizeText(r.notes),sourceMeta:r.sourceMeta||{}};const hasSchedule=!!(row.sourceDate&&row.sourceTime),mapped=deliveryMapSourceStatus(row.sourceStatus,row.receivedDate,hasSchedule),classif=deliveryImportClassification(row);return {...row,...mapped,...classif,selected:!classif.duplicate&&!classif.incomplete}});deliveryRenderImportPreview()}
+function deliveryRenderImportPreview(){
+  const arr=deliveryImportPreview,newCount=arr.filter(x=>!x.duplicate).length,dup=arr.filter(x=>x.duplicate).length,issues=arr.filter(x=>x.issues.length).length,canceled=arr.filter(x=>x.fieldStatus==='canceled').length;$('deliveryImportSummary').textContent=`${deliveryImportFileName} · ${arr.length} rows · ${newCount} new · ${dup} duplicate · ${issues} review · ${canceled} canceled`;
+  $('deliveryImportRows').innerHTML=arr.map((r,i)=>`<tr class="delivery-import-row ${r.duplicate?'duplicate':''} ${r.issues.length?'issue':''}"><td><input type="checkbox" data-delivery-import-check="${i}" ${r.selected?'checked':''} ${r.duplicate?'disabled':''}></td><td>${esc(r.material||'—')}</td><td>${esc(r.providerName||'—')}</td><td>${esc(r.level||'—')}</td><td>${esc(r.pour||'—')}</td><td>${esc(r.phase||'—')}</td><td>${deliveryNormalizeCodes(r.controlCodes).map(c=>`<span class="delivery-code">${esc(c)}</span>`).join(' ')||'—'}</td><td>${esc(r.sourceStatus||r.supplierStatus)}</td><td>${esc(r.sourceDate&&r.sourceTime?`${r.sourceDate} ${r.sourceTime}`:'Unscheduled')}</td><td class="delivery-import-review">${r.duplicate?'Duplicate · ':''}${esc(r.issues.join(' · ')||'Ready')}</td></tr>`).join('')||'<tr><td colspan="10">No rows to preview.</td></tr>'
+}
+function deliveryLoadSeedPreview(){deliveryPrepareImport(DELIVERY_SEED_14.map((r,i)=>({...r,providerName:'Gancedo Rebar Services',sourceStatus:'Processed',sourceRow:i+6,notes:'',sourceMeta:{source:'Seguimiento_Deliveries_Nivel_Pour.xlsx',job:'G26-005'}})),'Seguimiento_Deliveries_Nivel_Pour.xlsx · 14 Processed','Gancedo Rebar Services')}
+function deliveryLoadSheetJs(){return new Promise((resolve,reject)=>{if(window.XLSX){resolve(window.XLSX);return}const old=document.querySelector('script[data-delivery-xlsx]');if(old){old.addEventListener('load',()=>resolve(window.XLSX),{once:true});old.addEventListener('error',()=>reject(new Error('Excel parser unavailable')),{once:true});return}const s=document.createElement('script');s.src='https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js';s.dataset.deliveryXlsx='1';s.onload=()=>resolve(window.XLSX);s.onerror=()=>reject(new Error('Excel parser could not load'));document.head.appendChild(s)})}
+function deliveryRowsFromMatrix(matrix,fileName,providerOverrideName=''){
+  const max=Math.min(matrix.length,30);let hi=-1;for(let i=0;i<max;i++){const row=(matrix[i]||[]).map(deliveryNormalizeHeader);const hasMaterial=row.some(x=>x.includes('material')||x.includes('actividad')||x==='description'),hasCode=row.some(x=>x.includes('control code')||x==='controlcode'||x==='cc');if(hasMaterial||hasCode){hi=i;break}}if(hi<0)throw new Error('Could not locate a header row with Material/Activity or Control Code.');
+  const h=matrix[hi]||[],idx={date:deliveryFindHeaderIndex(h,['entrega prevista','delivery date','scheduled date','required date']),time:deliveryFindHeaderIndex(h,['hora','time','delivery time']),level:deliveryFindHeaderIndex(h,['nivel tramo','nivel','level','floor']),pour:deliveryFindHeaderIndex(h,['pour','pr','p']),phase:deliveryFindHeaderIndex(h,['phase','ph']),material:deliveryFindHeaderIndex(h,['material actividad','material','activity','description']),code:deliveryFindHeaderIndex(h,['control code','controlcode','control codes','cc']),status:deliveryFindHeaderIndex(h,['estado','status']),received:deliveryFindHeaderIndex(h,['recibido el','received date','received']),notes:deliveryFindHeaderIndex(h,['observaciones','notes','comments']),provider:deliveryFindHeaderIndex(h,['proveedor','provider','vendor','supplier'])};
+  const out=[];for(let r=hi+1;r<matrix.length;r++){const row=matrix[r]||[];if(!row.some(v=>String(v??'').trim()))continue;const get=k=>idx[k]>=0?String(row[idx[k]]??'').trim():'';const dateText=get('date'),timeRaw=get('time'),material=get('material'),code=get('code'),level=get('level'),pour=get('pour'),phase=get('phase'),status=get('status'),received=get('received'),notes=get('notes'),rawProvider=get('provider');const hasCoreData=[level,pour,phase,material,code,status,received,notes,rawProvider].some(v=>String(v||'').trim());if(!hasCoreData)continue;const provider=rawProvider||providerOverrideName;const date=deliveryParseDateText(dateText),time=(timeRaw.match(/\b(\d{1,2}):(\d{2})/)||[]);out.push({sourceRow:r+1,providerName:provider,material,level,pour,phase,controlCodes:deliveryNormalizeCodes(code),sourceStatus:status,sourceDate:date,sourceTime:time?`${String(time[1]).padStart(2,'0')}:${time[2]}`:'',receivedDate:deliveryParseDateText(received),notes,sourceMeta:{fileName,rawDate:dateText}})}return out
+}
+async function deliveryExcelChosen(file){if(!file)return;try{$('deliveryImportStatus').textContent='Reading Excel…';const XLSX=await deliveryLoadSheetJs(),buf=await file.arrayBuffer(),wb=XLSX.read(buf,{type:'array',cellDates:false}),ws=wb.Sheets[wb.SheetNames[0]],matrix=XLSX.utils.sheet_to_json(ws,{header:1,defval:'',raw:false});const override=deliveryProvider($('deliveryImportProvider').value)?.company||'';deliveryPrepareImport(deliveryRowsFromMatrix(matrix,file.name,override),file.name,override);$('deliveryImportStatus').textContent='Preview ready. No rows have been imported yet.'}catch(err){console.error(err);$('deliveryImportStatus').textContent=`Import preview failed: ${err.message}`}}
+async function deliveryEnsureProviderName(name){const clean=String(name||'').trim();if(!clean)return null;let p=(coordProviders||[]).find(x=>x.company.toLowerCase()===clean.toLowerCase());if(p)return p.id;p=coordNormalizeProvider({id:deliveryUuid(),owner_id:currentUser.id,company:clean,contact_name:'',email:'',phone:'',specialty:'',notes:'Imported with Deliveries V14'});coordProviders.push(p);coordProviders.sort((a,b)=>a.company.localeCompare(b.company));await coordPersistRow('valben_coordination_providers',p);deliveryPopulateProviders();return p.id}
+async function deliveryImportSelected(){
+  const checked=[...document.querySelectorAll('[data-delivery-import-check]:checked')].map(x=>+x.dataset.deliveryImportCheck),rows=checked.map(i=>deliveryImportPreview[i]).filter(Boolean);if(!rows.length){$('deliveryImportStatus').textContent='Select at least one new row.';return}let imported=0,skipped=0;
+  for(const r of rows){const providerOverride=$('deliveryImportProvider').value,providerOverrideName=deliveryProvider(providerOverride)?.company||'',key=deliveryImportKey({...r,providerName:providerOverrideName||r.providerName});if(deliveryRecords.some(d=>d.import_key===key)){skipped++;continue}const providerId=providerOverride||await deliveryEnsureProviderName(r.providerName);let scheduledAt=null;if(r.sourceDate&&r.sourceTime)scheduledAt=coordZonedLocalToUtc(r.sourceDate,r.sourceTime,DELIVERY_TZ);const record=deliveryNormalizeRecord({id:deliveryUuid(),owner_id:currentUser.id,project_id:activeProject.id,material:r.material,provider_id:providerId||null,level:r.level,pour:r.pour,phase:r.phase,control_codes:r.controlCodes,scheduled_at:scheduledAt,timezone:DELIVERY_TZ,supplier_status:r.supplierStatus,field_status:r.fieldStatus,reminders:[],notes:r.notes,source_file:deliveryImportFileName,source_row:r.sourceRow,import_key:key,source_status_text:r.sourceStatus,source_meta:r.sourceMeta});deliveryRecords.push(record);deliverySaveCache();const ok=await deliveryPersist('valben_deliveries',record);if(ok||!deliveryDbReady)imported++;
+  }
+  deliveryImportPreview.forEach(r=>{r.duplicate=deliveryRecords.some(d=>d.import_key===r.key);if(r.duplicate)r.selected=false});deliveryRenderImportPreview();renderDeliveries();$('deliveryImportStatus').textContent=`Imported ${imported}. Skipped ${skipped} duplicate(s). ${deliveryDbReady?'':'Database migration may still be pending; local cache retained.'}`
+}
+function deliveryOpenImport(){deliveryPopulateProviders();deliveryImportPreview=[];$('deliveryImportRows').innerHTML='';$('deliveryImportSummary').textContent='Choose an Excel file or load the attached 14 Processed items.';$('deliveryImportStatus').textContent='';$('deliveryImportBackdrop').classList.add('show');$('deliveryImportBackdrop').setAttribute('aria-hidden','false')}
+function deliveryCloseImport(){$('deliveryImportBackdrop').classList.remove('show');$('deliveryImportBackdrop').setAttribute('aria-hidden','true')}
+
+/* ---------- Share week ---------- */
+function deliveryWeekShareRows(){const start=$('deliveryShareWeek').value||deliveryStartOfWeek(deliveryWeekAnchor),end=deliveryEndOfWeek(start),provider=$('deliveryShareProvider').value;return deliveryRecords.filter(d=>{if(!d.scheduled_at)return false;const date=deliveryDateParts(d.scheduled_at)?.date;if(!date||date<start||date>end)return false;if(provider&&String(d.provider_id)!==provider)return false;return true}).sort((a,b)=>new Date(a.scheduled_at)-new Date(b.scheduled_at))}
+function deliveryRenderShareList(){const arr=deliveryWeekShareRows();$('deliveryShareList').innerHTML=arr.length?arr.map(d=>`<label class="delivery-share-row"><input type="checkbox" data-delivery-share-check="${d.id}" checked><div><b>${esc(deliveryDisplayDate(d.scheduled_at))} ${esc(deliveryDisplayTime(d.scheduled_at))} · ${esc(d.material)}</b><span>${esc([deliveryProviderName(d.provider_id),deliveryLocationText(d),deliveryCodeText(d.control_codes),deliveryFieldLabel(d)].filter(Boolean).join(' · '))}</span></div></label>`).join(''):'<div class="empty-state">No dated deliveries in this week.</div>'}
+function deliverySelectedShare(){const ids=[...document.querySelectorAll('[data-delivery-share-check]:checked')].map(x=>x.dataset.deliveryShareCheck);return deliveryWeekShareRows().filter(d=>ids.includes(d.id))}
+function deliveryShareText(arr){const start=$('deliveryShareWeek').value,end=deliveryEndOfWeek(start),lines=[`${activeProject?.name||'Project'} · Weekly Deliveries`,`${start} through ${end}`,''];arr.forEach(d=>lines.push(`${deliveryDisplayDate(d.scheduled_at)} ${deliveryDisplayTime(d.scheduled_at)} | ${d.material} | ${deliveryProviderName(d.provider_id)||'—'} | ${deliveryLocationText(d)||'—'} | CC: ${deliveryCodeText(d.control_codes)||'—'} | ${deliveryFieldLabel(d)}${d.notes?` | ${d.notes}`:''}`));const rem=arr.flatMap(d=>(d.reminders||[]).filter(r=>!r.firedAt).map(r=>({d,r})));if(rem.length){lines.push('','FOLLOW-UP REMINDERS');rem.forEach(({d,r})=>lines.push(`${coordFormatDateTime(r.at)} | ${r.label} | ${d.material}`))}return lines.join('\n')}
+function deliveryRefreshShare(){deliveryRenderShareList();const arr=deliveryWeekShareRows(),start=$('deliveryShareWeek').value;$('deliveryShareSubject').value=`${activeProject?.name||'Project'} · Weekly Deliveries · Week of ${start}`;$('deliveryShareMessage').value=deliveryShareText(arr);$('deliveryShareLink').value=''}
+function deliveryRefreshShareSelected(){$('deliveryShareMessage').value=deliveryShareText(deliverySelectedShare())}
+function deliveryOpenShare(){if(!activeProject){toast('Select a project first');return}$('deliveryShareWeek').value=deliveryStartOfWeek(deliveryWeekAnchor||todayISO());$('deliveryShareProvider').value=$('deliveryFilterProvider').value||'';$('deliveryShareRecipients').value='';deliveryPopulateProviders();deliveryRefreshShare();$('deliveryShareStatus').textContent='';$('deliveryShareBackdrop').classList.add('show');$('deliveryShareBackdrop').setAttribute('aria-hidden','false')}
+function deliveryCloseShare(){$('deliveryShareBackdrop').classList.remove('show');$('deliveryShareBackdrop').setAttribute('aria-hidden','true')}
+function deliveryShareSelectAll(){const b=[...document.querySelectorAll('[data-delivery-share-check]')],all=b.every(x=>x.checked);b.forEach(x=>x.checked=!all);deliveryRefreshShareSelected()}
+async function deliveryShareCopy(){try{await navigator.clipboard.writeText($('deliveryShareMessage').value);toast('Delivery summary copied')}catch(e){toast('Copy blocked by browser')}}
+async function deliveryShareEmail(){const arr=deliverySelectedShare();if(!arr.length){toast('Select deliveries first');return}const recipients=$('deliveryShareRecipients').value.split(/[;,]/).map(x=>x.trim()).filter(Boolean),bad=recipients.find(x=>!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(x));if(!recipients.length){toast('Enter recipient email(s)');return}if(bad){toast(`Invalid email: ${bad}`);return}const subject=$('deliveryShareSubject').value,body=$('deliveryShareMessage').value;await coordLogEmail('client_opened',recipients,arr,subject,{module:'deliveries_v14',note:'Mail client opened; send result unknown.'});location.href=`mailto:${encodeURIComponent(recipients.join(','))}?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;$('deliveryShareStatus').textContent='Mail client opened. This is not a confirmed send.'}
+async function deliveryShareLinkCreate(){const arr=deliverySelectedShare();if(!arr.length){toast('Select deliveries first');return}const token=coordRandomToken(),start=$('deliveryShareWeek').value,end=deliveryEndOfWeek(start),payload={deliveryShareV14:true,projectName:activeProject.name,projectLocation:activeProject.location||'',weekStart:start,weekEnd:end,generatedAt:new Date().toISOString(),deliveries:arr.map(d=>({id:d.id,material:d.material,provider:deliveryProviderName(d.provider_id),level:d.level,pour:d.pour,phase:d.phase,controlCodes:d.control_codes,scheduledAt:d.scheduled_at,supplierStatus:deliverySupplierLabel(d),fieldStatus:deliveryFieldLabel(d),notes:d.notes}))};const row={token,owner_id:currentUser.id,project_id:activeProject.id,title:$('deliveryShareSubject').value||`${activeProject.name} Weekly Deliveries`,mode:'team',payload,expires_at:new Date(Date.now()+30*86400000).toISOString()};const {error}=await sb.from('valben_coordination_shares').insert(row);if(error){$('deliveryShareStatus').textContent='Could not create read-only link.';return}const link=`${location.origin}${location.pathname}?share=${encodeURIComponent(token)}`;$('deliveryShareLink').value=link;try{await navigator.clipboard.writeText(link)}catch(e){}$('deliveryShareStatus').textContent='Read-only snapshot link created. Expires in 30 days.'}
+async function deliverySharePdf(){const arr=deliverySelectedShare();if(!arr.length){toast('Select deliveries first');return}if(!window.jspdf?.jsPDF){toast('PDF engine unavailable');return}const {jsPDF}=window.jspdf,doc=new jsPDF({orientation:'landscape',unit:'pt',format:[1224,792],compress:true}),pageW=doc.internal.pageSize.getWidth(),margin=38,start=$('deliveryShareWeek').value,end=deliveryEndOfWeek(start),logo=await getPdfLogoData();if(logo){try{doc.addImage(logo,String(logo).includes('png')?'PNG':'JPEG',margin,28,145,38,undefined,'FAST')}catch(e){}}doc.setFont('helvetica','bold');doc.setTextColor(24,59,94);doc.setFontSize(18);doc.text('WEEKLY DELIVERIES',pageW-margin,40,{align:'right'});doc.setFontSize(11);doc.text(activeProject?.name||'Project',pageW-margin,58,{align:'right'});doc.setFont('helvetica','normal');doc.setFontSize(8);doc.setTextColor(95,112,124);doc.text(`${start} – ${end}`,pageW-margin,72,{align:'right'});const cols=[['DAY / TIME',105],['MATERIAL',220],['PROVIDER',130],['LEVEL / POUR / PHASE',170],['CONTROL CODES',145],['STATUS',105],['NOTES',275]],y0=100;let x=margin;cols.forEach(([l,w])=>{pdfDrawCell(doc,x,y0,w,28,l,{bold:true,fontSize:7,fill:[24,59,94],color:[255,255,255]});x+=w});let y=y0+28;for(const d of arr){const vals=[`${deliveryDisplayDate(d.scheduled_at)} ${deliveryDisplayTime(d.scheduled_at)}`,d.material,deliveryProviderName(d.provider_id),deliveryLocationText(d),deliveryCodeText(d.control_codes),`${deliverySupplierLabel(d)} / ${deliveryFieldLabel(d)}`,d.notes],lineCounts=[1,Math.min(4,doc.splitTextToSize(vals[1]||'',212).length||1),1,2,2,2,Math.min(4,doc.splitTextToSize(vals[6]||'',267).length||1)],rh=Math.max(30,10+Math.max(...lineCounts)*8);if(y+rh>735){doc.addPage([1224,792],'landscape');y=45;x=margin;cols.forEach(([l,w])=>{pdfDrawCell(doc,x,y,w,28,l,{bold:true,fontSize:7,fill:[24,59,94],color:[255,255,255]});x+=w});y+=28}x=margin;cols.forEach(([l,w],i)=>{if([1,3,4,5,6].includes(i))pdfDrawWrappedCell(doc,x,y,w,rh,vals[i],{fontSize:6.2,maxLines:4});else pdfDrawCell(doc,x,y,w,rh,vals[i],{fontSize:6.2});x+=w});y+=rh}doc.save(`${pdfFilenamePart(activeProject?.name||'Project')}_Deliveries_${start}.pdf`);toast('Delivery PDF generated')}
+function deliveryPublicTable(payload){const rows=Array.isArray(payload?.deliveries)?payload.deliveries:[];return `<div class="coord-public-content"><table class="coord-public-table"><thead><tr><th>Day / Time</th><th>Material</th><th>Provider</th><th>Level / Pour / Phase</th><th>Control Codes</th><th>Status</th><th>Notes</th></tr></thead><tbody>${rows.map(d=>`<tr><td>${esc(d.scheduledAt?coordFormatDateTime(d.scheduledAt):'Unscheduled')}</td><td><b>${esc(d.material)}</b></td><td>${esc(d.provider||'')}</td><td>${esc([d.level,d.pour,d.phase].filter(Boolean).join(' / '))}</td><td>${esc(deliveryCodeText(d.controlCodes))}</td><td>${esc(`${d.supplierStatus} / ${d.fieldStatus}`)}</td><td>${esc(d.notes||'')}</td></tr>`).join('')||'<tr><td colspan="7">No deliveries in this snapshot.</td></tr>'}</tbody></table></div>`}
+
 /* =======================================================
    V13.0 Field Coordination Center
    ======================================================= */
@@ -7256,6 +7631,7 @@ async function coordGenerateSharePDF(){
   doc.save(`${pdfFilenamePart(project)}_Weekly_Coordination_${start}.pdf`);toast('Weekly coordination PDF generated');
 }
 function coordPublicTable(payload){
+  if(payload?.deliveryShareV14)return deliveryPublicTable(payload);
   const rows=Array.isArray(payload?.activities)?payload.activities:[];
   const body=rows.map(a=>`<tr><td>${coordEscape(coordFormatDateTime(a.requiredAt))}</td><td><b>${coordEscape(a.title)}</b><br><small>${coordEscape(a.typeLabel)}</small></td><td>${coordEscape([a.location,a.level,a.pour].filter(Boolean).join(' / '))}</td><td>${coordEscape(a.provider||'')}</td><td>${coordEscape(a.status)}</td><td>${coordEscape(a.notes||'')}</td></tr>`).join('');
   const reminders=rows.flatMap(a=>(a.reminders||[]).map(r=>({a,r})));
@@ -7269,7 +7645,7 @@ async function initializePublicShare(token){
   const payload=data.payload||{};$('coordPublicTitle').textContent=data.title||'Shared Coordination';$('coordPublicPeriod').textContent=[payload.projectName,payload.weekStart&&payload.weekEnd?`${payload.weekStart} – ${payload.weekEnd}`:''].filter(Boolean).join(' · ');$('coordPublicContent').innerHTML=coordPublicTable(payload);
 }
 
-function renderAll(){updateHorizonUI();renderDashboard();renderSchedule();renderLookahead();renderCalendar();if($('coordinationView')?.classList.contains('active'))renderCoordination();if($('dailyReportView')?.classList.contains('active'))renderDailyReport();loadSavedLogo()}
+function renderAll(){updateHorizonUI();renderDashboard();renderSchedule();renderLookahead();renderCalendar();if($('deliveriesView')?.classList.contains('active'))renderDeliveries();if($('coordinationView')?.classList.contains('active'))renderCoordination();if($('dailyReportView')?.classList.contains('active'))renderDailyReport();loadSavedLogo()}
 
 
 
@@ -7733,7 +8109,7 @@ function diagnosticItem(name,ok,detail,warning=false){
 
 function runDiagnostics(){
   const results=[];
-  const ids=['scheduleWrap','taskRows','ganttBody','blockerBackdrop','blockerType','blockerTypeGrid','scheduleFocusBtn','autoFitColumnsBtn','dailyReportView','drReportSelect','drActivityRows','drPdfBtn','authGate','projectsBackdrop'];
+  const ids=['scheduleWrap','taskRows','ganttBody','blockerBackdrop','blockerType','blockerTypeGrid','scheduleFocusBtn','autoFitColumnsBtn','dailyReportView','drReportSelect','drActivityRows','drPdfBtn','deliveriesView','deliveryList','deliveryCalendar','deliveryForm','authGate','projectsBackdrop'];
   const missing=ids.filter(id=>!$(id));
   results.push(diagnosticItem('Core UI',missing.length===0,missing.length?`Missing: ${missing.join(', ')}`:'All required interface elements are present.'));
 
@@ -8042,6 +8418,36 @@ $('syncCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')connectClou
 $('syncModalBackdrop').addEventListener('click',e=>{if(e.target===$('syncModalBackdrop'))closeSyncModal()});
 
 wireDailyReportEvents();
+
+
+/* V14 Deliveries events */
+$('deliveryNewBtn').addEventListener('click',()=>deliveryNew(true));
+$('deliveryFormClose').addEventListener('click',deliveryCloseForm);
+$('deliveryForm').addEventListener('submit',deliverySave);
+$('deliveryMarkPartialBtn').addEventListener('click',()=>deliverySetStatus('partial'));
+$('deliveryMarkReceivedBtn').addEventListener('click',()=>deliverySetStatus('received'));
+$('deliveryCancelBtn').addEventListener('click',()=>deliverySetStatus('canceled'));
+$('deliveryAddReceiptBtn').addEventListener('click',deliveryAddReceipt);
+$('deliveryPrevWeek').addEventListener('click',()=>deliveryShiftWeek(-1));
+$('deliveryNextWeek').addEventListener('click',()=>deliveryShiftWeek(1));
+$('deliveryThisWeek').addEventListener('click',()=>{deliveryWeekAnchor=deliveryStartOfWeek(todayISO());renderDeliveries()});
+['deliveryFilterProvider','deliveryFilterLevel','deliveryFilterPour','deliveryFilterPhase','deliverySearch'].forEach(id=>$(id).addEventListener(id==='deliveryFilterProvider'?'change':'input',renderDeliveries));
+document.querySelectorAll('[data-delivery-view]').forEach(b=>b.addEventListener('click',()=>{deliveryCurrentView=b.dataset.deliveryView;renderDeliveries()}));
+document.querySelectorAll('[data-delivery-mobile-pane]').forEach(b=>b.addEventListener('click',()=>deliverySetMobilePane(b.dataset.deliveryMobilePane)));
+$('deliveryList').addEventListener('click',e=>{const row=e.target.closest('[data-delivery-edit]');if(row)deliveryEdit(row.dataset.deliveryEdit)});
+$('deliveryUnscheduled').addEventListener('click',e=>{const row=e.target.closest('[data-delivery-edit]');if(row)deliveryEdit(row.dataset.deliveryEdit)});
+$('deliveryCalendar').addEventListener('click',e=>{const row=e.target.closest('[data-delivery-edit]');if(row&&!e.target.closest('[data-delivery-drag]'))deliveryEdit(row.dataset.deliveryEdit)});
+$('deliveryCalendar').addEventListener('pointerdown',deliveryDragStart);
+document.addEventListener('pointermove',deliveryDragMove,{passive:false});
+document.addEventListener('pointerup',deliveryDragEnd);document.addEventListener('pointercancel',deliveryDragEnd);
+$('deliveryImportBtn').addEventListener('click',deliveryOpenImport);$('deliveryImportClose').addEventListener('click',deliveryCloseImport);$('deliveryImportBackdrop').addEventListener('click',e=>{if(e.target===$('deliveryImportBackdrop'))deliveryCloseImport()});
+$('deliveryLoadSeedBtn').addEventListener('click',deliveryLoadSeedPreview);$('deliveryExcelFile').addEventListener('change',e=>deliveryExcelChosen(e.target.files?.[0]));
+$('deliveryImportSelectNew').addEventListener('click',()=>{document.querySelectorAll('[data-delivery-import-check]').forEach((b,i)=>{const r=deliveryImportPreview[i];b.checked=!!r&&!r.duplicate&&!r.incomplete});});
+$('deliveryImportConfirm').addEventListener('click',deliveryImportSelected);
+$('deliveryShareBtn').addEventListener('click',deliveryOpenShare);$('deliveryShareClose').addEventListener('click',deliveryCloseShare);$('deliveryShareBackdrop').addEventListener('click',e=>{if(e.target===$('deliveryShareBackdrop'))deliveryCloseShare()});
+['deliveryShareWeek','deliveryShareProvider'].forEach(id=>$(id).addEventListener('change',deliveryRefreshShare));$('deliveryShareList').addEventListener('change',deliveryRefreshShareSelected);$('deliveryShareSelectAll').addEventListener('click',deliveryShareSelectAll);
+$('deliverySharePdf').addEventListener('click',deliverySharePdf);$('deliveryShareCopy').addEventListener('click',deliveryShareCopy);$('deliveryShareEmail').addEventListener('click',deliveryShareEmail);$('deliveryShareLinkBtn').addEventListener('click',deliveryShareLinkCreate);
+deliveryStartReminderLoop();
 
 $('coordActivityForm').addEventListener('submit',coordSaveActivity);
 $('coordNewBtn').addEventListener('click',coordNewActivity);
